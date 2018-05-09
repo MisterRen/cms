@@ -41,11 +41,13 @@ public class IndexController {
     @Autowired
     private XcAdminService xcAdminService;
 
+    /**
+     * 首页跳转
+     * @return
+     */
     @GetMapping("/index")
     public ModelAndView index(){
         ModelAndView modelAndView = new ModelAndView("xc/index");
-        XcAdmin admin = xcAdminService.findOne(1l);
-        XcAdmin admin1 = xcAdminService.findByName("laxi");
         try {
             String str = new String(IOUtils.readFully(resource.getInputStream(), -1,true));
             modelAndView.addObject("menu",gson.fromJson(str,new TypeToken<List<Menu>>(){}.getType()));
@@ -55,6 +57,10 @@ public class IndexController {
         return modelAndView;
     }
 
+    /**
+     * 登录跳转
+     * @return
+     */
     @GetMapping("/login")
     public ModelAndView login(){
         ModelAndView modelAndView = new ModelAndView("xc/login");

@@ -1,12 +1,45 @@
 server:
   port: 8080
+  tomcat:
+      #编码格式
+      uri-encoding: utf-8
+      #最大连接数
+      max-connections: 1000
+      #最大线程数，最大并发数
+      max-threads: 500
+      #最小备用线程数
+      min-spare-threads: 20
+      #线程数达到maxThreads后，后续请求会被放入一个等待队列，accept-count是这个队列的大小
+      accept-count: 100
+      #是否开启access log ，默认: false
+      accesslog:
+        enabled: true
+  servlet:
+      context-path: /
+      session:
+        timeout: 1800s
 spring:
   freemarker:
     cache: false
+    request-context-attribute: request
+    prefix: classpath:/templates/
+    suffix: .ftl
   datasource:
-    url: jdbc:mysql://123.56.16.123:3306/datacleana?useUnicode=true&characterEncoding=utf8&serverTimezone=PRC&useSSL=false&rewriteBatchedStatements=TRUE&autoReconnect=true&allowMultiQueries=true
+    url: jdbc:mysql://123.56.16.123:3306/xinchuan?useUnicode=true&characterEncoding=utf8&serverTimezone=PRC&useSSL=false&rewriteBatchedStatements=TRUE&autoReconnect=true&allowMultiQueries=true
     driver-class-name: com.mysql.cj.jdbc.Driver
     username: root
     password: dsx123456
   jpa:
     show-sql: true
+    hibernate:
+      ddl-auto: update
+    dialect: org.hibernate.dialect.MySQL5Dialect
+    naming:
+         physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+logging:
+  level:
+    org.springframework.web: info
+    com.fsg.salary: info
+  path:
+  pattern:
+    console: "%d [%highlight(%level)] %c %L %msg%n"
