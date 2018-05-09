@@ -1,0 +1,18 @@
+server:
+  port: 8080
+spring:
+  freemarker:
+    cache: false
+  datasource:
+    url: jdbc:mysql://123.56.16.123:3306/xinchuan?useUnicode=true&characterEncoding=utf8&serverTimezone=PRC&useSSL=false&rewriteBatchedStatements=TRUE&autoReconnect=true&allowMultiQueries=true
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: dsx123456
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+    dialect: org.hibernate.dialect.MySQL5Dialect
+
+index:
+  menu:
