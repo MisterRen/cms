@@ -19,4 +19,8 @@ import org.springframework.data.domain.Pageable;
 public interface XcNewsService {
 
     Page<XcNews> pageQuery(Pageable pageable);
+
+    void deleteNews(Long id);
+
+    void isEnableNews(XcNews news);
 }
