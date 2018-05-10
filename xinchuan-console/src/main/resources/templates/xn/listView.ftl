@@ -19,6 +19,7 @@
     <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
     <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+    <script src="/common/pagination.js"></script>
 </head>
 
 <body>
@@ -63,31 +64,25 @@
         </tr>
         </thead>
         <tbody>
-        <tr v-for="news in pageData.content">
+        <tr v-for="(news,index) in pageData.content">
             <td>
-                <div class="layui-unselect layui-form-checkbox" lay-skin="primary" data-id='2'><i class="layui-icon">&#xe605;</i></div>
+                <div class="layui-unselect layui-form-checkbox" lay-skin="primary" v-bind:data-id='index'><i class="layui-icon">&#xe605;</i></div>
             </td>
             <td>{{news.id}}</td>
             <td>{{news.title}}</td>
             <td>{{news.summary}}</td>
             <td>{{news.content}}</td>
             <td>{{news.newsImage}}</td>
-            <td>{{news.createTime}}</td>
+            <td>{{news.createTime | formatDate}}</td>
             <td class="td-status">
                 <span class="layui-btn layui-btn-normal layui-btn-mini" v-if="news.isShow == 0">已启用</span>
-                <span class="layui-btn layui-btn-normal layui-btn-mini" v-if="news.isShow == 1">未启用</span>
+                <span class="layui-btn layui-btn-danger layui-btn-mini" v-if="news.isShow == 1">未启用</span>
             </td>
             <td class="td-manage">
-                <a onclick="member_stop(this,'10001')" href="javascript:;"  title="启用">
+                <a @click="member_enable(this,news.id,news.isShow)" href="javascript:;"  v-bind:title="news.isShow|isEnable">
                     <i class="layui-icon">&#xe601;</i>
                 </a>
-                <a title="编辑"  onclick="x_admin_show('编辑','member-edit.html',600,400)" href="javascript:;">
-                    <i class="layui-icon">&#xe642;</i>
-                </a>
-                <a onclick="x_admin_show('修改密码','member-password.html',600,400)" title="修改密码" href="javascript:;">
-                    <i class="layui-icon">&#xe631;</i>
-                </a>
-                <a title="删除" onclick="member_del(this,'要删除的id')" href="javascript:;">
+                <a title="删除" @click="member_del(this,news.id)" href="javascript:;">
                     <i class="layui-icon">&#xe640;</i>
                 </a>
             </td>
@@ -103,14 +98,67 @@
             <a class="next" href="">&gt;&gt;</a>
         </div>
     </div>
-
 </div>
 </body>
 <script>
     var vue = new Vue({
         el:"#vueApp",
         data:{
-            pageData:{}
+            pageData:{},
+            total: 81,     // 记录总条数
+            display: 10,   // 每页显示条数
+            current: 1
+        },events:{
+
+        },methods:{
+            member_del:function (object,id) {
+                var _this = this;
+                layer.confirm('确认要删除吗？',function(index){
+                    //发异步删除数据
+                    $.ajax({
+                        url:'./delete',
+                        dataType:'JSON',
+                        type:'POST',
+                        data:{
+                            id:id
+                        },
+                        success:function (e) {
+                            $(_this).parents("tr").remove();
+                            pageQuery();
+                            layer.close();
+                            layer.msg('已删除!',{icon:1,time:1000});
+                        }
+                    })
+                });
+            },member_enable:function (object,id,isShow) {
+                layer.confirm('确认要' + (isShow == 1 ? '启用' : '停用') + '吗？', function (index) {
+                    //发异步删除数据
+                    $.ajax({
+                        url:'./enable',
+                        dataType:'JSON',
+                        type:'POST',
+                        data:{
+                            id:id,
+                            isShow: isShow == 0 ? 1 : 0
+                        },
+                        success:function (e) {
+                            pageQuery();
+                            layer.msg('已' + (isShow == 0 ? '启用' : '停用') + '!', {icon: 1, time: 1000});
+                        }
+                    })
+                    layer.close();
+                });
+            }
+        },filters:{
+            formatDate:function (date) {
+                return dateFtt("yyyy-MM-dd hh:mm:ss",new Date(date));
+            },isEnable:function (isEnable) {
+                if(isEnable == 0){
+                    return '启用';
+                }else{
+                    return '停用';
+                }
+            }
         }
     });
     layui.use('laydate', function(){
@@ -164,17 +212,6 @@
         });
     }
 
-    /*用户-删除*/
-    function member_del(obj,id){
-        layer.confirm('确认要删除吗？',function(index){
-            //发异步删除数据
-            $(obj).parents("tr").remove();
-            layer.msg('已删除!',{icon:1,time:1000});
-        });
-    }
-
-
-
     function delAll (argument) {
 
         var data = tableCheck.getData();
@@ -185,13 +222,35 @@
             $(".layui-form-checked").not('.header').parents('tr').remove();
         });
     }
+
+    /**************************************时间格式化处理************************************/
+    function dateFtt(fmt,date){
+        var o = {
+            "M+" : date.getMonth()+1,                 //月份
+            "d+" : date.getDate(),                    //日
+            "h+" : date.getHours(),                   //小时
+            "m+" : date.getMinutes(),                 //分
+            "s+" : date.getSeconds(),                 //秒
+            "q+" : Math.floor((date.getMonth()+3)/3), //季度
+            "S"  : date.getMilliseconds()             //毫秒
+        };
+        if(/(y+)/.test(fmt))
+            fmt=fmt.replace(RegExp.$1, (date.getFullYear()+"").substr(4 - RegExp.$1.length));
+        for(var k in o)
+            if(new RegExp("("+ k +")").test(fmt))
+                fmt = fmt.replace(RegExp.$1, (RegExp.$1.length==1) ? (o[k]) : (("00"+ o[k]).substr((""+ o[k]).length)));
+        return fmt;
+    }
+
 </script>
-<script>var _hmt = _hmt || [];
-(function () {
-    var hm = document.createElement("script");
-    hm.src = "https://hm.baidu.com/hm.js?b393d153aeb26b46e9431fabaf0f6190";
-    var s = document.getElementsByTagName("script")[0];
-    s.parentNode.insertBefore(hm, s);
-})();</script>
+<script>
+    var _hmt = _hmt || [];
+    (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?b393d153aeb26b46e9431fabaf0f6190";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
 
 </html>

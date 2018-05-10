@@ -31,4 +31,16 @@ public class XcNewsServiceImpl implements XcNewsService {
     public Page<XcNews> pageQuery(Pageable pageable) {
         return xcNewsRepository.findAll(pageable);
     }
+
+    @Override
+    public void deleteNews(Long id) {
+        xcNewsRepository.deleteById(id);
+    }
+
+    @Override
+    public void isEnableNews(XcNews news) {
+        XcNews xcNews = xcNewsRepository.findById(news.getId()).get();
+        xcNews.setIsShow(news.getIsShow());
+        xcNewsRepository.saveAndFlush(xcNews);
+    }
 }
