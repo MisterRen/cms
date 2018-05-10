@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>后台登录-X-admin2.0</title>
+    <title>信传CMS</title>
     <meta name="renderer" content="webkit|ie-comp|ie-stand">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi" />
@@ -82,11 +82,11 @@
 <div class="page-content">
     <div class="layui-tab tab" lay-filter="xbs_tab" lay-allowclose="false">
         <ul class="layui-tab-title">
-            <li>我的桌面</li>
+            <li class="layui-this">我的桌面</li>
         </ul>
         <div class="layui-tab-content">
             <div class="layui-tab-item layui-show">
-                <iframe src='./welcome.html' frameborder="0" scrolling="yes" class="x-iframe"></iframe>
+                <iframe src='./welcome' frameborder="0" scrolling="yes" class="x-iframe"></iframe>
             </div>
         </div>
     </div>

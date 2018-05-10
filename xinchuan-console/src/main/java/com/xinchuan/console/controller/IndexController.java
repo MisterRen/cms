@@ -66,4 +66,14 @@ public class IndexController {
         ModelAndView modelAndView = new ModelAndView("xc/login");
         return modelAndView;
     }
+
+    /**
+     * 欢迎窗口
+     * @return
+     */
+    @GetMapping("/welcome")
+    public ModelAndView welcome(){
+        ModelAndView modelAndView = new ModelAndView("xc/welcome");
+        return modelAndView;
+    }
 }

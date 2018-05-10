@@ -9,7 +9,7 @@
         "id": 10011,
         "name": "新闻列表",
         "icon": "",
-        "url":"",
+        "url":"/xn/listView",
         "parent": 1001
       },
       {
