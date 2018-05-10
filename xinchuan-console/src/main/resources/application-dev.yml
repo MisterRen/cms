@@ -49,3 +49,4 @@ logging:
   path:
   pattern:
     console: "%d [%highlight(%level)] %c %L %msg%n"
+
