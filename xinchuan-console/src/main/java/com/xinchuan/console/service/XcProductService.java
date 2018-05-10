@@ -1,4 +1,4 @@
-package com.xinchuan.console.service;
+﻿package com.xinchuan.console.service;
 
 /**
  * <p>
@@ -11,4 +11,6 @@ package com.xinchuan.console.service;
  * @fileName XcProductService.java
  */
 public interface XcProductService {
+
+
 }
