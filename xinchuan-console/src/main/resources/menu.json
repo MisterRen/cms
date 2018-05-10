@@ -31,7 +31,7 @@
         "id": 10021,
         "name": "团队列表",
         "icon": "",
-        "url":"",
+        "url":"/teamManager/findAll",
         "parent": 1002
       },
       {

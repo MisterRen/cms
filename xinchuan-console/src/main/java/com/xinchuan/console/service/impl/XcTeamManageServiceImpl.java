@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 /**
  * <p>
@@ -32,5 +33,19 @@ public class XcTeamManageServiceImpl implements XcTeamManageService {
     public void saveAndFlush(XcTeamManage xcTeamManage){
         xcTeamManageRepository.saveAndFlush(xcTeamManage);
     }
+
+    @Override
+    public void delAll(String[] ids) {
+        for (String id : ids) {
+            xcTeamManageRepository.deleteById(Long.valueOf(id));
+        }
+    }
+
+    @Override
+    public Optional<XcTeamManage> findById(String id) {
+        Optional<XcTeamManage> xcTeamManage=xcTeamManageRepository.findById(Long.valueOf(id));
+        return xcTeamManage;
+    }
+
 
 }

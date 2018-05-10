@@ -5,13 +5,11 @@ import com.xinchuan.console.model.XcTeamManage;
 import com.xinchuan.console.service.XcTeamManageService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
+import java.util.Optional;
 
 /**
  * @author shiJiaLiang
@@ -44,6 +42,7 @@ public class XcTeamManagerController {
         AjaxJson json=new AjaxJson();
         boolean saveFlag=true;
         try {
+            xcTeamManage.setUserIcon("111");
             xcTeamManageService.saveAndFlush(xcTeamManage);
             json.setSuccess(true);
             json.setMsg("添加成功");
@@ -54,6 +53,30 @@ public class XcTeamManagerController {
             log.error("*******teamManager:saveTeamManager*******出错啦"+e);
         }
         return json;
+    }
+
+    @PostMapping("/delAll")
+    public AjaxJson delAll(String[] ids){
+        AjaxJson ajaxJson=new AjaxJson();
+        try {
+            xcTeamManageService.delAll(ids);
+            ajaxJson.setSuccess(true);
+            ajaxJson.setMsg("删除成功");
+        } catch (Exception e) {
+            ajaxJson.setSuccess(false);
+            ajaxJson.setMsg("删除失败");
+            e.printStackTrace();
+            log.error("*****teamManager:delAll*******"+e.getMessage());
+        }
+        return ajaxJson;
+    }
+
+    @GetMapping("/findById")
+    public ModelAndView findById(String id){
+        ModelAndView modelAndView=new ModelAndView("team/team_edit");
+        XcTeamManage xcTeamManage=xcTeamManageService.findById(id).orElse(new XcTeamManage());
+        modelAndView.addObject("xcTeamManage",xcTeamManage);
+        return modelAndView;
     }
 
 }
