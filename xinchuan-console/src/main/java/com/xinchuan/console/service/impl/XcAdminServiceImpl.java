@@ -10,9 +10,9 @@ import java.util.Optional;
 
 /**
  * <p>
- *  管理员service
+ *
  * </p>
- * Copyright (C) 2018 信传. All Rights Reserved.
+ * Copyright (C) 2018 东方CJ. All Rights Reserved.
  *
  * @author xinhe.REN (Create on:2018年05月09日)
  * @version 1.0
@@ -32,5 +32,9 @@ public class XcAdminServiceImpl implements XcAdminService {
     @Override
     public XcAdmin findByName(String name) {
         return xcAdminRepository.findByName(name);
+    }
+    @Override
+    public XcAdmin login(String name,String password) {
+        return xcAdminRepository.login(name,password);
     }
 }

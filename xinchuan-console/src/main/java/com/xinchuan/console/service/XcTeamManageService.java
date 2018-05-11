@@ -3,6 +3,7 @@ package com.xinchuan.console.service;
 import com.xinchuan.console.model.XcTeamManage;
 
 import java.util.List;
+import java.util.Optional;
 
 /**
  * <p>
@@ -20,4 +21,7 @@ public interface XcTeamManageService {
 
     void saveAndFlush(XcTeamManage xcTeamManage);
 
+    void delAll(String[] ids);
+
+    Optional<XcTeamManage> findById(String id);
 }

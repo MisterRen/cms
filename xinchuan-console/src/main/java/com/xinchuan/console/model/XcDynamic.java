@@ -16,7 +16,7 @@ import java.util.Date;
  * @fileName XcDynamic.java
  */
 @Entity
-public class XcDynamic {
+public class XcDynamic extends  SeracherForm {
 
     @Id
     @GeneratedValue
@@ -24,7 +24,7 @@ public class XcDynamic {
     private String title;//标题
     private String image;//图片
     private int isShow;//是否显示
-    private Date createTime;//时间
+    private String createTime;//时间
 /*    private String summary;//摘要
     private  String content;//内容*/
 
@@ -60,11 +60,11 @@ public class XcDynamic {
         this.isShow = isShow;
     }
 
-    public Date getCreateTime() {
+    public String getCreateTime() {
         return createTime;
     }
 
-    public void setCreateTime(Date createTime) {
+    public void setCreateTime(String createTime) {
         this.createTime = createTime;
     }
 }
