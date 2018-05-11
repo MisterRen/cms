@@ -82,7 +82,7 @@
         "id": 10051,
         "name": "产品列表",
         "icon": "",
-        "url":"",
+        "url":"/product/findAll",
         "parent": 1005
       },
       {
@@ -104,7 +104,7 @@
         "id": 10061,
         "name": "动态列表",
         "icon": "",
-        "url":"",
+        "url":"/dynamic/findAll",
         "parent": 1006
       },
       {

@@ -16,7 +16,7 @@ import java.util.Date;
  * @fileName XcProduct.java
  */
 @Entity
-public class XcProduct {
+public class XcProduct extends SeracherForm {
 
     @Id
     @GeneratedValue
@@ -26,7 +26,7 @@ public class XcProduct {
     private String prodectIcon;//产品ICON
     private Integer isShow;//是否显示
     private Integer level;
-    private Date createTime;//时间
+    private String createTime;//时间
 
     public Long getId() {
         return id;
@@ -76,11 +76,11 @@ public class XcProduct {
         this.level = level;
     }
 
-    public Date getCreateTime() {
+    public String getCreateTime() {
         return createTime;
     }
 
-    public void setCreateTime(Date createTime) {
+    public void setCreateTime(String createTime) {
         this.createTime = createTime;
     }
 }

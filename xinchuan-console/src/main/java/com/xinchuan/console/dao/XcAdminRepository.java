@@ -19,6 +19,9 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface XcAdminRepository extends JpaRepository<XcAdmin,Long> {
 
-    @Query("from XcAdmin a where a.adminNme=:name and a.adminPwd=:password")
+    @Query("select a.adminNme,a.adminPwd from XcAdmin a where a.adminNme=:name")
     XcAdmin findByName(@Param("name") String name);
+
+    @Query("select a from XcAdmin a where a.adminNme=:name and a.adminPwd=:password")
+    XcAdmin login(@Param("name") String name, @Param("password") String password);
 }
