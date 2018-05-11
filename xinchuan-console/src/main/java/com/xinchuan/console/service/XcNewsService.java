@@ -23,4 +23,8 @@ public interface XcNewsService {
     void deleteNews(Long id);
 
     void isEnableNews(XcNews news);
+
+    void saveOrUpdate(XcNews news);
+
+    public XcNews findNewsById(Long id);
 }

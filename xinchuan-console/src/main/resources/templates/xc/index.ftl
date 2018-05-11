@@ -49,8 +49,6 @@
 <!-- 顶部结束 -->
 <!-- 中部开始 -->
 <!-- 左侧菜单开始 -->
-<#--<#assign menu=menu>
-<#assign json=menu?eval>-->
 <div class="left-nav">
     <div id="side-nav">
         <ul id="nav">

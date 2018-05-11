@@ -13,7 +13,9 @@ import org.springframework.data.web.PageableDefault;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.Date;
 import java.util.List;
+import java.util.UUID;
 
 /**
  * <p>
@@ -37,10 +39,15 @@ public class XcNewsController {
 
         return new ModelAndView("xn/listView");
     }
+    @GetMapping("/addView")
+    public ModelAndView addView(@RequestParam(value = "id",defaultValue = "-1",required = false) Long id){
+        ModelAndView modelAndView = new ModelAndView("xn/addView");
+        modelAndView.addObject("news",xcNewsService.findNewsById(id));
+        return modelAndView;
+    }
 
     @GetMapping("/pageQuery")
     public Page<XcNews> pageQuery(@PageableDefault(value = 10,sort = {"id"},direction = Sort.Direction.DESC) Pageable pageable){
-        /*Sort sort = new Sort(Sort.Direction.DESC, "id");*/
         return xcNewsService.pageQuery(pageable);
     }
 
@@ -51,11 +58,14 @@ public class XcNewsController {
     }
 
     @PostMapping("/enable")
-    public AjaxJson enable(@RequestParam(value = "id",required = true) Long id,@RequestParam(value = "isShow",required = true) int isShow){
-        XcNews xcNews = new XcNews();
-        xcNews.setId(id);
-        xcNews.setIsShow(isShow);
+    public AjaxJson enable(XcNews xcNews){
         xcNewsService.isEnableNews(xcNews);
+        return new AjaxJson();
+    }
+    @PostMapping("/add")
+    public AjaxJson add(XcNews xcNews){
+        xcNews.setCreateTime(new Date());
+        xcNewsService.saveOrUpdate(xcNews);
         return new AjaxJson();
     }
 }

@@ -55,6 +55,12 @@ public class IndexController {
         return modelAndView;
     }
 
+    @GetMapping("/welcome")
+    public ModelAndView welcome(){
+        ModelAndView modelAndView = new ModelAndView("xc/welcome");
+        return modelAndView;
+    }
+
     @GetMapping("/upload")
     @ResponseBody
     public boolean upload(){

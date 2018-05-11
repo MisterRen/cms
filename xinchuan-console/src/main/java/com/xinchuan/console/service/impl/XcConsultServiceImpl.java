@@ -1,6 +1,11 @@
 package com.xinchuan.console.service.impl;
 
+import com.xinchuan.console.dao.XcConsultRepository;
+import com.xinchuan.console.model.XcConsult;
 import com.xinchuan.console.service.XcConsultService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 /**
@@ -15,4 +20,30 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class XcConsultServiceImpl implements XcConsultService {
+
+    @Autowired
+    private XcConsultRepository xcConsultRepository;
+
+    @Override
+    public Page<XcConsult> pageQuery(Pageable pageable) {
+        return xcConsultRepository.findAll(pageable);
+    }
+
+    @Override
+    public void deleteNews(Long id) {
+        xcConsultRepository.deleteById(id);
+    }
+
+    @Override
+    public void isEnableNews(XcConsult xcConsult) {
+        XcConsult saveBody = xcConsultRepository.findById(xcConsult.getId()).get();
+        if(xcConsult.getStatus() == 0)
+            saveBody.setStatus(1);
+        xcConsultRepository.saveAndFlush(saveBody);
+    }
+
+    @Override
+    public void saveOrUpdate(XcConsult xcConsult) {
+        xcConsultRepository.save(xcConsult);
+    }
 }

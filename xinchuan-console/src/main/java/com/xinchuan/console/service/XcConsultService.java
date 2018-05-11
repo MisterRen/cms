@@ -1,5 +1,9 @@
 package com.xinchuan.console.service;
 
+import com.xinchuan.console.model.XcConsult;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+
 /**
  * <p>
  * 联系我们service
@@ -11,4 +15,12 @@ package com.xinchuan.console.service;
  * @fileName XcConsultService.java
  */
 public interface XcConsultService {
+
+    Page<XcConsult> pageQuery(Pageable pageable);
+
+    void deleteNews(Long id);
+
+    void isEnableNews(XcConsult xcConsult);
+
+    void saveOrUpdate(XcConsult xcConsult);
 }

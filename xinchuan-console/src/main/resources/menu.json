@@ -16,7 +16,7 @@
         "id": 10012,
         "name": "新闻发布",
         "icon": "",
-        "url":"",
+        "url":"/xn/addView",
         "parent": 1001
       }
     ]
@@ -70,7 +70,15 @@
     "name": "咨询管理",
     "icon": "&#xe6b2;",
     "url":"",
-    "children": []
+    "children": [
+      {
+        "id": 10041,
+        "name": "咨询列表",
+        "icon": "",
+        "url":"/xc/listView",
+        "parent": 1004
+      }
+    ]
   },
   {
     "id": 1005,

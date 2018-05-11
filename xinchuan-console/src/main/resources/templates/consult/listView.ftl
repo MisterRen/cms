@@ -36,56 +36,54 @@
 <div id="vueApp" class="x-body">
     <div class="layui-row">
         <form class="layui-form layui-col-md12 x-so">
-            <input class="layui-input" placeholder="开始日" name="start" id="start">
-            <input class="layui-input" placeholder="截止日" name="end" id="end">
-            <input type="text" name="username"  placeholder="新闻标题" autocomplete="off" class="layui-input">
+            <input class="layui-input" placeholder="姓名" name="start" id="start">
+            <input class="layui-input" placeholder="电话" name="end" id="end">
+            <input type="text" name="username"  placeholder="邮箱" autocomplete="off" class="layui-input">
             <button class="layui-btn"  lay-submit="" lay-filter="sreach"><i class="layui-icon">&#xe615;</i></button>
         </form>
     </div>
-    <xblock>
-        <#--<button class="layui-btn layui-btn-danger" onclick="delAll()"><i class="layui-icon"></i>批量删除</button>-->
-        <button class="layui-btn" onclick="x_admin_show('添加新闻','./addView',600,400)"><i class="layui-icon"></i>添加</button>
+    <div>
+    <#--<button class="layui-btn layui-btn-danger" onclick="delAll()"><i class="layui-icon"></i>批量删除</button>-->
+        <#--<button class="layui-btn" onclick="x_admin_show('添加新闻','./addView',600,400)"><i class="layui-icon"></i>添加</button>-->
         <span class="x-right" style="line-height:40px">共有数据：{{pageData.totalElements}} 条</span>
-    </xblock>
+    </div>
     <table class="layui-table">
         <thead>
         <tr>
-            <#--<th>
-                <div class="layui-unselect header layui-form-checkbox" lay-skin="primary"><i class="layui-icon">&#xe605;</i></div>
-            </th>-->
+        <#--<th>
+            <div class="layui-unselect header layui-form-checkbox" lay-skin="primary"><i class="layui-icon">&#xe605;</i></div>
+        </th>-->
             <th>ID</th>
-            <th>标题</th>
-            <th>摘要</th>
-            <th>内容</th>
-            <th>封面</th>
+            <th>姓名</th>
+            <th>电话</th>
+            <th>邮箱</th>
+            <th>备注</th>
             <th>时间</th>
             <th>状态</th>
             <th>操作</th>
         </tr>
         </thead>
         <tbody>
-        <tr v-for="(news,index) in pageData.content">
-            <#--<td>
-                <div class="layui-unselect layui-form-checkbox" lay-skin="primary" v-bind:data-id='index'><i class="layui-icon">&#xe605;</i></div>
-            </td>-->
-            <td>{{news.id}}</td>
-            <td>{{news.title}}</td>
-            <td>{{news.summary}}</td>
-            <td>{{news.content}}</td>
-            <td>{{news.newsImage}}</td>
-            <td>{{news.createTime | formatDate}}</td>
+        <tr v-for="(consult,index) in pageData.content">
+        <#--<td>
+            <div class="layui-unselect layui-form-checkbox" lay-skin="primary" v-bind:data-id='index'><i class="layui-icon">&#xe605;</i></div>
+        </td>-->
+            <td>{{consult.id}}</td>
+            <td>{{consult.userName}}</td>
+            <td>{{consult.userPhone}}</td>
+            <td>{{consult.userEmail}}</td>
+            <td>{{consult.Remarks}}</td>
+            <td>{{consult.createTime | formatDate}}</td>
             <td class="td-status">
-                <span class="layui-btn layui-btn-normal layui-btn-mini" v-if="news.isShow == 0">已启用</span>
-                <span class="layui-btn layui-btn-danger layui-btn-mini" v-if="news.isShow == 1">未启用</span>
+                <span class="layui-btn layui-btn-normal layui-btn-mini" v-if="consult.status == 0">新建</span>
+                <span class="layui-btn layui-btn-danger layui-btn-mini" v-if="consult.status == 1">跟进</span>
+                <#--<span class="layui-btn layui-btn-warm layui-btn-mini" v-if="consult.status == 2">完成</span>-->
             </td>
             <td class="td-manage">
-                <a @click="member_enable(this,news.id,news.isShow)" href="javascript:;"  v-bind:title="news.isShow|isEnable">
+                <a @click="member_enable(this,consult.id,consult.status)" href="javascript:;"  title="跟进">
                     <i class="layui-icon">&#xe601;</i>
                 </a>
-                <a title="编辑"  @click="x_window_show('修改新闻','./addView?id='+news.id,800,600)" href="javascript:;">
-                    <i class="layui-icon">&#xe642;</i>
-                </a>
-                <a title="删除" @click="member_del(this,news.id)" href="javascript:;">
+                <a title="删除" @click="member_del(this,consult.id)" href="javascript:;">
                     <i class="layui-icon">&#xe640;</i>
                 </a>
             </td>
@@ -133,8 +131,12 @@
                         }
                     })
                 });
-            },member_enable:function (object,id,isShow) {
-                layer.confirm('确认要' + (isShow == 1 ? '启用' : '停用') + '吗？', function (index) {
+            },member_enable:function (object,id,status) {
+                if(status == 1){
+                    layer.msg("当前咨询已经跟进。。。")
+                    return;
+                }
+                layer.confirm('确认要跟进吗？', function (index) {
                     //发异步删除数据
                     $.ajax({
                         url:'./enable',
@@ -142,11 +144,11 @@
                         type:'POST',
                         data:{
                             id:id,
-                            isShow: isShow == 0 ? 1 : 0
+                            status: status
                         },
                         success:function (e) {
                             pageQuery();
-                            layer.msg('已' + (isShow == 0 ? '启用' : '停用') + '!', {icon: 1, time: 1000});
+                            layer.msg('已跟进!', {icon: 1, time: 1000});
                         }
                     })
                     layer.close();
@@ -178,9 +180,9 @@
         },filters:{
             formatDate:function (date) {
                 return dateFtt("yyyy-MM-dd hh:mm:ss",new Date(date));
-            },isEnable:function (isEnable) {
-                if(isEnable == 0){
-                    return '启用';
+            },isEnable:function (status) {
+                if(status == 0){
+                    return '跟进';
                 }else{
                     return '停用';
                 }
@@ -190,15 +192,6 @@
     layui.use('laydate', function(){
         var laydate = layui.laydate;
 
-        //执行一个laydate实例
-        laydate.render({
-            elem: '#start' //指定元素
-        });
-
-        //执行一个laydate实例
-        laydate.render({
-            elem: '#end' //指定元素
-        });
     });
 
     function pageQuery() {
@@ -213,17 +206,6 @@
     }
     pageQuery();
 
-
-    function delAll (argument) {
-
-        var data = tableCheck.getData();
-
-        layer.confirm('确认要删除吗？'+data,function(index){
-            //捉到所有被选中的，发异步进行删除
-            layer.msg('删除成功', {icon: 1});
-            $(".layui-form-checked").not('.header').parents('tr').remove();
-        });
-    }
 
     /**************************************时间格式化处理************************************/
     function dateFtt(fmt,date){

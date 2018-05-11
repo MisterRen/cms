@@ -10,6 +10,8 @@ import org.springframework.stereotype.Service;
 
 import org.springframework.data.domain.Pageable;
 
+import java.util.Optional;
+
 
 /**
  * <p>
@@ -42,5 +44,19 @@ public class XcNewsServiceImpl implements XcNewsService {
         XcNews xcNews = xcNewsRepository.findById(news.getId()).get();
         xcNews.setIsShow(news.getIsShow());
         xcNewsRepository.saveAndFlush(xcNews);
+    }
+
+    @Override
+    public void saveOrUpdate(XcNews news) {
+        xcNewsRepository.save(news);
+    }
+
+    @Override
+    public XcNews findNewsById(Long id) {
+        XcNews xcNews = xcNewsRepository.findNewsById(id);
+        if(xcNews == null){
+            return new XcNews();
+        }
+        return xcNews;
     }
 }
