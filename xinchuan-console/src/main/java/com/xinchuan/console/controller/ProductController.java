@@ -39,18 +39,8 @@ public class ProductController {
     }
     @PostMapping(value = "/productSave")
     @ResponseBody
-    public AjaxJson productSave(XcProduct productForm, @RequestParam(required=false) MultipartFile file){
+    public AjaxJson productSave(XcProduct productForm){
         AjaxJson json=new AjaxJson();
-        if (!file.isEmpty()){
-            try {
-                UploadImageUtil.uploadImg(file,sqlPath);
-            } catch (IOException e) {
-                e.printStackTrace();
-                json.setSuccess(false);
-                json.setMsg("上传文件失败");
-                return json;
-            }
-        }
         String fileName = productForm.getFile();// 文件原名称
         //sqlPath+"\\"+fileName;
         String result=productService.saveProduct(productForm);
@@ -61,51 +51,6 @@ public class ProductController {
             json.setSuccess(false);
             json.setMsg(result);
         }
-        return json;
-    }
-    @PostMapping(value = "/productUpdare")
-    @ResponseBody
-    public AjaxJson productUpdare(XcProduct productForm, @RequestParam(required=false) MultipartFile file){
-        AjaxJson json=new AjaxJson();
-        if (!file.isEmpty()){
-            try {
-                UploadImageUtil.uploadImg(file,sqlPath);
-            } catch (IOException e) {
-                e.printStackTrace();
-                json.setSuccess(false);
-                json.setMsg("上传文件失败");
-                return json;
-            }
-        }
-        String fileName = productForm.getFile();// 文件原名称
-        //sqlPath+"\\"+fileName;
-        productService.updateProduct(productForm);
-        json.setSuccess(true);
-        json.setMsg("添加成功");
-        return json;
-    }
-    @PostMapping(value = "/loadImgae")
-    @ResponseBody
-    public AjaxJson loadImgae( MultipartFile file){
-        AjaxJson json=new AjaxJson();
-        if (!file.isEmpty()){
-            try {
-                UploadImageUtil.uploadImg(file,sqlPath);
-            } catch (IOException e) {
-                e.printStackTrace();
-                json.setSuccess(false);
-                json.setMsg("上传文件失败");
-                return json;
-            }
-        }else{
-            json.setSuccess(false);
-            json.setMsg("没有选择文件");
-            return json;
-        }
-        String fileName = file.getOriginalFilename();// 文件原名称
-        //sqlPath+"\\"+fileName;
-        json.setSuccess(true);
-        json.setMsg(sqlPath+fileName);
         return json;
     }
     @GetMapping("/findById")

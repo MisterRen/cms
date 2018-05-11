@@ -28,7 +28,6 @@ import java.util.Random;
 public class DynamicController {
     @Autowired
     private XcDynamicService dynamicService;
-    private static String sqlPath="\\images\\company";
     @GetMapping("/findAll")
     public ModelAndView dynamic(XcDynamic dynamicForm){
         ModelAndView modelAndView = new ModelAndView("dynamic/dynamicList");
@@ -49,18 +48,9 @@ public class DynamicController {
     }
     @PostMapping(value = "/dynamicSave")
     @ResponseBody
-    public AjaxJson dynamicSave(XcDynamic dynamicForm, @RequestParam(required=false) MultipartFile file){
+    public AjaxJson dynamicSave(XcDynamic dynamicForm){
         AjaxJson json=new AjaxJson();
-        if (!file.isEmpty()){
-            try {
-                UploadImageUtil.uploadImg(file,sqlPath);
-            } catch (IOException e) {
-                e.printStackTrace();
-                json.setSuccess(false);
-                json.setMsg("上传文件失败");
-                return json;
-            }
-        }
+
         String fileName = dynamicForm.getFile();// 文件原名称
         //sqlPath+"\\"+fileName;
         String result=dynamicService.saveDynamic(dynamicForm);
@@ -75,18 +65,8 @@ public class DynamicController {
     }
     @PostMapping(value = "/dynamicUpdare")
     @ResponseBody
-    public AjaxJson dynamicUpdare(XcDynamic dynamicForm, @RequestParam(required=false) MultipartFile file){
+    public AjaxJson dynamicUpdare(XcDynamic dynamicForm){
         AjaxJson json=new AjaxJson();
-        if (!file.isEmpty()){
-            try {
-                UploadImageUtil.uploadImg(file,sqlPath);
-            } catch (IOException e) {
-                e.printStackTrace();
-                json.setSuccess(false);
-                json.setMsg("上传文件失败");
-                return json;
-            }
-        }
         String fileName = dynamicForm.getFile();// 文件原名称
         //sqlPath+"\\"+fileName;
          dynamicService.updateDynamic(dynamicForm);

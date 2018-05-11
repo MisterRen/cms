@@ -92,7 +92,7 @@
                 ,upload = layui.upload;
         var uploadInst= upload.render({
             elem: '#test1'
-            ,url: '/dynamic/dynamicSave'
+            ,url: '/loadImgae'
             ,before: function(obj){
                 //预读本地文件示例，不支持ie8
                 obj.preview(function(index, file, result){
