@@ -19,7 +19,7 @@ public  class UploadImageUtil {
             String fileName = file.getOriginalFilename();// 文件原名称
             File directory = new File("");// 参数为空
             String projectPath = directory.getCanonicalPath();
-            String pat=projectPath+"/src/main/resources";//获取文件保存路径
+            String pat=projectPath+"/src/main/resources/static";//获取文件保存路径
             File fileDir=new File(pat+sqlPath);
             if (!fileDir.exists()) { //如果不存在 则创建
                 fileDir.mkdirs();

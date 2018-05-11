@@ -28,6 +28,7 @@
                     <button type="button" class="layui-btn" id="test1">上传图片</button>
                     <div class="layui-upload-list">
                         <img class="layui-upload-img" src="${dynamic.image}" id="demo1">
+                        <input type="hidden" id="pic">
                         <p id="demoText"></p>
                     </div>
                 </div>
@@ -89,12 +90,10 @@
     layui.use(['upload'], function(){
         var $ = layui.jquery
                 ,upload = layui.upload;
-        upload.render({
+        var uploadInst= upload.render({
             elem: '#test1'
             ,url: '/dynamic/dynamicSave'
-            ,auto: false
-            ,bindAction:"#bindAction"
-            ,choose: function(obj){
+            ,before: function(obj){
                 //预读本地文件示例，不支持ie8
                 obj.preview(function(index, file, result){
                     $('#demo1').attr('src', result); //图片链接（base64）

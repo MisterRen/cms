@@ -28,6 +28,7 @@
                     <button type="button" class="layui-btn" id="test1">上传图片</button>
                     <div class="layui-upload-list">
                         <img class="layui-upload-img" id="demo1">
+                        <input type="hidden" id="pic">
                         <p id="demoText"></p>
                     </div>
                 </div>
@@ -106,9 +107,8 @@
                 ,upload = layui.upload;
         upload.render({
             elem: '#test1'
-            ,url: '/product/productSave'
-            ,bindAction:"#dynamicAdd"
-            ,choose: function(obj){
+            ,url: '/product/loadImgae'
+            ,before: function(obj){
                 //预读本地文件示例，不支持ie8
                 obj.preview(function(index, file, result){
                     $('#demo1').attr('src', result); //图片链接（base64）
@@ -119,7 +119,8 @@
                 if(!res.success){//自定义返回失败
                     return layer.msg('上传失败');
                 }else{
-                    $('#pic').val(res.img);
+                    $('#pic').val(res.msg);
+                   // $('#demo1').attr('src', res.msg); //图片链接（base64）
                 }
                 //上传成功
             }

@@ -18,7 +18,7 @@ import java.util.List;
 public class ProductController {
     @Autowired
     private XcProductService productService;
-    private static String sqlPath="\\images\\product";
+    private static String sqlPath="\\images\\product\\";
     @GetMapping("/findAll")
     public ModelAndView product(XcProduct productForm){
         ModelAndView modelAndView = new ModelAndView("product/productList");
@@ -82,6 +82,30 @@ public class ProductController {
         productService.updateProduct(productForm);
         json.setSuccess(true);
         json.setMsg("添加成功");
+        return json;
+    }
+    @PostMapping(value = "/loadImgae")
+    @ResponseBody
+    public AjaxJson loadImgae( MultipartFile file){
+        AjaxJson json=new AjaxJson();
+        if (!file.isEmpty()){
+            try {
+                UploadImageUtil.uploadImg(file,sqlPath);
+            } catch (IOException e) {
+                e.printStackTrace();
+                json.setSuccess(false);
+                json.setMsg("上传文件失败");
+                return json;
+            }
+        }else{
+            json.setSuccess(false);
+            json.setMsg("没有选择文件");
+            return json;
+        }
+        String fileName = file.getOriginalFilename();// 文件原名称
+        //sqlPath+"\\"+fileName;
+        json.setSuccess(true);
+        json.setMsg(sqlPath+fileName);
         return json;
     }
     @GetMapping("/findById")

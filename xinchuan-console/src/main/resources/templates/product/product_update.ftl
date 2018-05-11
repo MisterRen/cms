@@ -28,6 +28,7 @@
                     <button type="button" class="layui-btn" id="test1">上传图片</button>
                     <div class="layui-upload-list">
                         <img class="layui-upload-img" src="${product.prodectIcon}" id="demo1">
+                        <input type="hidden" id="pic">
                         <p id="demoText"></p>
                     </div>
                 </div>
@@ -57,7 +58,7 @@
                 <span class="x-red">*</span>产品简介
             </label>
             <div class="layui-input-block">
-                <textarea name="summary"  required  value="${product.summary}" lay-verify="required"  placeholder="请输入"
+                <textarea name="summary"    value="${product.summary}"  placeholder="请输入"
                           class="layui-textarea"></textarea>
             </div>
         </div>
@@ -106,12 +107,10 @@
     layui.use(['upload'], function(){
         var $ = layui.jquery
                 ,upload = layui.upload;
-        upload.render({
+        var uploadInst= upload.render({
             elem: '#test1'
-            ,url: '/product/productUpdate'
-            ,auto: false
-            ,bindAction:"#dynamicUpdate"
-            ,choose: function(obj){
+            ,url: '/product/loadImgae'
+            ,before: function(obj){
                 //预读本地文件示例，不支持ie8
                 obj.preview(function(index, file, result){
                     $('#demo1').attr('src', result); //图片链接（base64）
@@ -122,7 +121,7 @@
                 if(!res.success){//自定义返回失败
                     return layer.msg('上传失败');
                 }else{
-                    $('#pic').val(res.img);
+                    $('#pic').val(res.msg);
                 }
                 //上传成功
             }
