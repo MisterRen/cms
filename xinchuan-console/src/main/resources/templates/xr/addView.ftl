@@ -35,8 +35,7 @@
                 <span class="x-red">*</span>职位名称
             </label>
             <div class="layui-input-inline">
-                <input type="text" id="postName" name="postName" required  lay-verify="required"
-                       autocomplete="off" class="layui-input" value="">
+                <input type="text" id="postName"  name="postName" value="${xcRecruit.postName!''}" required  lay-verify="required" autocomplete="off" class="layui-input" value="">
             </div>
         </div>
         <div class="layui-form-item">
@@ -61,7 +60,7 @@
                 <span class="x-red">*</span>加入时间
             </label>
             <div class="layui-input-inline">
-                <input type="text" id="createTime" name="createTime" required lay-verify="required" placeholder="yyyy-MM-dd"    autocomplete="off" class="layui-input">
+                <input type="text" id="createTime" value="${xcRecruit.createTime!''}" name="createTime" required lay-verify="required" placeholder="yyyy-MM-dd HH:mm:ss" autocomplete="off" class="layui-input">
             </div>
         </div>
 
@@ -90,10 +89,10 @@
         }
     };
     duty.ready(function () {
-        //ue.setContent("");
+        duty.setContent('${xcRecruit.duty!""}');
     })
     requirements.ready(function () {
-        //ue.setContent("");
+        requirements.setContent('${xcRecruit.requirements!""}');
     })
 
     layui.use('laydate', function () {
@@ -101,26 +100,10 @@
 
         //执行一个laydate实例
         laydate.render({
-            elem: '#createTime' //指定元素
+            elem: '#createTime', //指定元素
+            type: 'datetime'
         });
     })
-
-    $.fn.serializeObject = function()
-    {
-        var o = {};
-        var a = this.serializeArray();
-        $.each(a, function() {
-            if (o[this.name] !== undefined) {
-                if (!o[this.name].push) {
-                    o[this.name] = [o[this.name]];
-                }
-                o[this.name].push(this.value || '');
-            } else {
-                o[this.name] = this.value || '';
-            }
-        });
-        return o;
-    };
 
     function addInput(_this){
         var _prev = $(_this).prev();
@@ -128,7 +111,6 @@
         var _cloneInput =$(_input).clone();
         _cloneInput.val("");
         _prev.append(_cloneInput);
-        console.log();
     }
 
     layui.use(['form','layer'], function(){

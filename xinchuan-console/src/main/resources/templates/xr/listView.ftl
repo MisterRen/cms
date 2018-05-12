@@ -30,7 +30,7 @@
         <i class="layui-icon" style="line-height:30px">ဂ</i></a>
 </div>
 <div class="x-body">
-    <form class="layui-row" action="/recruit/findByDateAndName" method="get">
+    <form class="layui-row" action="/xr/findByDateAndName" method="get">
         <div class="layui-form layui-col-md12 x-so">
             <input class="layui-input" placeholder="开始日" name="startDate" id="startDate" value="${startDate!""}">
             <input class="layui-input" placeholder="截止日" name="endDate" id="endDate" value="${endDate!""}">
@@ -38,12 +38,7 @@
             <button  class="layui-btn"><i class="layui-icon">&#xe615;</i></button>
         </div>
     </form>
-    <xblock>
-        <button class="layui-btn layui-btn-danger" onclick="delAll()"><i class="layui-icon"></i>批量删除</button>
-        <button class="layui-btn" onclick="x_admin_show('添加用户','saveOrUpdate')"><i class="layui-icon"></i>添加
-        </button>
         <span class="x-right" style="line-height:40px">共有数据：${xcRecruitOldList?size} 条</span>
-    </xblock>
     <table class="layui-table">
         <thead>
         <tr>
@@ -71,7 +66,7 @@
             <td>${recruit.requirements}</td>
             <td>${recruit.createTime}</td>
             <td class="td-manage">
-                <a title="编辑" onclick="x_admin_show('编辑','saveOrUpdate?id='+${recruit.id})" href="javascript:;">
+                <a title="编辑" onclick="x_admin_show('编辑','addView?id='+${recruit.id})" href="javascript:;">
                     <i class="layui-icon">&#xe642;</i>
                 </a>
             </td>
@@ -113,7 +108,7 @@
         }
         layer.confirm('确认要删除吗？' + data, function (index) {
             //捉到所有被选中的，发异步进行删除
-            $.post("/recruit/delAll",{ids:data},function(result){
+            $.post("/xr/delAll",{ids:data},function(result){
                 if(result.success){
                     location.reload();
                     layer.msg('删除成功', {icon: 1});

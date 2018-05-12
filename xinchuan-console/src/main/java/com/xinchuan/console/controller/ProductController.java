@@ -15,14 +15,14 @@ import java.io.IOException;
 import java.util.List;
 
 @RestController
-@RequestMapping("/product")
+@RequestMapping("/xp")
 public class ProductController {
     @Autowired
     private XcProductService productService;
-    private static String sqlPath="\\images\\product\\";
-    @GetMapping("/findAll")
+    private static String sqlPath="\\images\\xp\\";
+    @GetMapping("/listView")
     public ModelAndView product(XcProduct productForm){
-        ModelAndView modelAndView = new ModelAndView("product/productList");
+        ModelAndView modelAndView = new ModelAndView("xp/listView");
         modelAndView.addObject("seracheForm",productForm);
         PageModel<XcProduct> products=productService.allProduct(productForm);
         modelAndView.addObject("products",products);
@@ -48,9 +48,9 @@ public class ProductController {
         }
         return json;
     }
-    @GetMapping("/saveOrUpdatePage")
+    @GetMapping("/addView")
     public ModelAndView findById(@RequestParam(value = "id",defaultValue = "-1",required = false) Long id){
-        ModelAndView modelAndView=new ModelAndView("product/product_saveOrUpdate");
+        ModelAndView modelAndView=new ModelAndView("xp/addView");
         XcProduct product=productService.findById(id).orElse(new XcProduct());
         modelAndView.addObject("product",product);
         return modelAndView;

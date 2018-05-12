@@ -22,21 +22,22 @@ import java.util.Map;
 @RestController
 public class UploadController {
 
-    private static String sqlPath="\\images\\upload\\";
+    private static String sqlPath = "\\images\\upload\\";
+
     @PostMapping(value = "/loadImgae")
     @ResponseBody
-    public AjaxJson loadImgae(MultipartFile file){
-        AjaxJson json=new AjaxJson();
-        if (!file.isEmpty()){
+    public AjaxJson loadImgae(MultipartFile file) {
+        AjaxJson json = new AjaxJson();
+        if (!file.isEmpty()) {
             try {
-                UploadImageUtil.uploadImg(file,sqlPath);
+                UploadImageUtil.uploadImg(file, sqlPath);
             } catch (IOException e) {
                 e.printStackTrace();
                 json.setSuccess(false);
                 json.setMsg("上传文件失败");
                 return json;
             }
-        }else{
+        } else {
             json.setSuccess(false);
             json.setMsg("没有选择文件");
             return json;
@@ -44,25 +45,25 @@ public class UploadController {
         String fileName = file.getOriginalFilename();// 文件原名称
         //sqlPath+"\\"+fileName;
         json.setSuccess(true);
-        json.setMsg(sqlPath+fileName);
+        json.setMsg(sqlPath + fileName);
         return json;
     }
 
     @PostMapping(value = "/ueditor/loadImage")
     @ResponseBody
-    public Map<String,Object> loadImgae(HttpServletRequest req){
-        Map<String,Object> rs = new HashMap<String, Object>();
-        MultipartHttpServletRequest mReq  =  null;
+    public Map<String, Object> loadImgae(HttpServletRequest req) {
+        Map<String, Object> rs = new HashMap<String, Object>();
+        MultipartHttpServletRequest mReq = null;
         MultipartFile file = null;
         String fileName = "";
         // 原始文件名   UEDITOR创建页面元素时的alt和title属性
         String originalFileName = "";
         try {
-            mReq = (MultipartHttpServletRequest)req;
+            mReq = (MultipartHttpServletRequest) req;
             // 从config.json中取得上传文件的ID
             file = mReq.getFile("upfile");
 
-            if(!file.isEmpty()){
+            if (!file.isEmpty()) {
                 // 取得文件的原始文件名称
                 fileName = file.getOriginalFilename();
                 originalFileName = fileName;
@@ -72,13 +73,13 @@ public class UploadController {
                 //将图片和视频保存在本地服务器
                 String pathRoot = req.getSession().getServletContext().getRealPath("");
                 String path = pathRoot + "/" + storePath;
-                UploadImageUtil.uploadImg(file,sqlPath);
+                UploadImageUtil.uploadImg(file, sqlPath);
                 //file.transferTo(new File(sqlPath+fileName));
                 //String doMain = readProperties.getFileDomain();
                 //String httpImgPath = doMain + storePath + fileName;
 
                 rs.put("state", "SUCCESS");// UEDITOR的规则:不为SUCCESS则显示state的内容
-                rs.put("url",originalFileName);         //能访问到你现在图片的路径
+                rs.put("url", originalFileName);         //能访问到你现在图片的路径
                 rs.put("title", originalFileName);
                 rs.put("original", originalFileName);
             }
@@ -87,7 +88,7 @@ public class UploadController {
         } catch (Exception e) {
             e.printStackTrace();
             rs.put("state", "文件上传失败!"); //在此处写上错误提示信息，这样当错误的时候就会显示此信息
-            rs.put("url","");
+            rs.put("url", "");
             rs.put("title", "");
             rs.put("original", "");
         }
@@ -95,14 +96,13 @@ public class UploadController {
     }
 
 
-
-
-/**
- * 富文本配置文件获取
- * @param request
- * @return
- */
-    @RequestMapping(value = "/config",headers = "Accept=application/json")
+    /**
+     * 富文本配置文件获取
+     *
+     * @param request
+     * @return
+     */
+    @RequestMapping(value = "/config", headers = "Accept=application/json")
     public String imgUpload(HttpServletRequest request, HttpServletResponse response) {
         response.setContentType("application/json;charset=utf-8");
         String config = "/* 前后端通信相关的配置,注释只允许使用多行方式 */\n" +

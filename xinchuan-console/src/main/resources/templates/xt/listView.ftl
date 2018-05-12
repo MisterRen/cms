@@ -42,7 +42,7 @@
     </form>
     <xblock>
         <button class="layui-btn layui-btn-danger" onclick="delAll()"><i class="layui-icon"></i>批量删除</button>
-        <button class="layui-btn" onclick="x_admin_show('添加用户','saveOrUpdate')"><i class="layui-icon"></i>添加
+        <button class="layui-btn" onclick="x_admin_show('添加用户','addView')"><i class="layui-icon"></i>添加
         </button>
         <span class="x-right" style="line-height:40px">共有数据：${teamList.totalCount} 条</span>
     </xblock>
@@ -120,7 +120,7 @@
         }
         layer.confirm('确认要删除吗？' + data, function (index) {
             //捉到所有被选中的，发异步进行删除
-            $.post("/teamManager/delAll",{ids:data},function(result){
+            $.post("/xt/delAll",{ids:data},function(result){
                 if(result.success){
                     $("#currentPage").val(0);
                     location.reload();

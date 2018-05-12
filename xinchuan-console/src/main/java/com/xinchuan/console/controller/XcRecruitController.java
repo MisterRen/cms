@@ -22,25 +22,25 @@ import java.util.List;
  */
 @Slf4j
 @RestController
-@RequestMapping("/recruit")
+@RequestMapping("/xr")
 public class XcRecruitController {
 
     @Autowired
     private XcRecruitService xcRecruitService;
 
 
-    @GetMapping("/findAll")
+    @GetMapping("/listView")
     public ModelAndView findAll() {
-        ModelAndView modelAndView = new ModelAndView("recruit/listView");
-        List<XcRecruit> xcRecruitOldList = xcRecruitService.findAll();
-        modelAndView.addObject("xcRecruitOldList", xcRecruitOldList);
+        ModelAndView modelAndView = new ModelAndView("xr/listView");
+        List<XcRecruit> xcRecruitList = xcRecruitService.findAll();
+        modelAndView.addObject("xcRecruitOldList", xcRecruitList);
         return modelAndView;
     }
 
-    @GetMapping("/saveOrUpdate")
+    @GetMapping("/addView")
     public ModelAndView addView(@RequestParam(value = "id",defaultValue = "-1",required = false) String id){
-        ModelAndView modelAndView = new ModelAndView("recruit/addView");
-        modelAndView.addObject("xcTeamManage",  xcRecruitService.findById(id).orElse(new XcRecruit()));
+        ModelAndView modelAndView = new ModelAndView("xr/addView");
+        modelAndView.addObject("xcRecruit",  xcRecruitService.findById(id).orElse(new XcRecruit()));
         return modelAndView;
     }
 
@@ -78,7 +78,7 @@ public class XcRecruitController {
 
     @GetMapping("/findByDateAndName")
     public ModelAndView findByDateAndName(String startDate, String endDate, String postName) {
-        ModelAndView modelAndView = new ModelAndView("recruit/listView");
+        ModelAndView modelAndView = new ModelAndView("xr/listView");
         List<XcRecruit> xcRecruitOldList = xcRecruitService.findByCreateTimeAndName(startDate,endDate,postName);
         modelAndView.addObject("startDate", startDate);
         modelAndView.addObject("endDate", endDate);

@@ -17,25 +17,25 @@ import java.util.List;
  * @date 2018/5/9  15:57
  */
 @RestController
-@RequestMapping("/teamManager")
+@RequestMapping("/xt")
 @Slf4j
 public class XcTeamManagerController {
 
     @Autowired
     XcTeamManageService xcTeamManageService;
 
-    @GetMapping("/findAll")
+    @GetMapping("/listView")
     public ModelAndView findAll(XcTeamManage xcTeamManage) {
-        ModelAndView modelAndView = new ModelAndView("team/team_index");
+        ModelAndView modelAndView = new ModelAndView("xt/listView");
         PageModel<XcTeamManage> xcTeamManagePageModel=xcTeamManageService.allXcTeamManage(xcTeamManage);
         modelAndView.addObject("teamList", xcTeamManagePageModel);
         modelAndView.addObject("seracheForm", xcTeamManage);
         return modelAndView;
     }
 
-    @GetMapping("/saveOrUpdate")
+    @GetMapping("/addView")
     public ModelAndView addView(@RequestParam(value = "id",defaultValue = "-1",required = false) String id){
-        ModelAndView modelAndView = new ModelAndView("team/team_add");
+        ModelAndView modelAndView = new ModelAndView("xt/addView");
         modelAndView.addObject("xcTeamManage",  xcTeamManageService.findById(id).orElse(new XcTeamManage()));
         return modelAndView;
     }
@@ -75,7 +75,7 @@ public class XcTeamManagerController {
 
     @GetMapping("/findByDateAndName")
     public ModelAndView findByDateAndName(String startDate, String endDate, String name) {
-        ModelAndView modelAndView = new ModelAndView("team/team_index");
+        ModelAndView modelAndView = new ModelAndView("xt/team_index");
         List<XcTeamManage> xcTeamManageList = xcTeamManageService.findByCreateTimeAndName(startDate,endDate,name);
         modelAndView.addObject("startDate", startDate);
         modelAndView.addObject("endDate", endDate);

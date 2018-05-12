@@ -24,14 +24,14 @@ import java.util.Map;
 import java.util.Random;
 
 @RestController
-@RequestMapping("/dynamic")
+@RequestMapping("/xd")
 @Slf4j
 public class DynamicController {
     @Autowired
     private XcDynamicService dynamicService;
-    @GetMapping("/findAll")
+    @GetMapping("/listView")
     public ModelAndView dynamic(XcDynamic dynamicForm){
-        ModelAndView modelAndView = new ModelAndView("dynamic/dynamicList");
+        ModelAndView modelAndView = new ModelAndView("xd/listView");
         modelAndView.addObject("seracheForm",dynamicForm);
         PageModel<XcDynamic> dynamics=dynamicService.allDynamic(dynamicForm);
         modelAndView.addObject("dynamics",dynamics);
@@ -44,7 +44,7 @@ public class DynamicController {
     }
     @GetMapping("/dynamicAdd")
     public ModelAndView goAddPage(){
-        ModelAndView modelAndView = new ModelAndView("dynamic/dynamic-add");
+        ModelAndView modelAndView = new ModelAndView("xd/dynamic-add");
         return modelAndView;
     }
     @PostMapping(value = "/dynamicSave")
@@ -75,9 +75,9 @@ public class DynamicController {
         }
         return json;
     }
-    @GetMapping("/saveOrUpdatePage")
+    @GetMapping("/addView")
     public ModelAndView findById(@RequestParam(value = "id",defaultValue = "-1",required = false) Long id){
-        ModelAndView modelAndView=new ModelAndView("dynamic/dynamic_saveOrUpdate");
+        ModelAndView modelAndView=new ModelAndView("xd/addView");
         XcDynamic dynamic=dynamicService.findById(id).orElse(new XcDynamic());
         modelAndView.addObject("dynamic",dynamic);
         return modelAndView;

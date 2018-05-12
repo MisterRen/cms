@@ -31,29 +31,30 @@ public class XcConsultController {
     XcConsultService xcConsultService;
 
     @GetMapping("/listView")
-    public ModelAndView listView(){
+    public ModelAndView listView() {
 
-        return new ModelAndView("consult/listView");
+        return new ModelAndView("xc/listView");
     }
 
     @GetMapping("/pageQuery")
-    public Page<XcConsult> pageQuery(@PageableDefault(value = 10,sort = {"id"},direction = Sort.Direction.DESC) Pageable pageable){
+    public Page<XcConsult> pageQuery(@PageableDefault(value = 10, sort = {"id"}, direction = Sort.Direction.DESC) Pageable pageable) {
         return xcConsultService.pageQuery(pageable);
     }
 
     @PostMapping("/delete")
-    public AjaxJson delete(@RequestParam(value = "id",required = true) Long id){
+    public AjaxJson delete(@RequestParam(value = "id", required = true) Long id) {
         xcConsultService.deleteNews(id);
         return new AjaxJson();
     }
 
     @PostMapping("/enable")
-    public AjaxJson enable(XcConsult xcConsult){
+    public AjaxJson enable(XcConsult xcConsult) {
         xcConsultService.isEnableNews(xcConsult);
         return new AjaxJson();
     }
+
     @PostMapping("/add")
-    public AjaxJson add(XcConsult xcConsult){
+    public AjaxJson add(XcConsult xcConsult) {
         xcConsult.setCreateTime(new Date());
         xcConsultService.saveOrUpdate(xcConsult);
         return new AjaxJson();

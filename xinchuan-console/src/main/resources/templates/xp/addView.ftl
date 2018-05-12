@@ -174,7 +174,7 @@
             console.log(data);
             data.field.isShow = data.field.isShow=='on'?0:1;
             $.ajax({
-                url:'/product/productSave',
+                url:'/xp/productSave',
                 data:data.field,
                 type:"POST",
                 dataType:'JSON',

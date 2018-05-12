@@ -42,7 +42,7 @@
     </div>
     <xblock>
         <button class="layui-btn layui-btn-danger" onclick="delAll()"><i class="layui-icon"></i>批量删除</button>
-        <button class="layui-btn" onclick="x_admin_show('添加动态','saveOrUpdatePage')"><i class="layui-icon"></i>添加</button>
+        <button class="layui-btn" onclick="x_admin_show('添加动态','addView')"><i class="layui-icon"></i>添加</button>
         <span class="x-right" style="line-height:40px">共有数据：${dynamics.totalCount} 条</span>
     </xblock>
     <table class="layui-table">
@@ -79,7 +79,7 @@
             </#if>
             </td>
             <td class="td-manage">
-                <a title="编辑" onclick="x_admin_show('编辑','saveOrUpdatePage?id='+${dynamic.id})" href="javascript:;">
+                <a title="编辑" onclick="x_admin_show('编辑','addView?id='+${dynamic.id})" href="javascript:;">
                     <i class="layui-icon layui-btn-big">&#xe642;</i>
                 </a>
             </td>
@@ -107,7 +107,7 @@
         var data = tableCheck.getData();
         var ids = data.toString();
         layer.confirm('确认要删除吗？' + data, function (index) {
-            $.post("/dynamic/deleteDynamic", {ids: ids}, function (result) {
+            $.post("/xd/deleteDynamic", {ids: ids}, function (result) {
                 $("#currentPage").val(0);
                 location.replace(location.href);
             });

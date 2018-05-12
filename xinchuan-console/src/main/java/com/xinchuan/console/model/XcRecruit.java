@@ -30,7 +30,7 @@ public class XcRecruit {
     @Lob
     @Column(columnDefinition="TEXT")
     private String requirements;//要求
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date createTime;//时间
 
     public Long getId() {

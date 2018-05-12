@@ -40,7 +40,7 @@ public class IndexController {
 
     @GetMapping("/index")
     public ModelAndView index(){
-        ModelAndView modelAndView = new ModelAndView("xc/index");
+        ModelAndView modelAndView = new ModelAndView("xinchuan/index");
         XcAdmin admin = xcAdminService.findOne(1l);
         XcAdmin admin1 = xcAdminService.findByName("laxi");
         try {
@@ -55,13 +55,13 @@ public class IndexController {
 
     @GetMapping("/login")
     public ModelAndView login(){
-        ModelAndView modelAndView = new ModelAndView("xc/login");
+        ModelAndView modelAndView = new ModelAndView("xinchuan/login");
         return modelAndView;
     }
 
     @GetMapping("/welcome")
     public ModelAndView welcome(){
-        ModelAndView modelAndView = new ModelAndView("xc/welcome");
+        ModelAndView modelAndView = new ModelAndView("xinchuan/welcome");
         return modelAndView;
     }
 

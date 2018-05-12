@@ -130,7 +130,7 @@
             console.log(data);
             data.field.isShow = data.field.isShow=='on'?0:1;
             $.ajax({
-                url:'/teamManager/add',
+                url:'/xt/add',
                 data:data.field,
                 type:"POST",
                 dataType:'JSON',
