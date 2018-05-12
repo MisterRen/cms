@@ -1,6 +1,8 @@
 package com.xinchuan.console.service.impl;
 
 import com.xinchuan.console.dao.XcTeamManageRepository;
+import com.xinchuan.console.dao.page.XcTeamManagePage;
+import com.xinchuan.console.model.PageModel;
 import com.xinchuan.console.model.XcTeamManage;
 import com.xinchuan.console.service.XcTeamManageService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,7 +33,14 @@ import java.util.Optional;
 @Service
 public class XcTeamManageServiceImpl implements XcTeamManageService {
     @Autowired
-    XcTeamManageRepository xcTeamManageRepository;
+    private XcTeamManageRepository xcTeamManageRepository;
+    @Autowired
+    private XcTeamManagePage xcTeamManagePage;
+
+    @Override
+    public PageModel<XcTeamManage> allXcTeamManage(XcTeamManage xcTeamManage) {
+        return xcTeamManagePage.queryXcTeamManagePage(xcTeamManage);
+    }
 
     @Override
     public List<XcTeamManage> findAll() {

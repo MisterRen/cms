@@ -30,19 +30,21 @@
         <i class="layui-icon" style="line-height:30px">ဂ</i></a>
 </div>
 <div class="x-body">
-    <form class="layui-row" action="/teamManager/findByDateAndName" method="get">
+    <form class="layui-row" action="/teamManager/findByDateAndName" method="get" id="pageForm">
         <div class="layui-form layui-col-md12 x-so">
             <input class="layui-input" placeholder="开始日" name="startDate" id="startDate" value="${startDate!""}">
             <input class="layui-input" placeholder="截止日" name="endDate" id="endDate" value="${endDate!""}">
             <input  name="name" id="name" placeholder="请输入用户名"  class="layui-input" value="${name!""}">
-            <button  class="layui-btn"><i class="layui-icon">&#xe615;</i></button>
+            <input type="hidden" id="totalCount" value="${teamList.totalCount}">
+            <input type="hidden"  name="currentPage" id="currentPage" value="${teamList.currentPage}">
+            <button type="button"  onclick="serachForm()" class="layui-btn"><i class="layui-icon">&#xe615;</i></button>
         </div>
     </form>
     <xblock>
         <button class="layui-btn layui-btn-danger" onclick="delAll()"><i class="layui-icon"></i>批量删除</button>
         <button class="layui-btn" onclick="x_admin_show('添加用户','saveOrUpdate')"><i class="layui-icon"></i>添加
         </button>
-        <span class="x-right" style="line-height:40px">共有数据：${teamList?size} 条</span>
+        <span class="x-right" style="line-height:40px">共有数据：${teamList.totalCount} 条</span>
     </xblock>
     <table class="layui-table">
         <thead>
@@ -60,7 +62,8 @@
             <th>是否显示</th>
             <th>操作</th>
         </thead>
-    <#list teamList as team>
+<#if teamList.list ??>
+    <#list teamList.list as team>
         <tbody>
         <tr>
             <td>
@@ -88,19 +91,13 @@
         </tr>
         </tbody>
     </#list>
+</#if>
     </table>
-    <div class="page">
-        <div>
-            <a class="prev" href="">&lt;&lt;</a>
-            <a class="num" href="">1</a>
-            <span class="current">2</span>
-            <a class="num" href="">3</a>
-            <a class="num" href="">489</a>
-            <a class="next" href="">&gt;&gt;</a>
-        </div>
+    <div id="page" style="text-align: center">
     </div>
 
 </div>
+<script type="text/javascript" src="/common/pagination.js"></script>
 <script>
     layui.use('laydate', function () {
         var laydate = layui.laydate;
@@ -133,6 +130,10 @@
 
             });
         });
+    }
+    function serachForm() {
+        $("#currentPage").val(0);
+        $("#pageForm").submit();
     }
 </script>
 </body>

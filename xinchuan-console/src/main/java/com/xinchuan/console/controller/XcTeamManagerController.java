@@ -1,6 +1,8 @@
 package com.xinchuan.console.controller;
 
 import com.xinchuan.console.common.AjaxJson;
+import com.xinchuan.console.model.PageModel;
+import com.xinchuan.console.model.XcDynamic;
 import com.xinchuan.console.model.XcTeamManage;
 import com.xinchuan.console.service.XcTeamManageService;
 import lombok.extern.slf4j.Slf4j;
@@ -23,10 +25,10 @@ public class XcTeamManagerController {
     XcTeamManageService xcTeamManageService;
 
     @GetMapping("/findAll")
-    public ModelAndView findAll() {
+    public ModelAndView findAll(XcTeamManage xcTeamManage) {
         ModelAndView modelAndView = new ModelAndView("team/team_index");
-        List<XcTeamManage> xcTeamManageList = xcTeamManageService.findAll();
-        modelAndView.addObject("teamList", xcTeamManageList);
+        PageModel<XcTeamManage> xcTeamManagePageModel=xcTeamManageService.allXcTeamManage(xcTeamManage);
+        modelAndView.addObject("teamList", xcTeamManagePageModel);
         return modelAndView;
     }
 

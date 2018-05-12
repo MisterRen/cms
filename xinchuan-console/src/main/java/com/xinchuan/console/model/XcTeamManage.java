@@ -16,7 +16,7 @@ import java.util.Date;
  * @fileName XcTeamManage.java
  */
 @Entity
-public class XcTeamManage {
+public class XcTeamManage extends  SeracherForm{
 
     @Id
     @GeneratedValue
