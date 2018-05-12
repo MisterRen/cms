@@ -1,5 +1,6 @@
 package com.xinchuan.console.service;
 
+import com.xinchuan.console.model.XcNews;
 import com.xinchuan.console.model.XcTeamManage;
 
 import java.util.List;
@@ -24,4 +25,8 @@ public interface XcTeamManageService {
     void delAll(String[] ids);
 
     Optional<XcTeamManage> findById(String id);
+
+    List<XcTeamManage> findByCreateTimeAndName(String startDate,String endDate,String name);
+
+    void saveOrUpdate(XcTeamManage xcTeamManage);
 }

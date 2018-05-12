@@ -38,7 +38,7 @@
         "id": 10022,
         "name": "团队发布",
         "icon": "",
-        "url":"",
+        "url":"/teamManager/saveOrUpdate",
         "parent": 1002
       }
     ]
@@ -53,14 +53,14 @@
         "id": 10031,
         "name": "招聘列表",
         "icon": "",
-        "url":"",
+        "url":"/xr/listView",
         "parent": 1003
       },
       {
         "id": 10032,
         "name": "发起招聘",
         "icon": "",
-        "url":"",
+        "url":"/xr/addView",
         "parent": 1003
       }
     ]
