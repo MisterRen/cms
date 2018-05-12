@@ -1,19 +1,13 @@
 package com.xinchuan.console.controller;
 
 import com.xinchuan.console.common.AjaxJson;
-import com.xinchuan.console.model.XcRecruit;
-import com.xinchuan.console.model.XcRecruitDutyClaim;
-import com.xinchuan.console.model.XcRecruitRequireClaim;
+import com.xinchuan.console.model.XcRecruitOld;
 import com.xinchuan.console.service.XcRecruitService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
-import org.springframework.data.web.PageableDefault;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
-import java.util.Date;
 import java.util.List;
 
 /**
@@ -26,47 +20,72 @@ import java.util.List;
  * @version 1.0
  * @fileName XcRecruitController.java
  */
+@Slf4j
 @RestController
-@RequestMapping("/xr")
+@RequestMapping("/recruit")
 public class XcRecruitController {
 
     @Autowired
     private XcRecruitService xcRecruitService;
 
 
-    @GetMapping("/listView")
-    public ModelAndView listView(){
-
-        return new ModelAndView("recruit/listView");
+    @GetMapping("/findAll")
+    public ModelAndView findAll() {
+        ModelAndView modelAndView = new ModelAndView("recruit/listView");
+        List<XcRecruitOld> xcRecruitOldList = xcRecruitService.findAll();
+        modelAndView.addObject("xcRecruitOldList", xcRecruitOldList);
+        return modelAndView;
     }
 
-    @GetMapping("/addView")
-    public ModelAndView addView(){
-
-        return new ModelAndView("recruit/addView");
-    }
-
-    @GetMapping("/pageQuery")
-    public Page<XcRecruit> pageQuery(@PageableDefault(value = 10,sort = {"id"},direction = Sort.Direction.DESC) Pageable pageable){
-        return xcRecruitService.pageQuery(pageable);
+    @GetMapping("/saveOrUpdate")
+    public ModelAndView addView(@RequestParam(value = "id",defaultValue = "-1",required = false) String id){
+        ModelAndView modelAndView = new ModelAndView("recruit/addView");
+        modelAndView.addObject("xcTeamManage",  xcRecruitService.findById(id).orElse(new XcRecruitOld()));
+        return modelAndView;
     }
 
     @PostMapping("/add")
-    public AjaxJson add(XcRecruit xcConsult, @RequestParam(name = "dutyClaim[]",required=false) List<String> dutyClaim,
-                        @RequestParam(name = "requireClaim[]",required=false)List<String> requireClaim){
-        dutyClaim.forEach(x ->{
-            XcRecruitDutyClaim duty = new XcRecruitDutyClaim();
-            duty.setDutyClaim(x);
-            xcConsult.getDuty().add(duty);
-        });
-        requireClaim.forEach(x ->{
-            XcRecruitRequireClaim require = new XcRecruitRequireClaim();
-            require.setRequireClaim(x);
-            xcConsult.getRequirements().add(require);
-        });
+    public AjaxJson add(XcRecruitOld xcRecruitOld){
+        AjaxJson ajaxJson=new AjaxJson();
+        try {
+            ajaxJson.setSuccess(true);
+            ajaxJson.setMsg("添加成功");
+            xcRecruitService.saveOrUpdate(xcRecruitOld);
 
-        xcConsult.setCreateTime(new Date());
-        xcRecruitService.saveOrUpdate(xcConsult);
+        } catch (Exception e) {
+            ajaxJson.setSuccess(false);
+            ajaxJson.setMsg("添加失败");
+            e.printStackTrace();
+        }
         return new AjaxJson();
+    }
+
+    @PostMapping("/delAll")
+    public AjaxJson delAll(String[] ids) {
+        AjaxJson ajaxJson = new AjaxJson();
+        try {
+            xcRecruitService.delAll(ids);
+            ajaxJson.setSuccess(true);
+            ajaxJson.setMsg("删除成功");
+        } catch (Exception e) {
+            ajaxJson.setSuccess(false);
+            ajaxJson.setMsg("删除失败");
+            e.printStackTrace();
+            log.error("************" + e.getMessage());
+        }
+        return ajaxJson;
+    }
+
+
+    @GetMapping("/findByDateAndName")
+    public ModelAndView findByDateAndName(String startDate, String endDate, String postName) {
+        ModelAndView modelAndView = new ModelAndView("recruit/listView");
+        List<XcRecruitOld> xcRecruitOldList = xcRecruitService.findByCreateTimeAndName(startDate,endDate,postName);
+        modelAndView.addObject("startDate", startDate);
+        modelAndView.addObject("endDate", endDate);
+        modelAndView.addObject("postName", postName);
+        modelAndView.addObject("xcRecruitOldList", xcRecruitOldList);
+        return modelAndView;
+
     }
 }

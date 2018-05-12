@@ -53,14 +53,14 @@
         "id": 10031,
         "name": "招聘列表",
         "icon": "",
-        "url":"/xr/listView",
+        "url":"/recruit/findAll",
         "parent": 1003
       },
       {
         "id": 10032,
         "name": "发起招聘",
         "icon": "",
-        "url":"/xr/addView",
+        "url":"/recruit/saveOrUpdate",
         "parent": 1003
       }
     ]

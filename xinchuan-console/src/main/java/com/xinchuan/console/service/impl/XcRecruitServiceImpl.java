@@ -1,12 +1,23 @@
 package com.xinchuan.console.service.impl;
 
 import com.xinchuan.console.dao.XcRecruitRepository;
-import com.xinchuan.console.model.XcRecruit;
+import com.xinchuan.console.model.XcRecruitOld;
+import com.xinchuan.console.model.XcTeamManage;
 import com.xinchuan.console.service.XcRecruitService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
+
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Predicate;
+import javax.persistence.criteria.Root;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import java.util.Optional;
 
 /**
  * <p>
@@ -20,23 +31,62 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class XcRecruitServiceImpl implements XcRecruitService {
-
     @Autowired
-    private XcRecruitRepository xcRecruitRepository;
-
+    XcRecruitRepository xcRecruitRepository;
     @Override
-    public Page<XcRecruit> pageQuery(Pageable pageable) {
-        return xcRecruitRepository.findAll(pageable);
+    public List<XcRecruitOld> findAll() {
+        return xcRecruitRepository.findAll();
     }
 
     @Override
-    public void deleteNews(Long id) {
-        xcRecruitRepository.deleteById(id);
+    public void saveAndFlush(XcRecruitOld xcRecruitOld){
+        xcRecruitRepository.saveAndFlush(xcRecruitOld);
     }
 
+    @Override
+    public void delAll(String[] ids) {
+        for (String id : ids) {
+            xcRecruitRepository.deleteById(Long.valueOf(id));
+        }
+    }
 
     @Override
-    public void saveOrUpdate(XcRecruit xcRecruit) {
-        xcRecruitRepository.save(xcRecruit);
+    public Optional<XcRecruitOld> findById(String id) {
+        Optional<XcRecruitOld> xcRecruitOld=xcRecruitRepository.findById(Long.valueOf(id));
+        return xcRecruitOld;
+    }
+
+    @Override
+    public List<XcRecruitOld> findByCreateTimeAndName(String startDate, String endDate, String postName) {
+        List<XcRecruitOld> resultList = null;
+        Specification querySpecifi = new Specification<XcRecruitOld>() {
+            @Override
+            //root参数是我们用来对应实体的信息的。criteriaBuilder可以帮助我们制作查询信息。
+            //如果有多个条件，我们就可以创建一个Predicate集合，最后用CriteriaBuilder的and和or方法进行组合，得到最后的Predicate对象。
+            public Predicate toPredicate(Root<XcRecruitOld> root, CriteriaQuery<?> criteriaQuery, CriteriaBuilder criteriaBuilder) {
+                List<Predicate> predicates = new ArrayList<>();
+                if(startDate.length()!=0 || endDate.length()!=0){
+                    SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");//小写的mm表示的是分钟
+                    try {
+                        Date sDate=sdf.parse(startDate);
+                        Date eDate=sdf.parse(endDate);
+                        predicates.add(criteriaBuilder.between(root.get("createTime"), sDate,eDate));
+                    } catch (ParseException e) {
+                        e.printStackTrace();
+                    }
+                }
+                if(postName.length()!=0){
+                    predicates.add(criteriaBuilder.like(root.get("postName"), "%"+postName+"%"));
+                }
+                return criteriaBuilder.and(predicates.toArray(new Predicate[predicates.size()]));
+            }
+        };
+        resultList =  xcRecruitRepository.findAll(querySpecifi);
+        return resultList;
+    }
+
+    @Override
+    public void saveOrUpdate(XcRecruitOld xcRecruitOld) {
+        xcRecruitRepository.save(xcRecruitOld);
     }
 }
