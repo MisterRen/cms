@@ -1,6 +1,8 @@
 package com.xinchuan.console.service.impl;
 
+import com.xinchuan.console.common.PageModel;
 import com.xinchuan.console.dao.XcConsultRepository;
+import com.xinchuan.console.dao.page.XcConsultPage;
 import com.xinchuan.console.model.XcConsult;
 import com.xinchuan.console.service.XcConsultService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,10 +25,12 @@ public class XcConsultServiceImpl implements XcConsultService {
 
     @Autowired
     private XcConsultRepository xcConsultRepository;
+    @Autowired
+    private XcConsultPage consultPage;
 
     @Override
-    public Page<XcConsult> pageQuery(Pageable pageable) {
-        return xcConsultRepository.findAll(pageable);
+    public PageModel<XcConsult> pageQuery(XcConsult consultForm) {
+        return consultPage.queryXcConsultPage(consultForm);
     }
 
     @Override

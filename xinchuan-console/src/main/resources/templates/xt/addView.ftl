@@ -41,7 +41,7 @@
 
             <div class="layui-input-inline">
                 <div class="layui-upload">
-                    <div class="layui-upload-drag" style="width: 100px;height: 100px">
+                    <div class="layui-upload-drag"  style="width: 100px;height: 100px">
                         <img class="layui-upload-img" style="max-width: 100px;max-height: 100px" src="${xcTeamManage.userIcon!''}" id="demo1">
                         <input type="hidden" value="${xcTeamManage.userIcon!''}" id="userIcon" name="userIcon" required lay-verify="required">
                         <p id="demoText"></p>
@@ -95,7 +95,7 @@
                 <span class="x-red">*</span>是否显示
             </label>
             <div class="layui-input-inline">
-                <input <#if xcTeamManage.isShow??><#if xcTeamManage.isShow=1><#else>checked="checked"</#if></#if> name="isShow" lay-skin="switch" lay-filter="switchTest" lay-text="ON|OFF" type="checkbox">
+                <input <#if xcTeamManage.isShow??><#if xcTeamManage.isShow==0><#else>checked="checked"</#if></#if> name="isShow" lay-skin="switch" lay-filter="switchTest" lay-text="ON|OFF" type="checkbox">
             </div>
         </div>
 
@@ -140,14 +140,18 @@
                         layer.alert("增加成功", {icon: 6},function () {
                             this.index;
                             // 获得frame索引
+                            debugger;
+                            console.info(window.name)
                             if(window.name != ""){
                                 var index = parent.layer.getFrameIndex(window.name);
                                 //关闭当前frame
+                                alert(index);
                                 parent.layer.close(index);
-                                parent.location.reload();
+                                parent.location.reload()
                             }else{
                                 layer.closeAll();
                                 $('.layui-form')[0].reset();
+                                //location.href="/xt/listView"
                             }
                         });
                     }else{

@@ -2,6 +2,7 @@ package com.xinchuan.console.controller;
 
 import com.xinchuan.console.common.AjaxJson;
 import com.xinchuan.console.common.PageModel;
+import com.xinchuan.console.model.XcRecruit;
 import com.xinchuan.console.model.XcTeamManage;
 import com.xinchuan.console.service.XcTeamManageService;
 import lombok.extern.slf4j.Slf4j;
@@ -54,11 +55,11 @@ public class XcTeamManagerController {
         return new AjaxJson();
     }
 
-    @PostMapping("/delAll")
-    public AjaxJson delAll(String[] ids) {
+    @PostMapping("/delOne")
+    public AjaxJson delOne(Long id) {
         AjaxJson ajaxJson = new AjaxJson();
         try {
-            xcTeamManageService.delAll(ids);
+            xcTeamManageService.delOne(id);
             ajaxJson.setSuccess(true);
             ajaxJson.setMsg("删除成功");
         } catch (Exception e) {
@@ -69,7 +70,11 @@ public class XcTeamManagerController {
         }
         return ajaxJson;
     }
-
+    @PostMapping("/enable")
+    public AjaxJson enable(XcTeamManage xcTeamManage){
+        xcTeamManageService.isEnableNews(xcTeamManage);
+        return new AjaxJson();
+    }
 
     @GetMapping("/findByDateAndName")
     public ModelAndView findByDateAndName(String startDate, String endDate, String name) {

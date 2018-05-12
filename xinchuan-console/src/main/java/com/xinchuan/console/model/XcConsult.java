@@ -1,5 +1,6 @@
 package com.xinchuan.console.model;
 
+import com.xinchuan.console.common.SeracherForm;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.Entity;
@@ -18,7 +19,7 @@ import java.util.Date;
  * @fileName XcConsult.java
  */
 @Entity
-public class XcConsult {
+public class XcConsult extends SeracherForm {
 
     @Id
     @GeneratedValue

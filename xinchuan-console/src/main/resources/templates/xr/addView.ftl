@@ -60,10 +60,17 @@
                 <span class="x-red">*</span>加入时间
             </label>
             <div class="layui-input-inline">
-                <input type="text" id="createTime" value="${xcRecruit.createTime!''}" name="createTime" required lay-verify="required" placeholder="yyyy-MM-dd HH:mm:ss" autocomplete="off" class="layui-input">
+                <input type="text" id="createTime"  value="${xcRecruit.createTime!''}" name="createTime" required lay-verify="required" placeholder="yyyy-MM-dd HH:mm:ss" autocomplete="off" class="layui-input">
             </div>
         </div>
-
+        <div class="layui-form-item">
+            <label for="L_username" class="layui-form-label">
+                <span class="x-red">*</span>是否显示
+            </label>
+            <div class="layui-input-inline">
+                <input <#if xcRecruit.isShow??><#if xcRecruit.isShow==0><#else>checked="checked"</#if></#if> name="isShow" lay-skin="switch" lay-filter="switchTest" lay-text="ON|OFF" type="checkbox">
+            </div>
+        </div>
         <div class="layui-form-item">
             <label for="L_repass" class="layui-form-label">
             </label>
@@ -119,6 +126,7 @@
                 ,layer = layui.layer;
         //监听提交
         form.on('submit(add)', function(data){
+            data.field.isShow = data.field.isShow=='on'?0:1;
             $.ajax({
                 url:'./add',
                 data:data.field,
@@ -136,7 +144,8 @@
                                 parent.location.reload();
                             }else{
                                 layer.closeAll();
-                                //$('.layui-form')[0].reset();
+                                $('.layui-form')[0].reset();
+                                //location.href="/xr/listView"
                             }
                         });
                     }else{

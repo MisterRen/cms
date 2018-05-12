@@ -2,6 +2,7 @@ package com.xinchuan.console.controller;
 
 import com.xinchuan.console.common.AjaxJson;
 import com.xinchuan.console.common.PageModel;
+import com.xinchuan.console.model.XcDynamic;
 import com.xinchuan.console.model.XcProduct;
 import com.xinchuan.console.service.XcProductService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,10 +23,25 @@ public class ProductController {
         modelAndView.addObject("products",products);
         return modelAndView;
     }
-
-    @PostMapping("/deleteProduct")
-    public void deleteProduct(String[] ids){
-        productService.deleteProduct(ids);
+    @PostMapping("/enable")
+    public AjaxJson enable(XcProduct productForm){
+        productService.isEnableNews(productForm);
+        return new AjaxJson();
+    }
+    @PostMapping("/delOne")
+    public AjaxJson delOne(Long id){
+        AjaxJson ajaxJson = new AjaxJson();
+        try {
+            productService.delOne(id);
+            ajaxJson.setSuccess(true);
+            ajaxJson.setMsg("删除成功");
+        } catch (Exception e) {
+            ajaxJson.setSuccess(false);
+            ajaxJson.setMsg("删除失败");
+            e.printStackTrace();
+            //log.error("*****teamManager:delAll*******" + e.getMessage());
+        }
+        return ajaxJson;
     }
 
     @PostMapping(value = "/productSave")

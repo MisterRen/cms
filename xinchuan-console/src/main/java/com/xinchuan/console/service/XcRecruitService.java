@@ -1,9 +1,7 @@
 package com.xinchuan.console.service;
 
+import com.xinchuan.console.common.PageModel;
 import com.xinchuan.console.model.XcRecruit;
-import com.xinchuan.console.model.XcTeamManage;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 
 import java.util.List;
 import java.util.Optional;
@@ -20,11 +18,13 @@ import java.util.Optional;
  */
 public interface XcRecruitService {
 
-    List<XcRecruit> findAll();
+    PageModel<XcRecruit> findAll(XcRecruit recruit);
 
     void saveAndFlush(XcRecruit xcRecruit);
 
-    void delAll(String[] ids);
+    void delOne(Long id);
+
+    void isEnableNews(XcRecruit xcRecruit);
 
     Optional<XcRecruit> findById(String id);
 

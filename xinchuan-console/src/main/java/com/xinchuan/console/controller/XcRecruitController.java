@@ -1,6 +1,9 @@
 package com.xinchuan.console.controller;
 
 import com.xinchuan.console.common.AjaxJson;
+import com.xinchuan.console.common.PageModel;
+import com.xinchuan.console.model.XcConsult;
+import com.xinchuan.console.model.XcProduct;
 import com.xinchuan.console.model.XcRecruit;
 import com.xinchuan.console.service.XcRecruitService;
 import lombok.extern.slf4j.Slf4j;
@@ -30,10 +33,11 @@ public class XcRecruitController {
 
 
     @GetMapping("/listView")
-    public ModelAndView findAll() {
+    public ModelAndView findAll(XcRecruit recruit) {
         ModelAndView modelAndView = new ModelAndView("xr/listView");
-        List<XcRecruit> xcRecruitList = xcRecruitService.findAll();
-        modelAndView.addObject("xcRecruitOldList", xcRecruitList);
+        modelAndView.addObject("seracheForm",recruit);
+        PageModel<XcRecruit> recruitPage=xcRecruitService.findAll(recruit);
+        modelAndView.addObject("recruitList",recruitPage);
         return modelAndView;
     }
 
@@ -59,11 +63,11 @@ public class XcRecruitController {
         return new AjaxJson();
     }
 
-    @PostMapping("/delAll")
-    public AjaxJson delAll(String[] ids) {
+    @PostMapping("/delOne")
+    public AjaxJson delOne(Long id) {
         AjaxJson ajaxJson = new AjaxJson();
         try {
-            xcRecruitService.delAll(ids);
+            xcRecruitService.delOne(id);
             ajaxJson.setSuccess(true);
             ajaxJson.setMsg("删除成功");
         } catch (Exception e) {
@@ -74,7 +78,11 @@ public class XcRecruitController {
         }
         return ajaxJson;
     }
-
+    @PostMapping("/enable")
+    public AjaxJson enable(XcRecruit xcRecruit){
+        xcRecruitService.isEnableNews(xcRecruit);
+        return new AjaxJson();
+    }
 
     @GetMapping("/findByDateAndName")
     public ModelAndView findByDateAndName(String startDate, String endDate, String postName) {

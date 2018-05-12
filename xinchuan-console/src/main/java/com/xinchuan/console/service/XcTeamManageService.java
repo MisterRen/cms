@@ -1,6 +1,7 @@
 package com.xinchuan.console.service;
 
 import com.xinchuan.console.common.PageModel;
+import com.xinchuan.console.model.XcProduct;
 import com.xinchuan.console.model.XcTeamManage;
 
 import java.util.List;
@@ -24,7 +25,10 @@ public interface XcTeamManageService {
 
     void saveAndFlush(XcTeamManage xcTeamManage);
 
-    void delAll(String[] ids);
+    void delOne(Long id);
+
+
+    void isEnableNews(XcTeamManage xcTeamManage);
 
     Optional<XcTeamManage> findById(String id);
 

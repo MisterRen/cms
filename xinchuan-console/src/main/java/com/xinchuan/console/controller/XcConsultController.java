@@ -1,7 +1,9 @@
 package com.xinchuan.console.controller;
 
 import com.xinchuan.console.common.AjaxJson;
+import com.xinchuan.console.common.PageModel;
 import com.xinchuan.console.model.XcConsult;
+import com.xinchuan.console.model.XcNews;
 import com.xinchuan.console.service.XcConsultService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -31,15 +33,20 @@ public class XcConsultController {
     XcConsultService xcConsultService;
 
     @GetMapping("/listView")
-    public ModelAndView listView() {
-
-        return new ModelAndView("xc/listView");
+    public ModelAndView listView(XcConsult consultForm) {
+        ModelAndView modelAndView = new ModelAndView("xc/listView");
+        modelAndView.addObject("seracheForm",consultForm);
+        PageModel<XcConsult> consultPage=xcConsultService.pageQuery(consultForm);
+        modelAndView.addObject("consultList",consultPage);
+        return modelAndView;
     }
 
+/*
     @GetMapping("/pageQuery")
     public Page<XcConsult> pageQuery(@PageableDefault(value = 10, sort = {"id"}, direction = Sort.Direction.DESC) Pageable pageable) {
         return xcConsultService.pageQuery(pageable);
     }
+*/
 
     @PostMapping("/delete")
     public AjaxJson delete(@RequestParam(value = "id", required = true) Long id) {

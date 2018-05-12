@@ -34,7 +34,7 @@
             <div class="layui-input-inline">
                 <div class="layui-upload">
                     <div class="layui-upload-drag" style="width: 100px;height: 100px">
-                        <img class="layui-upload-img" style="width: 100px;height: 100px" src="${product.prodectIcon!''}" id="demo1">
+                        <img class="layui-upload-img" style="max-width: 100px;max-height: 100px" src="${product.prodectIcon!''}" id="demo1">
                         <input type="hidden" id="pic" name="prodectIcon" value="${product.prodectIcon!''}">
                         <p id="demoText"></p>
                     </div>
@@ -195,7 +195,7 @@
                             }else{
                                 layer.closeAll();
                                 $('.layui-form')[0].reset();
-                                parent.location.reload();
+                                //location.href="/xp/listView"
                             }
                         })
                     } else {// 提示失败

@@ -3,6 +3,7 @@ package com.xinchuan.console.controller;
 import com.xinchuan.console.common.AjaxJson;
 import com.xinchuan.console.common.PageModel;
 import com.xinchuan.console.model.XcDynamic;
+import com.xinchuan.console.model.XcNews;
 import com.xinchuan.console.service.XcDynamicService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,10 +24,25 @@ public class DynamicController {
         modelAndView.addObject("dynamics",dynamics);
         return modelAndView;
     }
-
-    @PostMapping("/deleteDynamic")
-    public void deleteDynamic(String[] ids){
-        dynamicService.deleteDynamic( ids);
+    @PostMapping("/enable")
+    public AjaxJson enable(XcDynamic dynamicForm){
+        dynamicService.isEnableNews(dynamicForm);
+        return new AjaxJson();
+    }
+    @PostMapping("/delOne")
+    public AjaxJson delOne(Long id){
+        AjaxJson ajaxJson = new AjaxJson();
+        try {
+            dynamicService.delOne(id);
+            ajaxJson.setSuccess(true);
+            ajaxJson.setMsg("删除成功");
+        } catch (Exception e) {
+            ajaxJson.setSuccess(false);
+            ajaxJson.setMsg("删除失败");
+            e.printStackTrace();
+            //log.error("*****teamManager:delAll*******" + e.getMessage());
+        }
+        return ajaxJson;
     }
     @GetMapping("/dynamicAdd")
     public ModelAndView goAddPage(){

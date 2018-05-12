@@ -19,9 +19,11 @@ import java.util.Optional;
 public interface XcDynamicService {
     public PageModel<XcDynamic> allDynamic(XcDynamic dynamic);
 
-    public void deleteDynamic(String ids[]);
+    public  void delOne(Long id);
 
     public List<XcDynamic> findH5List();
+
+    void isEnableNews(XcDynamic dynamic);
 
     String saveDynamic(XcDynamic dynamic);
 

@@ -1,5 +1,6 @@
 package com.xinchuan.console.service;
 import com.xinchuan.console.common.PageModel;
+import com.xinchuan.console.model.XcDynamic;
 import com.xinchuan.console.model.XcProduct;
 
 import java.util.List;
@@ -18,11 +19,13 @@ import java.util.Optional;
 public interface XcProductService {
     public PageModel<XcProduct> allProduct(XcProduct productForm);
 
-    public void deleteProduct(String ids[]);
+    void delOne(Long id);
 
     public List<XcProduct> findH5ProductList();
 
     String saveProduct(XcProduct product);
+
+    void isEnableNews(XcProduct product);
 
     public String updateProduct(XcProduct product);
 

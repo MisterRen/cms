@@ -3,6 +3,7 @@ package com.xinchuan.console.service.impl;
 import com.xinchuan.console.dao.XcTeamManageRepository;
 import com.xinchuan.console.dao.page.XcTeamManagePage;
 import com.xinchuan.console.common.PageModel;
+import com.xinchuan.console.model.XcProduct;
 import com.xinchuan.console.model.XcTeamManage;
 import com.xinchuan.console.service.XcTeamManageService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,7 +42,12 @@ public class XcTeamManageServiceImpl implements XcTeamManageService {
     public PageModel<XcTeamManage> allXcTeamManage(XcTeamManage xcTeamManage) {
         return xcTeamManagePage.queryXcTeamManagePage(xcTeamManage);
     }
-
+    @Override
+    public void isEnableNews(XcTeamManage teamManage) {
+        XcTeamManage xcTeamManage = xcTeamManageRepository.findById(teamManage.getId()).get();
+        xcTeamManage.setIsShow(teamManage.getIsShow());
+        xcTeamManageRepository.saveAndFlush(xcTeamManage);
+    }
     @Override
     public List<XcTeamManage> findAll() {
         return xcTeamManageRepository.findAll();
@@ -53,10 +59,8 @@ public class XcTeamManageServiceImpl implements XcTeamManageService {
     }
 
     @Override
-    public void delAll(String[] ids) {
-        for (String id : ids) {
-            xcTeamManageRepository.deleteById(Long.valueOf(id));
-        }
+    public void delOne(Long id) {
+            xcTeamManageRepository.deleteById(id);
     }
 
     @Override

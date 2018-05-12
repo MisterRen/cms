@@ -1,6 +1,9 @@
 package com.xinchuan.console.service.impl;
 
+import com.xinchuan.console.common.PageModel;
 import com.xinchuan.console.dao.XcRecruitRepository;
+import com.xinchuan.console.dao.page.XcRecruitPage;
+import com.xinchuan.console.model.XcNews;
 import com.xinchuan.console.model.XcRecruit;
 import com.xinchuan.console.model.XcTeamManage;
 import com.xinchuan.console.service.XcRecruitService;
@@ -33,9 +36,11 @@ import java.util.Optional;
 public class XcRecruitServiceImpl implements XcRecruitService {
     @Autowired
     XcRecruitRepository xcRecruitRepository;
+    @Autowired
+    XcRecruitPage recruitPage;
     @Override
-    public List<XcRecruit> findAll() {
-        return xcRecruitRepository.findAll();
+    public PageModel<XcRecruit> findAll(XcRecruit recruit) {
+        return recruitPage.queryXcRecruitPage(recruit);
     }
 
     @Override
@@ -44,10 +49,8 @@ public class XcRecruitServiceImpl implements XcRecruitService {
     }
 
     @Override
-    public void delAll(String[] ids) {
-        for (String id : ids) {
-            xcRecruitRepository.deleteById(Long.valueOf(id));
-        }
+    public void delOne(Long id) {
+            xcRecruitRepository.deleteById(id);
     }
 
     @Override
@@ -55,7 +58,12 @@ public class XcRecruitServiceImpl implements XcRecruitService {
         Optional<XcRecruit> xcRecruitOld=xcRecruitRepository.findById(Long.valueOf(id));
         return xcRecruitOld;
     }
-
+    @Override
+    public void isEnableNews(XcRecruit recruit) {
+        XcRecruit xcRecruit = xcRecruitRepository.findById(recruit.getId()).get();
+        xcRecruit.setIsShow(recruit.getIsShow());
+        xcRecruitRepository.saveAndFlush(xcRecruit);
+    }
     @Override
     public List<XcRecruit> findByCreateTimeAndName(String startDate, String endDate, String postName) {
         List<XcRecruit> resultList = null;

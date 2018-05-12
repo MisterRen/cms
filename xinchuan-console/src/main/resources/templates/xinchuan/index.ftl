@@ -37,8 +37,8 @@
         <li class="layui-nav-item">
             <a href="javascript:;">admin</a>
             <dl class="layui-nav-child"> <!-- 二级菜单 -->
-                <dd><a onclick="x_admin_show('个人信息','http://www.baidu.com')">个人信息</a></dd>
-                <dd><a onclick="x_admin_show('切换帐号','http://www.baidu.com')">切换帐号</a></dd>
+                <#--<dd><a onclick="x_admin_show('个人信息','http://www.baidu.com')">个人信息</a></dd>
+                <dd><a onclick="x_admin_show('切换帐号','http://www.baidu.com')">切换帐号</a></dd>-->
                 <dd><a href="/xinchuan/login">退出</a></dd>
             </dl>
         </li>
@@ -54,7 +54,7 @@
         <ul id="nav">
             <#list menu as item>
                 <li>
-                    <a href="javascript:;">
+                    <a href="javascript:;" >
                         <i class="iconfont">${item.icon}</i>
                         <cite>${item.name}</cite>
                         <i class="iconfont nav_right">&#xe697;</i>

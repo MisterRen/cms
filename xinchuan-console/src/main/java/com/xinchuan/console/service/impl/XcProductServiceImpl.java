@@ -4,6 +4,7 @@ import com.xinchuan.console.dao.XcProductRepository;
 import com.xinchuan.console.dao.page.XcProductPage;
 import com.xinchuan.console.common.PageModel;
 import com.xinchuan.console.model.XcProduct;
+import com.xinchuan.console.model.XcRecruit;
 import com.xinchuan.console.service.XcProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -33,12 +34,16 @@ public class XcProductServiceImpl  implements XcProductService {
     public PageModel<XcProduct> allProduct(XcProduct productForm) {
         return productPage.queryXcProductPage(productForm);
     }
-
     @Override
-    public void deleteProduct(String[] ids) {
-        for (String id:ids) productRepository.deleteById(Long.valueOf(id));
+    public void isEnableNews(XcProduct product) {
+        XcProduct xcProduct = productRepository.findById(product.getId()).get();
+        xcProduct.setIsShow(product.getIsShow());
+        productRepository.saveAndFlush(xcProduct);
     }
-
+    @Override
+    public void delOne(Long id) {
+        productRepository.deleteById(id);
+    }
     @Override
     public List<XcProduct> findH5ProductList() {
         return productRepository.findH5ProductList();

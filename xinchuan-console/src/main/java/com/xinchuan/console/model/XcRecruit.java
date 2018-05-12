@@ -1,5 +1,6 @@
 package com.xinchuan.console.model;
 
+import com.xinchuan.console.common.SeracherForm;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
@@ -18,12 +19,13 @@ import java.util.List;
  * @fileName XcRecruit.java
  */
 @Entity
-public class XcRecruit {
+public class XcRecruit  extends SeracherForm {
 
     @Id
     @GeneratedValue
     private Long id;
     private String postName;//岗位名称
+    private int isShow;//是否显示
     @Lob
     @Column(columnDefinition="TEXT")
     private String duty;//职责
@@ -71,5 +73,13 @@ public class XcRecruit {
 
     public void setRequirements(String requirements) {
         this.requirements = requirements;
+    }
+
+    public int getIsShow() {
+        return isShow;
+    }
+
+    public void setIsShow(int isShow) {
+        this.isShow = isShow;
     }
 }
