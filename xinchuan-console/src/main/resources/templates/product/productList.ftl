@@ -28,17 +28,19 @@
 </div>
 <div class="x-body">
     <div class="layui-row">
-        <form class="layui-form layui-col-md12 x-so">
-            <input class="layui-input" placeholder="开始日" name="startTime" id="startTime">
-            <input class="layui-input" placeholder="截止日" name="endTime" id="endTime">
-            <input type="text" name="username"  placeholder="请输入产品名称" autocomplete="off" class="layui-input">
-            <button class="layui-btn"  lay-submit="" lay-filter="sreach"><i class="layui-icon">&#xe615;</i></button>
+        <form class="layui-form layui-col-md12 x-so" action="/product/findAll" id="serachForm">
+            <input class="layui-input" placeholder="开始日" value="${seracheForm.startTime?default('')}" name="startTime" id="startTime">
+            <input class="layui-input" placeholder="截止日" value="${seracheForm.endTime?default('')}" name="endTime" id="endTime">
+            <input type="text" name="prodectName"  value="${seracheForm.prodectName?default('')}" placeholder="请输入产品名称" autocomplete="off" class="layui-input">
+            <input type="hidden"  name="currentPage" id="currentPage" value="${products.currentPage}">
+            <input type="hidden" id="totalCount" value="${products.totalCount}">
+            <button type="button" onclick="serachForm()" class="layui-btn"><i class="layui-icon">&#xe615;</i></button>
         </form>
     </div>
     <xblock>
         <button class="layui-btn layui-btn-danger" onclick="delAll()"><i class="layui-icon"></i>批量删除</button>
         <button class="layui-btn" onclick="x_admin_show('添加产品','productAdd')"><i class="layui-icon"></i>添加</button>
-        <span class="x-right" style="line-height:40px">共有数据：88 条</span>
+        <span class="x-right" style="line-height:40px">共有数据：${products.totalCount} 条</span>
     </xblock>
     <table class="layui-table">
         <thead>
@@ -57,21 +59,26 @@
         </thead>
         <tbody>
         <tr>
-        <if products >
-        <#list products as product>
+        <#if products.list ??>
+        <#list products.list as product>
             <td>
                 <div class="layui-unselect layui-form-checkbox" lay-skin="primary" data-id='${product.id}'><i class="layui-icon">&#xe605;</i></div>
             </td>
             <td>${product.id}</td>
             <td>${product.prodectName}</td>
             <td><img src="${product.prodectIcon}"></td>
-            <td>${product.summary?substring(0,30)}...</td>
+            <td>
+                <#if product.summary?length gt 30>${product.summary?substring(0,30)}...
+                <#else>
+                ${product.summary}
+                </#if>
+            </td>
             <td>${product.createTime}</td>
             <td>
             <#if product.isShow==1>
                 <span class="layui-btn layui-btn-normal layui-btn-mini">已发布</span>
             <#else>
-                <span class="layui-btn layui-btn-normal layui-btn-mini">未发布</span>
+                <span class="layui-btn layui-btn-disabled layui-btn-mini">未发布</span>
             </#if>
             </td>
             <td>${product.level}</td>
@@ -82,21 +89,13 @@
             </td>
         </tr>
         </#list>
-        </if>
+        </#if>
         </tbody>
     </table>
-    <div class="page">
-        <div>
-            <a class="prev" href="">&lt;&lt;</a>
-            <a class="num" href="">1</a>
-            <span class="current">2</span>
-            <a class="num" href="">3</a>
-            <a class="num" href="">489</a>
-            <a class="next" href="">&gt;&gt;</a>
-        </div>
+    <div id="page">
     </div>
-
 </div>
+<script type="text/javascript" src="/common/pagination.js"></script>
 <script>
     layui.use('laydate', function(){
         var laydate = layui.laydate;
@@ -146,6 +145,10 @@
             });
 
         });
+    }
+    function serachForm() {
+        $("#currentPage").val(0);
+        $("#serachForm").submit();
     }
 </script>
 </body>

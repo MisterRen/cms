@@ -49,8 +49,9 @@
                 <span class="x-red">*</span>标题
             </label>
             <div class="layui-input-block">
-                <textarea name="title" required lay-verify="required" value="${dynamic.title}" style="width: 80%" placeholder="请输入"
-                          class="layui-textarea"></textarea>
+                <input type="hidden" name="id" value="${dynamic.id}">
+                <textarea name="title" required lay-verify="required" style="width: 80%" placeholder="请输入"
+                          class="layui-textarea">${dynamic.title}</textarea>
             </div>
         </div>
 
@@ -60,7 +61,7 @@
             </label>
             <div class="layui-input-block">
             <input type="checkbox" name="isShow" id="isShow" lay-skin="switch"  lay-text="YES|NO"
-                <if prodect.isShow==1 >checked</if> >
+                <#if dynamic.isShow=1 >checked</#if> >
             </div>
         </div>
 

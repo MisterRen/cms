@@ -6,8 +6,8 @@
     <title>动态管理</title>
     <meta name="renderer" content="webkit">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <meta name="viewport"
-          content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi"/>
+    <#--<meta name="viewport"
+          content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi"/>-->
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon"/>
     <link rel="stylesheet" href="/css/font.css">
     <link rel="stylesheet" href="/css/xadmin.css">
@@ -18,7 +18,7 @@
 
 <body>
 <div class="x-body">
-    <form class="layui-form" id="dynamic">
+    <form class="layui-form" id="dynamicForm">
         <div class="layui-form-item">
             <label for="title" class="layui-form-label">
                 <span class="x-red">*</span>动态图片
@@ -28,7 +28,7 @@
                     <button type="button" class="layui-btn" id="test1">上传图片</button>
                     <div class="layui-upload-list">
                         <img class="layui-upload-img" id="demo1">
-                        <input type="hidden" id="pic">
+                        <input type="hidden" id="pic" name="image">
                         <p id="demoText"></p>
                     </div>
                 </div>
@@ -103,7 +103,7 @@
                 if(res.code > 0){//自定义返回失败
                     return layer.msg('上传失败');
                 }else{
-                    $('#pic').val(res.img);
+                    $('#pic').val(res.msg);
                 }
                 //上传成功
             }
@@ -136,22 +136,19 @@
 
     function save() {
         //var fd = new FormData();
-        var formData = new FormData($("#dynamic")[0]);
+        var formData = $("#dynamicForm").serialize();
         $.ajax({
-            cache: true,
             type: "post",
             url: "/dynamic/dynamicSave",
             data: formData,  // 你的formid
             async: false,
-           // contentType: false,   //jax 中 contentType 设置为 false 是为了避免 JQuery 对其操作，从而失去分界符，而使服务器不能正常解析文件
-           // processData: false,   //当设置为true的时候,jquery ajax 提交的时候不会序列化 data，而是直接使用data
             error:function (request){
-                parent.layer.alert("网络超时");
+                layer.alert("网络超时");
             },
             success: function (data) {
                 if (data.code) {
                     layer.alert("增加成功", {icon: 6}, function () {
-                        location.href = "/dynamic/findAll"
+                        //location.href = "/dynamic/findAll"
                     })
                 } else {// 提示失败
                     layer.alert(data, {title: '提示信息', icon: 5});
@@ -161,31 +158,7 @@
     }
 
 </script>
-<script>
-    /*layui.use('upload', function () {
-        var $ = layui.jquery
-                , upload = layui.upload;
-        upload.render({//不自动上传
-            elem: '#test1'
-            , url: '/upload/'
-            , auto: false
-            //,multiple: true
-            , bindAction: '#demo2'
-            , choose: function (obj) {
-                obj.preview(function (index, file, result) {
-              /!*      console.log(index); //得到文件索引
-                    console.log(file); //得到文件对象
-                    console.log(result); //得到文件base64编码，比如图片*!/
-                    $('#demo1').attr('src', result); //图片链接（base64）
-                   /!* console.info( $('#demo1').attr('src'));*!/
-                    console.info($("input[name='file']").val());
 
-                });
-            }
-        });
-    })*/
-
-</script>
 </body>
 
 </html>

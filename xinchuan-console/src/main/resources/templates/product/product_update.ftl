@@ -48,6 +48,7 @@
                 <span class="x-red">*</span>产品名称
             </label>
             <div class="layui-input-block">
+                <input type="hidden" name="id" value="${product.id}">
                 <input type="text" id="prodectName" value="${product.prodectName}"  name="prodectName" required lay-verify="required"
                        autocomplete="off" class="layui-input">
             </div>
@@ -58,8 +59,8 @@
                 <span class="x-red">*</span>产品简介
             </label>
             <div class="layui-input-block">
-                <textarea name="summary"    value="${product.summary}"  placeholder="请输入"
-                          class="layui-textarea"></textarea>
+                <textarea name="summary"   placeholder="请输入"
+                          class="layui-textarea">${product.summary}</textarea>
             </div>
         </div>
 
@@ -69,7 +70,7 @@
             </label>
             <div class="layui-input-block">
                 <input type="checkbox" name="isShow" lay-skin="switch" lay-text="YES|NO"
-                <if product.isShow="1" >checked </if>
+                <#if product.isShow=1>checked </#if>
                 >
             </div>
         </div>

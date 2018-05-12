@@ -2,6 +2,7 @@ package com.xinchuan.console.controller;
 
 import com.xinchuan.console.common.AjaxJson;
 import com.xinchuan.console.common.UploadImageUtil;
+import com.xinchuan.console.model.PageModel;
 import com.xinchuan.console.model.XcDynamic;
 import com.xinchuan.console.model.XcProduct;
 import com.xinchuan.console.service.XcProductService;
@@ -23,7 +24,7 @@ public class ProductController {
     public ModelAndView product(XcProduct productForm){
         ModelAndView modelAndView = new ModelAndView("product/productList");
         modelAndView.addObject("seracheForm",productForm);
-        List<XcProduct> products=productService.allProduct();
+        PageModel<XcProduct> products=productService.allProduct(productForm);
         modelAndView.addObject("products",products);
         return modelAndView;
     }
@@ -41,8 +42,6 @@ public class ProductController {
     @ResponseBody
     public AjaxJson productSave(XcProduct productForm){
         AjaxJson json=new AjaxJson();
-        String fileName = productForm.getFile();// 文件原名称
-        //sqlPath+"\\"+fileName;
         String result=productService.saveProduct(productForm);
         if ("success".equals(result)){
             json.setSuccess(true);
@@ -60,5 +59,18 @@ public class ProductController {
         modelAndView.addObject("product",product);
         return modelAndView;
     }
-
+    @PostMapping(value = "/productUpdate")
+    @ResponseBody
+    public AjaxJson productUpdate(XcProduct product){
+        AjaxJson json=new AjaxJson();
+        String result=productService.updateProduct(product);
+        if ("success".equals(result)){
+            json.setSuccess(true);
+            json.setMsg("修改成功");
+        } else {
+            json.setSuccess(false);
+            json.setMsg(result);
+        }
+        return json;
+    }
 }

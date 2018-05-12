@@ -2,6 +2,7 @@ package com.xinchuan.console.controller;
 
 import com.xinchuan.console.common.AjaxJson;
 import com.xinchuan.console.common.UploadImageUtil;
+import com.xinchuan.console.model.PageModel;
 import com.xinchuan.console.model.XcDynamic;
 import com.xinchuan.console.model.XcTeamManage;
 import com.xinchuan.console.service.XcDynamicService;
@@ -32,7 +33,7 @@ public class DynamicController {
     public ModelAndView dynamic(XcDynamic dynamicForm){
         ModelAndView modelAndView = new ModelAndView("dynamic/dynamicList");
         modelAndView.addObject("seracheForm",dynamicForm);
-        List<XcDynamic> dynamics=dynamicService.allDynamic(dynamicForm);
+        PageModel<XcDynamic> dynamics=dynamicService.allDynamic(dynamicForm);
         modelAndView.addObject("dynamics",dynamics);
         return modelAndView;
     }
@@ -50,9 +51,6 @@ public class DynamicController {
     @ResponseBody
     public AjaxJson dynamicSave(XcDynamic dynamicForm){
         AjaxJson json=new AjaxJson();
-
-        String fileName = dynamicForm.getFile();// 文件原名称
-        //sqlPath+"\\"+fileName;
         String result=dynamicService.saveDynamic(dynamicForm);
         if ("success".equals(result)){
         json.setSuccess(true);
@@ -67,11 +65,14 @@ public class DynamicController {
     @ResponseBody
     public AjaxJson dynamicUpdare(XcDynamic dynamicForm){
         AjaxJson json=new AjaxJson();
-        String fileName = dynamicForm.getFile();// 文件原名称
-        //sqlPath+"\\"+fileName;
-         dynamicService.updateDynamic(dynamicForm);
-        json.setSuccess(true);
-        json.setMsg("添加成功");
+        String result=dynamicService.updateDynamic(dynamicForm);
+        if ("success".equals(result)){
+            json.setSuccess(true);
+            json.setMsg("修改成功");
+        } else {
+            json.setSuccess(false);
+            json.setMsg(result);
+        }
         return json;
     }
     @GetMapping("/findById")

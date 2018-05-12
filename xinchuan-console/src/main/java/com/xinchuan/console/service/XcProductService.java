@@ -1,4 +1,5 @@
 package com.xinchuan.console.service;
+import com.xinchuan.console.model.PageModel;
 import com.xinchuan.console.model.XcDynamic;
 import com.xinchuan.console.model.XcProduct;
 import org.springframework.web.multipart.MultipartFile;
@@ -17,7 +18,7 @@ import java.util.Optional;
  * @fileName XcProductService.java
  */
 public interface XcProductService {
-    public List<XcProduct> allProduct();
+    public PageModel<XcProduct> allProduct(XcProduct productForm);
 
     public void deleteProduct(String ids[]);
 
@@ -25,7 +26,7 @@ public interface XcProductService {
 
     String saveProduct(XcProduct product);
 
-    int updateProduct(XcProduct product);
+    public String updateProduct(XcProduct product);
 
     int updateStatusProduct(int isShow, Long id);
 

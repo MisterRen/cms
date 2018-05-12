@@ -1,19 +1,14 @@
 package com.xinchuan.console.service.impl;
 
-import com.xinchuan.console.common.UploadImageUtil;
 import com.xinchuan.console.dao.XcDynamicRepository;
+import com.xinchuan.console.dao.page.XcDynamicPage;
+import com.xinchuan.console.model.PageModel;
 import com.xinchuan.console.model.XcDynamic;
-import com.xinchuan.console.model.XcTeamManage;
 import com.xinchuan.console.service.XcDynamicService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Id;
-import javax.persistence.Persistence;
-import java.io.File;
 import java.util.List;
 import java.util.Optional;
 
@@ -28,14 +23,15 @@ import java.util.Optional;
  * @fileName XcDynamicServiceImpl.java
  */
 @Service
-public class XcDynamicServiceImpl implements XcDynamicService {
+public class XcDynamicServiceImpl  implements XcDynamicService{
     @Autowired
     private XcDynamicRepository dynamicRepository;
-    private static  String imgPath="\\upload\\company";
+    @Autowired
+    private XcDynamicPage dynamicPage;
 
     @Override
-    public List<XcDynamic> allDynamic(XcDynamic dynamicForm) {
-        return dynamicRepository.findAll(dynamicForm.getTitle(),dynamicForm.getStartTime(),dynamicForm.getEndTime());
+    public PageModel<XcDynamic>  allDynamic(XcDynamic dynamicForm) {
+        return dynamicPage.queryDynamicPage(dynamicForm);
     }
 
     @Override
@@ -44,28 +40,24 @@ public class XcDynamicServiceImpl implements XcDynamicService {
         for (String id:ids) dynamicRepository.deleteById(Long.valueOf(id));
     }
 
+
     @Override
     public List<XcDynamic> findH5List() {
-        return dynamicRepository.findH5List();
+      /*  return dynamicRepository.findH5List();*/
+        return null;
     }
+
 
     @Override
     @Transactional
     public String saveDynamic(XcDynamic dynamic) {
             try {
-                EntityManagerFactory factory= Persistence.createEntityManagerFactory("MyJPA");
-                EntityManager em=factory.createEntityManager();
-                em.getTransaction().begin();//开始事物
-                //Session.save()-->Persist();
-                em.persist(dynamic); //持久化到数据库
-                em.getTransaction().commit();
-                em.close();
-                factory.close();
+                dynamicRepository.save(dynamic);
             } catch (Exception e) {
                 e.printStackTrace();
                 return "保存失败！";
             }
-        return null;
+        return "success";
     }
     @Override
     public Optional<XcDynamic> findById(String id) {
@@ -74,12 +66,14 @@ public class XcDynamicServiceImpl implements XcDynamicService {
     }
 
     @Override
-    public int updateDynamic(XcDynamic dynamic) {
-        return dynamicRepository.updateDynamic(dynamic);
+    public String updateDynamic(XcDynamic dynamic) {
+        try {
+            dynamicRepository.save(dynamic);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "更新失败！";
+        }
+        return "success";
     }
 
-    @Override
-    public int updateStatusDynamic(int isShow,Long id) {
-        return dynamicRepository.updateStatusDynamic(isShow,id);
-    }
 }

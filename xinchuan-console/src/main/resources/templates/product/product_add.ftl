@@ -18,7 +18,7 @@
 
 <body>
 <div class="x-body">
-    <form class="layui-form" id="prodect">
+    <form class="layui-form" id="prodectForm">
         <div class="layui-form-item">
             <label for="prodectIcon" class="layui-form-label">
                 <span class="x-red">*</span>产品icon
@@ -28,7 +28,7 @@
                     <button type="button" class="layui-btn" id="test1">上传图片</button>
                     <div class="layui-upload-list">
                         <img class="layui-upload-img" id="demo1">
-                        <input type="hidden" id="pic">
+                        <input type="hidden" id="pic" name="prodectIcon">
                         <p id="demoText"></p>
                     </div>
                 </div>
@@ -36,7 +36,7 @@
         </div>
         <div class="layui-form-item">
             <label for="createTime" class="layui-form-label">
-                <span class="x-red">*</span>动态日期
+                <span class="x-red">*</span>日期
             </label>
             <div class="layui-input-inline">
                 <input type="text" id="createTime" name="createTime" required lay-verify="required"
@@ -48,7 +48,7 @@
                 <span class="x-red">*</span>产品名称
             </label>
             <div class="layui-input-block">
-                <input type="text" id="productName" name="productName" required lay-verify="required"
+                <input type="text" id="prodectName" name="prodectName" placeholder="最大长度在2-30之间" minlength="2" maxlength="20" required lay-verify="required"
                        autocomplete="off" class="layui-input">
             </div>
         </div>
@@ -58,7 +58,7 @@
                 <span class="x-red">*</span>产品简介
             </label>
             <div class="layui-input-block">
-                <textarea name="summary"  required  lay-verify="required"  placeholder="请输入"
+                <textarea name="summary"  required  lay-verify="required"  placeholder="最大长度在10-300之间"
                           class="layui-textarea"></textarea>
             </div>
         </div>
@@ -76,13 +76,13 @@
                 <span class="x-red">*</span>产品顺序
             </label>
             <div class="layui-input-inline">
-                <input type="number" class="layui-input" name="level" id="level" min="1" max="7">
+                <input type="number" class="layui-input"  required  lay-verify="required" name="level" id="level" min="1" max="7">
             </div>
         </div>
         <div class="layui-form-item">
             <label for="L_repass" class="layui-form-label">
             </label>
-            <button class="layui-btn"  onclick="save()" id="dynamicAdd">
+            <button class="layui-btn" lay-filter="dynamicAdd" lay-submit="" id="dynamicAdd">
                 增加
             </button>
             <button type="reset" class="layui-btn layui-btn-primary">重置</button>
@@ -143,32 +143,76 @@
 
         //自定义验证规则
         form.verify({
-            title: function (value) {
-                if (value.length >100 || value.length<10) {
-                    return '标题字数限制10~100';
+            prodectName: function (value) {
+                if (value.length >20 || value.length<2) {
+                    return '产品名称字数限制2~20';
+                }
+            },
+            summary: function (value) {
+                if (value.length >20 || value.length<200) {
+                    return '产品简介字数限制20~200';
+                }
+            },
+            level: function (value) {
+                if (value >7 || value<0) {
+                    return '产品级别在1-7之间';
                 }
             }
         });
+        //监听提交
+        form.on('submit(dynamicAdd)', function(data){
+            console.log(data);
+            data.field.isShow = data.field.isShow=='on'?0:1;
+            $.ajax({
+                url:'/product/productSave',
+                data:data.field,
+                type:"POST",
+                dataType:'JSON',
+                error:function (request){
+                    layer.alert("网络超时");
+                },
+                success: function (data) {
+                    if (data.success) {
+                        layer.alert("增加成功", {icon: 6}, function () {
+                            this.index;
+                            // 获得frame索引
+                            if(window.name != ""){
+                                var index = parent.layer.getFrameIndex(window.name);
+                                //关闭当前frame
+                                parent.layer.close(index);
+                            }else{
+                                layer.closeAll();
+                                $('.layui-form')[0].reset();
+                            }
+                        })
+                    } else {// 提示失败
+                        layer.alert(data, {title: '提示信息', icon: 5});
+                    }
+                }
+            });
+            return false;
+        });
+
     });
 
     function save() {
         //var fd = new FormData();
-        var formData = new FormData($("#product")[0]);
+        var formData = $("#prodectForm").serialize();
         $.ajax({
-            cache: true,
             type: "post",
             url: "/product/productSave",
-            data: formData,  // 你的formid
-            async: false,
-           // contentType: false,   //jax 中 contentType 设置为 false 是为了避免 JQuery 对其操作，从而失去分界符，而使服务器不能正常解析文件
-           // processData: false,   //当设置为true的时候,jquery ajax 提交的时候不会序列化 data，而是直接使用data
+            data: formData,
+            dataType: 'JSON',
+            cache: false,                      // 不缓存
+            processData: false,                // jQuery不要去处理发送的数据
+            contentType: false,
             error:function (request){
-                parent.layer.alert("网络超时");
+               layer.alert("网络超时");
             },
             success: function (data) {
                 if (data.success) {
                     layer.alert("增加成功", {icon: 6}, function () {
-                        location.href = "/product/findAll"
+                        //location.href = "/product/findAll"
                     })
                 } else {// 提示失败
                     layer.alert(data, {title: '提示信息', icon: 5});

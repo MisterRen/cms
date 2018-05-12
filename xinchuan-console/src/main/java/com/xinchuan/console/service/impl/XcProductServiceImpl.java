@@ -1,18 +1,13 @@
 package com.xinchuan.console.service.impl;
 
-import com.xinchuan.console.common.UploadImageUtil;
 import com.xinchuan.console.dao.XcProductRepository;
-import com.xinchuan.console.model.XcDynamic;
+import com.xinchuan.console.dao.page.XcProductPage;
+import com.xinchuan.console.model.PageModel;
 import com.xinchuan.console.model.XcProduct;
 import com.xinchuan.console.service.XcProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.multipart.MultipartFile;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
-import java.io.File;
 import java.util.List;
 import java.util.Optional;
 
@@ -27,14 +22,16 @@ import java.util.Optional;
  * @fileName XcProductServiceImpl.java
  */
 @Service
-public class XcProductServiceImpl implements XcProductService {
+public class XcProductServiceImpl  implements XcProductService {
     @Autowired
     private XcProductRepository productRepository;
-    private static  String imgPath="product";
+
+    @Autowired
+    private XcProductPage productPage;
 
     @Override
-    public List<XcProduct> allProduct() {
-        return productRepository.findAll();
+    public PageModel<XcProduct> allProduct(XcProduct productForm) {
+        return productPage.queryXcProductPage(productForm);
     }
 
     @Override
@@ -50,14 +47,7 @@ public class XcProductServiceImpl implements XcProductService {
     @Override
     public String saveProduct(XcProduct product) {
         try {
-            EntityManagerFactory factory= Persistence.createEntityManagerFactory("MyJPA");
-            EntityManager em=factory.createEntityManager();
-            em.getTransaction().begin();//开始事物
-            //Session.save()-->Persist();
-            em.persist(product); //持久化到数据库
-            em.getTransaction().commit();
-            em.close();
-            factory.close();
+            productRepository.save(product);
         } catch (Exception e) {
             e.printStackTrace();
             return "保存失败！";
@@ -66,13 +56,19 @@ public class XcProductServiceImpl implements XcProductService {
     }
 
     @Override
-    public int updateProduct(XcProduct product) {
-        return productRepository.updateProduct(product);
+    public String updateProduct(XcProduct product) {
+        try {
+            productRepository.save(product);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "更新失败！";
+        }
+        return "success";
     }
 
     @Override
     public int updateStatusProduct(int isShow, Long id) {
-        return productRepository.updateStatusProduct(isShow,id);
+        return 0;
     }
 
     @Override

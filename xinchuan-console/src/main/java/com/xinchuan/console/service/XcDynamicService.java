@@ -1,5 +1,6 @@
 package com.xinchuan.console.service;
 
+import com.xinchuan.console.model.PageModel;
 import com.xinchuan.console.model.XcDynamic;
 
 import java.util.List;
@@ -16,7 +17,7 @@ import java.util.Optional;
  * @fileName XcDynamicService.java
  */
 public interface XcDynamicService {
-    public List<XcDynamic> allDynamic(XcDynamic dynamic);
+    public PageModel<XcDynamic> allDynamic(XcDynamic dynamic);
 
     public void deleteDynamic(String ids[]);
 
@@ -24,9 +25,7 @@ public interface XcDynamicService {
 
     String saveDynamic(XcDynamic dynamic);
 
-    int updateDynamic(XcDynamic dynamic);
-
-    int updateStatusDynamic(int isShow, Long id);
+    String updateDynamic(XcDynamic dynamic);
 
     Optional<XcDynamic> findById(String id);
 
