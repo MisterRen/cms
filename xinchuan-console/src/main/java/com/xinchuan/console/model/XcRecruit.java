@@ -1,9 +1,9 @@
 package com.xinchuan.console.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 /**
  * <p>
@@ -22,8 +22,13 @@ public class XcRecruit {
     @GeneratedValue
     private Long id;
     private String postName;//岗位名称
-    private String duty;//职责
-    private Integer requirements;//要求
+
+    @OneToMany(mappedBy = "dutyId",cascade = CascadeType.ALL)
+    private List<XcRecruitDutyClaim> duty = new ArrayList<XcRecruitDutyClaim>();//职责
+
+    @OneToMany(mappedBy = "requireId",cascade = CascadeType.ALL)
+    private List<XcRecruitRequireClaim> requirements = new ArrayList<XcRecruitRequireClaim>();//要求
+
     private Date createTime;//时间
 
     public Long getId() {
@@ -34,27 +39,12 @@ public class XcRecruit {
         this.id = id;
     }
 
-    public String getPostName() {
-        return postName;
-    }
 
-    public void setPostName(String postName) {
-        this.postName = postName;
-    }
-
-    public String getDuty() {
-        return duty;
-    }
-
-    public void setDuty(String duty) {
-        this.duty = duty;
-    }
-
-    public Integer getRequirements() {
+    public List<XcRecruitRequireClaim> getRequirements() {
         return requirements;
     }
 
-    public void setRequirements(Integer requirements) {
+    public void setRequirements(List<XcRecruitRequireClaim> requirements) {
         this.requirements = requirements;
     }
 
@@ -64,5 +54,21 @@ public class XcRecruit {
 
     public void setCreateTime(Date createTime) {
         this.createTime = createTime;
+    }
+
+    public String getPostName() {
+        return postName;
+    }
+
+    public void setPostName(String postName) {
+        this.postName = postName;
+    }
+
+    public List<XcRecruitDutyClaim> getDuty() {
+        return duty;
+    }
+
+    public void setDuty(List<XcRecruitDutyClaim> duty) {
+        this.duty = duty;
     }
 }

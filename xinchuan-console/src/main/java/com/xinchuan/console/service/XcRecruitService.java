@@ -1,5 +1,9 @@
 package com.xinchuan.console.service;
 
+import com.xinchuan.console.model.XcRecruit;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+
 /**
  * <p>
  * 招聘service
@@ -11,4 +15,11 @@ package com.xinchuan.console.service;
  * @fileName XcRecruitService.java
  */
 public interface XcRecruitService {
+
+    Page<XcRecruit> pageQuery(Pageable pageable);
+
+    void deleteNews(Long id);
+
+
+    void saveOrUpdate(XcRecruit xcRecruit);
 }
