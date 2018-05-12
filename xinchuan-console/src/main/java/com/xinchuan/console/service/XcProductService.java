@@ -30,5 +30,5 @@ public interface XcProductService {
 
     int updateStatusProduct(int isShow, Long id);
 
-     Optional<XcProduct> findById(String id);
+     Optional<XcProduct> findById(Long id);
 }

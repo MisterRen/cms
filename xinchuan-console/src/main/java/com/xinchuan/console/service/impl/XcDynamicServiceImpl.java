@@ -60,8 +60,8 @@ public class XcDynamicServiceImpl  implements XcDynamicService{
         return "success";
     }
     @Override
-    public Optional<XcDynamic> findById(String id) {
-        Optional<XcDynamic> dynamic=dynamicRepository.findById(Long.valueOf(id));
+    public Optional<XcDynamic> findById(Long id) {
+        Optional<XcDynamic> dynamic=dynamicRepository.findById(id);
         return dynamic;
     }
 

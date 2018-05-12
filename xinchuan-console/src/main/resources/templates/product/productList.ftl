@@ -39,7 +39,7 @@
     </div>
     <xblock>
         <button class="layui-btn layui-btn-danger" onclick="delAll()"><i class="layui-icon"></i>批量删除</button>
-        <button class="layui-btn" onclick="x_admin_show('添加产品','productAdd')"><i class="layui-icon"></i>添加</button>
+        <button class="layui-btn" onclick="x_admin_show('添加产品','saveOrUpdatePage')"><i class="layui-icon"></i>添加</button>
         <span class="x-right" style="line-height:40px">共有数据：${products.totalCount} 条</span>
     </xblock>
     <table class="layui-table">
@@ -83,7 +83,7 @@
             </td>
             <td>${product.level}</td>
             <td class="td-manage">
-                <a title="编辑" onclick="x_admin_show('编辑','findById?id='+${product.id})" href="javascript:;">
+                <a title="编辑" onclick="x_admin_show('编辑','saveOrUpdatePage?id='+${product.id})" href="javascript:;">
                     <i class="layui-icon layui-btn-big">&#xe642;</i>
                 </a>
             </td>

@@ -27,6 +27,6 @@ public interface XcDynamicService {
 
     String updateDynamic(XcDynamic dynamic);
 
-    Optional<XcDynamic> findById(String id);
+    Optional<XcDynamic> findById(Long id);
 
 }

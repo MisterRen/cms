@@ -52,9 +52,9 @@ public class ProductController {
         }
         return json;
     }
-    @GetMapping("/findById")
-    public ModelAndView findById(String id){
-        ModelAndView modelAndView=new ModelAndView("product/product_update");
+    @GetMapping("/saveOrUpdatePage")
+    public ModelAndView findById(@RequestParam(value = "id",defaultValue = "-1",required = false) Long id){
+        ModelAndView modelAndView=new ModelAndView("product/product_saveOrUpdate");
         XcProduct product=productService.findById(id).orElse(new XcProduct());
         modelAndView.addObject("product",product);
         return modelAndView;

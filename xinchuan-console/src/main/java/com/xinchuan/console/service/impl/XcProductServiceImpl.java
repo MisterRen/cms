@@ -72,7 +72,7 @@ public class XcProductServiceImpl  implements XcProductService {
     }
 
     @Override
-    public Optional<XcProduct> findById(String id) {
+    public Optional<XcProduct> findById(Long id) {
         Optional<XcProduct> product=productRepository.findById(Long.valueOf(id));
         return product;
     }

@@ -75,9 +75,9 @@ public class DynamicController {
         }
         return json;
     }
-    @GetMapping("/findById")
-    public ModelAndView findById(String id){
-        ModelAndView modelAndView=new ModelAndView("dynamic/dynamic-update");
+    @GetMapping("/saveOrUpdatePage")
+    public ModelAndView findById(@RequestParam(value = "id",defaultValue = "-1",required = false) Long id){
+        ModelAndView modelAndView=new ModelAndView("dynamic/dynamic_saveOrUpdate");
         XcDynamic dynamic=dynamicService.findById(id).orElse(new XcDynamic());
         modelAndView.addObject("dynamic",dynamic);
         return modelAndView;
