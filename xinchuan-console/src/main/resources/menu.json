@@ -38,7 +38,7 @@
         "id": 10022,
         "name": "团队发布",
         "icon": "",
-        "url":"",
+        "url":"/teamManager/saveOrUpdate",
         "parent": 1002
       }
     ]

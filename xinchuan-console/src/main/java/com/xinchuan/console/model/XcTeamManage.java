@@ -26,7 +26,7 @@ public class XcTeamManage {
     private String position;//岗位
     private String profile;//简介
     private Integer isShow;//是否显示
-    private Date createTime;//时间
+    private String createTime;//时间
 
     public Long getId() {
         return id;
@@ -76,11 +76,11 @@ public class XcTeamManage {
         this.isShow = isShow;
     }
 
-    public Date getCreateTime() {
+    public String getCreateTime() {
         return createTime;
     }
 
-    public void setCreateTime(Date createTime) {
+    public void setCreateTime(String createTime) {
         this.createTime = createTime;
     }
 }

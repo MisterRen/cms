@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
-import java.util.Optional;
 
 /**
  * @author shiJiaLiang
@@ -24,40 +23,39 @@ public class XcTeamManagerController {
     XcTeamManageService xcTeamManageService;
 
     @GetMapping("/findAll")
-    public ModelAndView findAll(){
+    public ModelAndView findAll() {
         ModelAndView modelAndView = new ModelAndView("team/team_index");
-        List<XcTeamManage> xcTeamManageList=xcTeamManageService.findAll();
-        modelAndView.addObject("teamList",xcTeamManageList);
+        List<XcTeamManage> xcTeamManageList = xcTeamManageService.findAll();
+        modelAndView.addObject("teamList", xcTeamManageList);
         return modelAndView;
     }
 
-    @GetMapping("/goAddPage")
-    public ModelAndView goAddPage(){
+    @GetMapping("/saveOrUpdate")
+    public ModelAndView addView(@RequestParam(value = "id",defaultValue = "-1",required = false) String id){
         ModelAndView modelAndView = new ModelAndView("team/team_add");
+        modelAndView.addObject("xcTeamManage",  xcTeamManageService.findById(id).orElse(new XcTeamManage()));
         return modelAndView;
     }
 
-    @PostMapping("/saveTeamManager")
-    public AjaxJson saveTeamManager(XcTeamManage xcTeamManage){
-        AjaxJson json=new AjaxJson();
-        boolean saveFlag=true;
+    @PostMapping("/add")
+    public AjaxJson add(XcTeamManage xcTeamManage){
+        AjaxJson ajaxJson=new AjaxJson();
         try {
-            xcTeamManage.setUserIcon("111");
-            xcTeamManageService.saveAndFlush(xcTeamManage);
-            json.setSuccess(true);
-            json.setMsg("添加成功");
+            ajaxJson.setSuccess(true);
+            ajaxJson.setMsg("添加成功");
+            xcTeamManageService.saveOrUpdate(xcTeamManage);
+
         } catch (Exception e) {
-            json.setSuccess(false);
-            json.setMsg("添加失败");
+            ajaxJson.setSuccess(false);
+            ajaxJson.setMsg("添加失败");
             e.printStackTrace();
-            log.error("*******teamManager:saveTeamManager*******出错啦"+e);
         }
-        return json;
+        return new AjaxJson();
     }
 
     @PostMapping("/delAll")
-    public AjaxJson delAll(String[] ids){
-        AjaxJson ajaxJson=new AjaxJson();
+    public AjaxJson delAll(String[] ids) {
+        AjaxJson ajaxJson = new AjaxJson();
         try {
             xcTeamManageService.delAll(ids);
             ajaxJson.setSuccess(true);
@@ -66,17 +64,21 @@ public class XcTeamManagerController {
             ajaxJson.setSuccess(false);
             ajaxJson.setMsg("删除失败");
             e.printStackTrace();
-            log.error("*****teamManager:delAll*******"+e.getMessage());
+            log.error("*****teamManager:delAll*******" + e.getMessage());
         }
         return ajaxJson;
     }
 
-    @GetMapping("/findById")
-    public ModelAndView findById(String id){
-        ModelAndView modelAndView=new ModelAndView("team/team_edit");
-        XcTeamManage xcTeamManage=xcTeamManageService.findById(id).orElse(new XcTeamManage());
-        modelAndView.addObject("xcTeamManage",xcTeamManage);
-        return modelAndView;
-    }
 
+    @GetMapping("/findByDateAndName")
+    public ModelAndView findByDateAndName(String startDate, String endDate, String name) {
+        ModelAndView modelAndView = new ModelAndView("team/team_index");
+        List<XcTeamManage> xcTeamManageList = xcTeamManageService.findByCreateTimeAndName(startDate,endDate,name);
+        modelAndView.addObject("startDate", startDate);
+        modelAndView.addObject("endDate", endDate);
+        modelAndView.addObject("name", name);
+        modelAndView.addObject("teamList", xcTeamManageList);
+        return modelAndView;
+
+    }
 }

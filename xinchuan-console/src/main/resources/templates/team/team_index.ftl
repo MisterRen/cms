@@ -30,17 +30,17 @@
         <i class="layui-icon" style="line-height:30px">ဂ</i></a>
 </div>
 <div class="x-body">
-    <div class="layui-row">
-        <form class="layui-form layui-col-md12 x-so">
-            <input class="layui-input" placeholder="开始日" name="start" id="start">
-            <input class="layui-input" placeholder="截止日" name="end" id="end">
-            <input type="text" name="username" placeholder="请输入用户名" autocomplete="off" class="layui-input">
-            <button class="layui-btn" lay-submit="" lay-filter="sreach"><i class="layui-icon">&#xe615;</i></button>
-        </form>
-    </div>
+    <form class="layui-row" action="/teamManager/findByDateAndName" method="get">
+        <div class="layui-form layui-col-md12 x-so">
+            <input class="layui-input" placeholder="开始日" name="startDate" id="startDate" value="${startDate!""}">
+            <input class="layui-input" placeholder="截止日" name="endDate" id="endDate" value="${endDate!""}">
+            <input  name="name" id="name" placeholder="请输入用户名"  class="layui-input" value="${name!""}">
+            <button  class="layui-btn"><i class="layui-icon">&#xe615;</i></button>
+        </div>
+    </form>
     <xblock>
         <button class="layui-btn layui-btn-danger" onclick="delAll()"><i class="layui-icon"></i>批量删除</button>
-        <button class="layui-btn" onclick="x_admin_show('添加用户','goAddPage')"><i class="layui-icon"></i>添加
+        <button class="layui-btn" onclick="x_admin_show('添加用户','saveOrUpdate')"><i class="layui-icon"></i>添加
         </button>
         <span class="x-right" style="line-height:40px">共有数据：${teamList?size} 条</span>
     </xblock>
@@ -72,16 +72,16 @@
             <td>${team.name}</td>
             <td>${team.profile}</td>
             <td>${team.position}</td>
-            <td>${team.createTime?string("yyyy-MM-dd")}</td>
+            <td>${team.createTime}</td>
             <td class="td-status">
                 <#if team.isShow==1>
-                    <span class="layui-btn layui-btn-normal layui-btn-mini">显示</span>
-                <#else>
                     <span class="layui-btn layui-btn-disabled layui-btn-mini">不显示</span>
+                <#else>
+                    <span class="layui-btn layui-btn-normal layui-btn-mini">显示</span>
                 </#if>
             </td>
             <td class="td-manage">
-                <a title="编辑" onclick="x_admin_show('编辑','findById?id='+${team.id})" href="javascript:;">
+                <a title="编辑" onclick="x_admin_show('编辑','saveOrUpdate?id='+${team.id})" href="javascript:;">
                     <i class="layui-icon">&#xe642;</i>
                 </a>
             </td>
@@ -104,18 +104,15 @@
 <script>
     layui.use('laydate', function () {
         var laydate = layui.laydate;
-
         //执行一个laydate实例
         laydate.render({
-            elem: '#start' //指定元素
+            elem: '#startDate' //指定元素
         });
-
         //执行一个laydate实例
         laydate.render({
-            elem: '#end' //指定元素
+            elem: '#endDate' //指定元素
         });
     });
-
 
     /*删除所有*/
     function delAll(argument) {
