@@ -17,7 +17,7 @@ import java.util.Date;
  * @fileName XcNews.java
  */
 @Entity
-public class XcNews {
+public class XcNews extends  SeracherForm{
     @Id
     @GeneratedValue
     private Long id;

@@ -1,6 +1,7 @@
 package com.xinchuan.console.service;
 
 import com.xinchuan.console.common.AjaxMsg;
+import com.xinchuan.console.model.PageModel;
 import com.xinchuan.console.model.XcNews;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -18,7 +19,7 @@ import org.springframework.data.domain.Pageable;
  */
 public interface XcNewsService {
 
-    Page<XcNews> pageQuery(Pageable pageable);
+    PageModel<XcNews> pageQuery(XcNews news);
 
     void deleteNews(Long id);
 

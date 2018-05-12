@@ -2,6 +2,8 @@ package com.xinchuan.console.service.impl;
 
 import com.xinchuan.console.common.AjaxMsg;
 import com.xinchuan.console.dao.XcNewsRepository;
+import com.xinchuan.console.dao.page.XcNewsPage;
+import com.xinchuan.console.model.PageModel;
 import com.xinchuan.console.model.XcNews;
 import com.xinchuan.console.service.XcNewsService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,10 +30,12 @@ public class XcNewsServiceImpl implements XcNewsService {
 
     @Autowired
     private XcNewsRepository xcNewsRepository;
+    @Autowired
+    private XcNewsPage newsPage;
 
     @Override
-    public Page<XcNews> pageQuery(Pageable pageable) {
-        return xcNewsRepository.findAll(pageable);
+    public PageModel<XcNews> pageQuery(XcNews news) {
+        return newsPage.queryXcNewsPage(news);
     }
 
     @Override

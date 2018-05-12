@@ -33,7 +33,7 @@
             </div>
             <div class="layui-input-inline">
                 <div class="layui-upload">
-                    <div class="layui-upload-drag">
+                    <div class="layui-upload-drag" style="width: 100px;height: 100px">
                         <img class="layui-upload-img" style="width: 100px;height: 100px" src="${product.prodectIcon!''}" id="demo1">
                         <input type="hidden" id="pic" name="prodectIcon" value="${product.prodectIcon!''}">
                         <p id="demoText"></p>

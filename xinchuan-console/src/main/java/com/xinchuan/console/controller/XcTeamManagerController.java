@@ -29,6 +29,7 @@ public class XcTeamManagerController {
         ModelAndView modelAndView = new ModelAndView("team/team_index");
         PageModel<XcTeamManage> xcTeamManagePageModel=xcTeamManageService.allXcTeamManage(xcTeamManage);
         modelAndView.addObject("teamList", xcTeamManagePageModel);
+        modelAndView.addObject("seracheForm", xcTeamManage);
         return modelAndView;
     }
 

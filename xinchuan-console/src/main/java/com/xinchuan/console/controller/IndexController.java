@@ -38,7 +38,7 @@ public class IndexController {
     @Autowired
     private XcAdminService xcAdminService;
 
-    @GetMapping("/index.htm")
+    @GetMapping("/index")
     public ModelAndView index(){
         ModelAndView modelAndView = new ModelAndView("xc/index");
         XcAdmin admin = xcAdminService.findOne(1l);

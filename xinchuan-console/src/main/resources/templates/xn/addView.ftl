@@ -59,7 +59,7 @@
             <label for="L_pass" class="layui-form-label">
                 <span class="x-red">*</span>新闻封面
             </label>
-            <div class="layui-input-block">
+<#--            <div class="layui-input-block">
                 <input type="hidden" value="${news.newsImage!''}" id="newsImage" name="newsImage" required lay-verify="required">
                 <div class="layui-upload-drag" id="uploadDemo">
                     <i class="layui-icon"></i>
@@ -68,7 +68,24 @@
                 <div class="layui-upload-drag">
                     <img style="width: 92px;height: 92px;margin: 5px;" id="translationImg">
                 </div>
+            </div>-->
+            <div class="layui-input-inline">
+            <div class="layui-upload">
+                <div class="layui-upload-drag" id="uploadDemo">
+                    <i class="layui-icon"></i>
+                    <p>点击上传，或将文件拖拽到此处(图片大小不超过1M)</p>
+                </div>
             </div>
+        </div>
+        <div class="layui-input-inline">
+            <div class="layui-upload">
+                <div class="layui-upload-drag" style="width: 100px;height: 100px">
+                    <img class="layui-upload-img" style="max-width: 100px;max-height:100px" src="${news.newsImage!''}" id="demo1">
+                    <input type="hidden" value="${news.newsImage!''}" id="newsImage" name="newsImage" required lay-verify="required">
+                    <p id="demoText"></p>
+                </div>
+            </div>
+        </div>
         </div>
         <div class="layui-form-item">
             <label for="L_repass" class="layui-form-label">
@@ -164,7 +181,7 @@
             },before:function (obj) {
                 //预读本地文件示例，不支持ie8
                 obj.preview(function(index, file, result){
-                    $('#translationImg').attr('src', result); //图片链接（base64）
+                    $('#demo1').attr('src', result); //图片链接（base64）
                 });
 
             }

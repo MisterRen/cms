@@ -23,7 +23,7 @@ public class XcTeamManagePage extends BaseSqlDaoImpl {
         if(xcTeamManage != null){
             if(StringUtils.isNotBlank(xcTeamManage.getName())){
                 hql.append(" and t.name like :name ");
-                map.put("title", "%"+xcTeamManage.getName()+"%");
+                map.put("name", "%"+xcTeamManage.getName()+"%");
             }
 
             if(StringUtils.isNotBlank(xcTeamManage.getStartTime())){

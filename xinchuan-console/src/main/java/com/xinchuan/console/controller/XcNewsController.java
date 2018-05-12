@@ -2,7 +2,9 @@ package com.xinchuan.console.controller;
 
 import com.xinchuan.console.common.AjaxJson;
 import com.xinchuan.console.common.AjaxMsg;
+import com.xinchuan.console.model.PageModel;
 import com.xinchuan.console.model.XcNews;
+import com.xinchuan.console.model.XcTeamManage;
 import com.xinchuan.console.service.XcNewsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -35,20 +37,18 @@ public class XcNewsController {
     private XcNewsService xcNewsService;
 
     @GetMapping("/listView")
-    public ModelAndView listView(){
-
-        return new ModelAndView("xn/listView");
+    public ModelAndView listView(XcNews news){
+        ModelAndView modelAndView = new ModelAndView("xn/listView");
+        modelAndView.addObject("seracheForm",news);
+        PageModel<XcNews> XcNewsPage=xcNewsService.pageQuery(news);
+        modelAndView.addObject("newsList",XcNewsPage);
+        return modelAndView;
     }
     @GetMapping("/addView")
     public ModelAndView addView(@RequestParam(value = "id",defaultValue = "-1",required = false) Long id){
         ModelAndView modelAndView = new ModelAndView("xn/addView");
         modelAndView.addObject("news",xcNewsService.findNewsById(id));
         return modelAndView;
-    }
-
-    @GetMapping("/pageQuery")
-    public Page<XcNews> pageQuery(@PageableDefault(value = 10,sort = {"id"},direction = Sort.Direction.DESC) Pageable pageable){
-        return xcNewsService.pageQuery(pageable);
     }
 
     @PostMapping("/delete")
