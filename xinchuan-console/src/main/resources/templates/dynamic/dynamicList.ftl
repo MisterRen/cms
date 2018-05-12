@@ -73,9 +73,9 @@
             <td>${dynamic.createTime}</td>
             <td>
             <#if dynamic.isShow==1>
-                <span class="layui-btn layui-btn-normal layui-btn-mini">已发布</span>
+                <span class="layui-btn layui-btn-disabled  layui-btn-mini">未发布</span>
             <#else>
-                <span class="layui-btn layui-btn-disabled layui-btn-mini">未发布</span>
+                <span class="layui-btn layui-btn-normal layui-btn-mini">已发布</span>
             </#if>
             </td>
             <td class="td-manage">
@@ -108,6 +108,7 @@
         var ids = data.toString();
         layer.confirm('确认要删除吗？' + data, function (index) {
             $.post("/dynamic/deleteDynamic", {ids: ids}, function (result) {
+                $("#currentPage").val(0);
                 location.replace(location.href);
             });
 

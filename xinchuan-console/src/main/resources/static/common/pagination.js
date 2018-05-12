@@ -4,7 +4,7 @@ layui.use(['laypage', 'layer'], function () {
     laypage.render({
         elem: 'page'
         , count: $("#totalCount").val()
-        ,limit:1
+        ,limit:10
         ,curr:$("#currentPage").val()
         , prev: '<em>上一页</em>'
         , next: '<em>下一页</em>'

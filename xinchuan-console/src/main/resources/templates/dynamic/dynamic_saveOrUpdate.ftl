@@ -25,10 +25,17 @@
             </label>
             <div class="layui-input-inline">
                 <div class="layui-upload">
-                    <button type="button" class="layui-btn" id="test1">上传图片</button>
-                    <div class="layui-upload-list">
-                        <img class="layui-upload-img" src="${dynamic.image!''}" id="demo1">
-                        <input type="hidden" id="pic">
+                    <div class="layui-upload-drag" id="uploadDemo">
+                        <i class="layui-icon"></i>
+                        <p>点击上传，或将文件拖拽到此处(图片大小不超过1M)</p>
+                    </div>
+                </div>
+            </div>
+            <div class="layui-input-inline">
+                <div class="layui-upload">
+                    <div class="layui-upload-drag">
+                        <img class="layui-upload-img" style="width: 100px;height: 100px" src="${dynamic.image!''}" id="demo1">
+                        <input type="hidden" id="pic" name="image" value="${dynamic.prodectIcon!''}">
                         <p id="demoText"></p>
                     </div>
                 </div>
@@ -61,8 +68,8 @@
                 <span class="x-red">*</span>是否显示
             </label>
             <div class="layui-input-block">
-                <input type="checkbox" name="isShow" id="isShow" lay-skin="switch" lay-text="" ON|OFF"
-               <#if dynamic.isShow??> <#if dynamic.isShow=1>checked </#if></#if>
+                <input type="checkbox" name="isShow" id="isShow" lay-skin="switch" lay-text="ON|OFF"
+               <#if dynamic.isShow??> <#if dynamic.isShow==0> checked="checked"</#if></#if>
                 >
             </div>
         </div>
@@ -102,37 +109,6 @@
                 }
             }
         });
-    });
-    layui.use(['upload'], function () {
-        var $ = layui.jquery
-                , upload = layui.upload;
-        var uploadInst = upload.render({
-            elem: '#test1'
-            , url: '/loadImgae'
-            , before: function (obj) {
-                //预读本地文件示例，不支持ie8
-                obj.preview(function (index, file, result) {
-                    $('#demo1').attr('src', result); //图片链接（base64）
-                });
-            }
-            , done: function (res) {
-                //如果上传失败
-                if (res.code > 0) {//自定义返回失败
-                    return layer.msg('上传失败');
-                } else {
-                    $('#pic').val(res.img);
-                }
-                //上传成功
-            }
-            , error: function () {
-                //演示失败状态，并实现重传
-                var demoText = $('#demoText');
-                demoText.html('<span style="color: #FF5722;">上传失败</span> <a class="layui-btn layui-btn-mini demo-reload">重试</a>');
-                demoText.find('.demo-reload').on('click', function () {
-                    uploadInst.upload();
-                });
-            }
-        });
         //监听提交
         form.on('submit(dynamicAdd)', function (data) {
             console.log(data);
@@ -154,10 +130,11 @@
                                 var index = parent.layer.getFrameIndex(window.name);
                                 //关闭当前frame
                                 parent.layer.close(index);
-                                location.replace(location.href);
+                                parent.location.reload();
                             } else {
                                 layer.closeAll();
                                 $('.layui-form')[0].reset();
+                                parent.location.reload();
                             }
                         })
                     } else {// 提示失败
@@ -169,58 +146,40 @@
         });
 
 
-    })
-
-    function save() {
-        //var fd = new FormData();
-        var formData = new FormData($("#dynamic")[0]);
-        $.ajax({
-            cache: true,
-            type: "post",
-            url: "/dynamic/dynamicSave",
-            data: formData,  // 你的formid
-            async: false,
-            // contentType: false,   //jax 中 contentType 设置为 false 是为了避免 JQuery 对其操作，从而失去分界符，而使服务器不能正常解析文件
-            // processData: false,   //当设置为true的时候,jquery ajax 提交的时候不会序列化 data，而是直接使用data
-            error: function (request) {
-                parent.layer.alert("网络超时");
-            },
-            success: function (data) {
-                if (data == "success") {
-                    layer.alert("增加成功", {icon: 6}, function () {
-                        location.href = "/dynamic/findAll"
-                    })
-                } else {// 提示失败
-                    layer.alert(data, {title: '提示信息', icon: 5});
-                }
-            }
-        });
-    }
-
-</script>
-<script>
-    /*layui.use('upload', function () {
+    });
+    layui.use(['upload'], function () {
         var $ = layui.jquery
                 , upload = layui.upload;
-        upload.render({//不自动上传
-            elem: '#test1'
-            , url: '/upload/'
-            , auto: false
-            //,multiple: true
-            , bindAction: '#demo2'
-            , choose: function (obj) {
+        var uploadInst = upload.render({
+            elem: '#uploadDemo'
+            , url: '/loadImgae'
+            , before: function (obj) {
+                //预读本地文件示例，不支持ie8
                 obj.preview(function (index, file, result) {
-              /!*      console.log(index); //得到文件索引
-                    console.log(file); //得到文件对象
-                    console.log(result); //得到文件base64编码，比如图片*!/
                     $('#demo1').attr('src', result); //图片链接（base64）
-                   /!* console.info( $('#demo1').attr('src'));*!/
-                    console.info($("input[name='file']").val());
-
+                });
+            }
+            , done: function (res) {
+                //如果上传失败
+                if (res.code > 0) {//自定义返回失败
+                    return layer.msg('上传失败');
+                } else {
+                    $('#pic').val(res.msg);
+                }
+                //上传成功
+            }
+            , error: function () {
+                //演示失败状态，并实现重传
+                var demoText = $('#demoText');
+                demoText.html('<span style="color: #FF5722;">上传失败</span> <a class="layui-btn layui-btn-mini demo-reload">重试</a>');
+                demoText.find('.demo-reload').on('click', function () {
+                    uploadInst.upload();
                 });
             }
         });
-    })*/
+
+    })
+
 
 </script>
 </body>

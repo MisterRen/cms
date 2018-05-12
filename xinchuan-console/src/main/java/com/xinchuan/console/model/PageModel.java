@@ -18,7 +18,7 @@ public class PageModel<E> implements Serializable {
 	
 	private int totalPage; //总页数
 	
-	private int currentPage = 0; //当前页数
+	private int currentPage = 10; //当前页数
 	
 	private List<E> list; //分页集合列表
 	

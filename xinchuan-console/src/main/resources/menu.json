@@ -117,9 +117,9 @@
       },
       {
         "id": 10062,
-        "name": "新增动态",
+        "name": "发布动态",
         "icon": "",
-        "url":"dynamic/saveOrUpdatePage",
+        "url":"/dynamic/saveOrUpdatePage",
         "parent": 1006
       }
     ]

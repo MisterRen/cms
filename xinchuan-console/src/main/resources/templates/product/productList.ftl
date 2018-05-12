@@ -76,9 +76,9 @@
             <td>${product.createTime}</td>
             <td>
             <#if product.isShow==1>
-                <span class="layui-btn layui-btn-normal layui-btn-mini">已发布</span>
-            <#else>
                 <span class="layui-btn layui-btn-disabled layui-btn-mini">未发布</span>
+            <#else>
+                <span class="layui-btn layui-btn-normal layui-btn-mini">已发布</span>
             </#if>
             </td>
             <td>${product.level}</td>
@@ -111,35 +111,15 @@
         });
     });
 
-    /*用户-停用*/
-    function member_stop(obj,id){
-        layer.confirm('确认要停用吗？',function(index){
 
-            if($(obj).attr('title')=='启用'){
 
-                //发异步把用户状态进行更改
-                $(obj).attr('title','停用')
-                $(obj).find('i').html('&#xe62f;');
-
-                $(obj).parents("tr").find(".td-status").find('span').addClass('layui-btn-disabled').html('已停用');
-                layer.msg('已停用!',{icon: 5,time:1000});
-
-            }else{
-                $(obj).attr('title','启用')
-                $(obj).find('i').html('&#xe601;');
-
-                $(obj).parents("tr").find(".td-status").find('span').removeClass('layui-btn-disabled').html('已启用');
-                layer.msg('已启用!',{icon: 5,time:1000});
-            }
-
-        });
-    }
 
     function delAll (argument) {
         var data = tableCheck.getData();
         var ids=data.toString();
         layer.confirm('确认要删除吗？'+data,function(index){
             $.post("/product//deleteProduct",{ids:ids},function(result){
+                $("#currentPage").val(0);
                 location.replace(location.href);
             });
 

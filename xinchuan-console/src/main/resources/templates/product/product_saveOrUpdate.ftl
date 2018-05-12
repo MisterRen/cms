@@ -25,10 +25,17 @@
             </label>
             <div class="layui-input-inline">
                 <div class="layui-upload">
-                    <button type="button" class="layui-btn" id="test1">上传图片</button>
-                    <div class="layui-upload-list">
-                        <img class="layui-upload-img" id="demo1" src="${product.prodectIcon!''}">
-                        <input type="hidden" id="pic" name="prodectIcon">
+                    <div class="layui-upload-drag" id="uploadDemo">
+                        <i class="layui-icon"></i>
+                        <p>点击上传，或将文件拖拽到此处(图片大小不超过1M)</p>
+                    </div>
+                </div>
+            </div>
+            <div class="layui-input-inline">
+                <div class="layui-upload">
+                    <div class="layui-upload-drag">
+                        <img class="layui-upload-img" style="width: 100px;height: 100px" src="${product.prodectIcon!''}" id="demo1">
+                        <input type="hidden" id="pic" name="prodectIcon" value="${product.prodectIcon!''}">
                         <p id="demoText"></p>
                     </div>
                 </div>
@@ -70,7 +77,7 @@
             </label>
             <div class="layui-input-block">
             <input type="checkbox" name="isShow" id="isShow"
-                  <#if product.isShow??> <#if product.isShow=1>checked </#if></#if>
+                  <#if product.isShow??> <#if product.isShow==0>checked="checked" </#if></#if>
                    lay-skin="switch" lay-text="ON|OFF" >
             </div>
         </div>
@@ -109,7 +116,7 @@
         var $ = layui.jquery
                 ,upload = layui.upload;
         upload.render({
-            elem: '#test1'
+            elem: '#uploadDemo'
             ,url: '/loadImgae'
             ,before: function(obj){
                 //预读本地文件示例，不支持ie8
@@ -183,10 +190,11 @@
                                 var index = parent.layer.getFrameIndex(window.name);
                                 //关闭当前frame
                                 parent.layer.close(index);
-                                location.replace(location.href);
+                                parent.location.reload();
                             }else{
                                 layer.closeAll();
                                 $('.layui-form')[0].reset();
+                                parent.location.reload();
                             }
                         })
                     } else {// 提示失败
