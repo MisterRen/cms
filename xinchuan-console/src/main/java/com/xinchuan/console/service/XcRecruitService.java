@@ -1,7 +1,6 @@
 package com.xinchuan.console.service;
 
 import com.xinchuan.console.model.XcRecruit;
-import com.xinchuan.console.model.XcRecruitOld;
 import com.xinchuan.console.model.XcTeamManage;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -21,15 +20,15 @@ import java.util.Optional;
  */
 public interface XcRecruitService {
     //XcRecruitOld
-    List<XcRecruitOld> findAll();
+    List<XcRecruit> findAll();
 
-    void saveAndFlush(XcRecruitOld xcRecruitOld);
+    void saveAndFlush(XcRecruit xcRecruit);
 
     void delAll(String[] ids);
 
-    Optional<XcRecruitOld> findById(String id);
+    Optional<XcRecruit> findById(String id);
 
-    List<XcRecruitOld> findByCreateTimeAndName(String startDate,String endDate,String name);
+    List<XcRecruit> findByCreateTimeAndName(String startDate,String endDate,String name);
 
-    void saveOrUpdate(XcRecruitOld xcRecruitOld);
+    void saveOrUpdate(XcRecruit xcRecruit);
 }

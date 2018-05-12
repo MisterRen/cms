@@ -1,7 +1,7 @@
 package com.xinchuan.console.controller;
 
 import com.xinchuan.console.common.AjaxJson;
-import com.xinchuan.console.model.XcRecruitOld;
+import com.xinchuan.console.model.XcRecruit;
 import com.xinchuan.console.service.XcRecruitService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,7 +32,7 @@ public class XcRecruitController {
     @GetMapping("/findAll")
     public ModelAndView findAll() {
         ModelAndView modelAndView = new ModelAndView("recruit/listView");
-        List<XcRecruitOld> xcRecruitOldList = xcRecruitService.findAll();
+        List<XcRecruit> xcRecruitOldList = xcRecruitService.findAll();
         modelAndView.addObject("xcRecruitOldList", xcRecruitOldList);
         return modelAndView;
     }
@@ -40,18 +40,17 @@ public class XcRecruitController {
     @GetMapping("/saveOrUpdate")
     public ModelAndView addView(@RequestParam(value = "id",defaultValue = "-1",required = false) String id){
         ModelAndView modelAndView = new ModelAndView("recruit/addView");
-        modelAndView.addObject("xcTeamManage",  xcRecruitService.findById(id).orElse(new XcRecruitOld()));
+        modelAndView.addObject("xcTeamManage",  xcRecruitService.findById(id).orElse(new XcRecruit()));
         return modelAndView;
     }
 
     @PostMapping("/add")
-    public AjaxJson add(XcRecruitOld xcRecruitOld){
+    public AjaxJson add(XcRecruit xcRecruit){
         AjaxJson ajaxJson=new AjaxJson();
         try {
+            xcRecruitService.saveOrUpdate(xcRecruit);
             ajaxJson.setSuccess(true);
             ajaxJson.setMsg("添加成功");
-            xcRecruitService.saveOrUpdate(xcRecruitOld);
-
         } catch (Exception e) {
             ajaxJson.setSuccess(false);
             ajaxJson.setMsg("添加失败");
@@ -71,7 +70,7 @@ public class XcRecruitController {
             ajaxJson.setSuccess(false);
             ajaxJson.setMsg("删除失败");
             e.printStackTrace();
-            log.error("************" + e.getMessage());
+            //log.error("************" + e.getMessage());
         }
         return ajaxJson;
     }
@@ -80,7 +79,7 @@ public class XcRecruitController {
     @GetMapping("/findByDateAndName")
     public ModelAndView findByDateAndName(String startDate, String endDate, String postName) {
         ModelAndView modelAndView = new ModelAndView("recruit/listView");
-        List<XcRecruitOld> xcRecruitOldList = xcRecruitService.findByCreateTimeAndName(startDate,endDate,postName);
+        List<XcRecruit> xcRecruitOldList = xcRecruitService.findByCreateTimeAndName(startDate,endDate,postName);
         modelAndView.addObject("startDate", startDate);
         modelAndView.addObject("endDate", endDate);
         modelAndView.addObject("postName", postName);

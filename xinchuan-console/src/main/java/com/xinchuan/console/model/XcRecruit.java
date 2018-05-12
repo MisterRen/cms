@@ -1,5 +1,7 @@
 package com.xinchuan.console.model;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Date;
@@ -22,13 +24,13 @@ public class XcRecruit {
     @GeneratedValue
     private Long id;
     private String postName;//岗位名称
-
-    @OneToMany(mappedBy = "dutyId",cascade = CascadeType.ALL)
-    private List<XcRecruitDutyClaim> duty = new ArrayList<XcRecruitDutyClaim>();//职责
-
-    @OneToMany(mappedBy = "requireId",cascade = CascadeType.ALL)
-    private List<XcRecruitRequireClaim> requirements = new ArrayList<XcRecruitRequireClaim>();//要求
-
+    @Lob
+    @Column(columnDefinition="TEXT")
+    private String duty;//职责
+    @Lob
+    @Column(columnDefinition="TEXT")
+    private String requirements;//要求
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date createTime;//时间
 
     public Long getId() {
@@ -37,15 +39,6 @@ public class XcRecruit {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-
-    public List<XcRecruitRequireClaim> getRequirements() {
-        return requirements;
-    }
-
-    public void setRequirements(List<XcRecruitRequireClaim> requirements) {
-        this.requirements = requirements;
     }
 
     public Date getCreateTime() {
@@ -64,11 +57,19 @@ public class XcRecruit {
         this.postName = postName;
     }
 
-    public List<XcRecruitDutyClaim> getDuty() {
+    public String getDuty() {
         return duty;
     }
 
-    public void setDuty(List<XcRecruitDutyClaim> duty) {
+    public void setDuty(String duty) {
         this.duty = duty;
+    }
+
+    public String getRequirements() {
+        return requirements;
+    }
+
+    public void setRequirements(String requirements) {
+        this.requirements = requirements;
     }
 }

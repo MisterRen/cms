@@ -1,5 +1,6 @@
 package com.xinchuan.console.controller;
 
+import com.baidu.ueditor.ActionEnter;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.xinchuan.console.common.Menu;
@@ -12,8 +13,11 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import sun.misc.IOUtils;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -34,7 +38,7 @@ public class IndexController {
     @Autowired
     private XcAdminService xcAdminService;
 
-    @GetMapping("/index")
+    @GetMapping("/index.htm")
     public ModelAndView index(){
         ModelAndView modelAndView = new ModelAndView("xc/index");
         XcAdmin admin = xcAdminService.findOne(1l);
@@ -80,4 +84,8 @@ public class IndexController {
 
         return modelAndView;
     }
+
+
+
+
 }

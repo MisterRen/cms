@@ -34,11 +34,6 @@ spring:
     dialect: org.hibernate.dialect.MySQL5Dialect
     naming:
          physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
-  mvc:
-    # 指定静态资源处理路径
-    view:
-      suffix: .html
-      prefix: /
   devtools:
     restart:
       enabled: true

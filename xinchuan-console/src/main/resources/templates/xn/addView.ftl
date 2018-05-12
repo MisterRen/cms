@@ -13,6 +13,11 @@
     <script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
     <script type="text/javascript" src="/lib/layui/layui.js" charset="utf-8"></script>
     <script type="text/javascript" src="/js/xadmin.js"></script>
+    <script type="text/javascript" charset="utf-8" src="/ueditor/ueditor.config.js"></script>
+    <script type="text/javascript" charset="utf-8" src="/ueditor/ueditor.all.js"> </script>
+    <!--建议手动加在语言，避免在ie下有时因为加载语言失败导致编辑器加载失败-->
+    <!--这里加载的语言文件会覆盖你在配置项目里添加的语言类型，比如你在配置项目里配置的是英文，这里加载的中文，那最后就是中文-->
+    <script type="text/javascript" charset="utf-8" src="/ueditor/lang/zh-cn/zh-cn.js"></script>
     <!-- 让IE8/9支持媒体查询，从而兼容栅格 -->
     <!--[if lt IE 9]>
     <script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
@@ -54,15 +59,15 @@
             <label for="L_pass" class="layui-form-label">
                 <span class="x-red">*</span>新闻封面
             </label>
-            <div class="layui-input-inline">
+            <div class="layui-input-block">
                 <input type="hidden" value="${news.newsImage!''}" id="newsImage" name="newsImage" required lay-verify="required">
                 <div class="layui-upload-drag" id="uploadDemo">
                     <i class="layui-icon"></i>
                     <p>点击上传，或将文件拖拽到此处</p>
                 </div>
-                <#--<div class="layui-upload-drag">
-                    <img style="width: 92px;height: 92px;margin: 0 10px 0 0px;" id="demo1">
-                </div>-->
+                <div class="layui-upload-drag">
+                    <img style="width: 92px;height: 92px;margin: 5px;" id="translationImg">
+                </div>
             </div>
         </div>
         <div class="layui-form-item">
@@ -70,7 +75,7 @@
                 <span class="x-red">*</span>内容
             </label>
             <div class="layui-input-block">
-                <textarea class="layui-textarea" name="content" lay-verify="content" id="LAY_demo_editor" required lay-verify="required">${news.content!''}</textarea>
+                <script id="content" name="content" type="text/plain" style="width:100%;height:600px;"></script>
             </div>
         </div>
         <div class="layui-form-item">
@@ -83,6 +88,23 @@
     </form>
 </div>
 <script>
+    var ue = UE.getEditor('content');
+
+
+    UE.Editor.prototype._bkGetActionUrl=UE.Editor.prototype.getActionUrl;
+    //action是config.json配置文件的action
+    UE.Editor.prototype.getActionUrl=function(action){
+        if (action == 'uploadimage'){
+            return '/ueditor/loadImage';
+        }else if(action == 'uploadvideo'){
+            return '/loadImgae';
+        }else{
+            return this._bkGetActionUrl.call(this, action);
+        }
+    };
+            ue.ready(function () {
+                ue.setContent('${news.content!""}');
+            })
     layui.use(['form','layer','upload'], function(){
         $ = layui.jquery;
         var form = layui.form
@@ -141,9 +163,9 @@
                 $('#newsImage').val(res.msg)
             },before:function (obj) {
                 //预读本地文件示例，不支持ie8
-                /*obj.preview(function(index, file, result){
-                    $('#demo1').attr('src', result); //图片链接（base64）
-                });*/
+                obj.preview(function(index, file, result){
+                    $('#translationImg').attr('src', result); //图片链接（base64）
+                });
 
             }
         });

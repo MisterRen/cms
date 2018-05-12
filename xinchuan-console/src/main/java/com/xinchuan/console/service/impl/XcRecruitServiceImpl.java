@@ -1,7 +1,7 @@
 package com.xinchuan.console.service.impl;
 
 import com.xinchuan.console.dao.XcRecruitRepository;
-import com.xinchuan.console.model.XcRecruitOld;
+import com.xinchuan.console.model.XcRecruit;
 import com.xinchuan.console.model.XcTeamManage;
 import com.xinchuan.console.service.XcRecruitService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,12 +34,12 @@ public class XcRecruitServiceImpl implements XcRecruitService {
     @Autowired
     XcRecruitRepository xcRecruitRepository;
     @Override
-    public List<XcRecruitOld> findAll() {
+    public List<XcRecruit> findAll() {
         return xcRecruitRepository.findAll();
     }
 
     @Override
-    public void saveAndFlush(XcRecruitOld xcRecruitOld){
+    public void saveAndFlush(XcRecruit xcRecruitOld){
         xcRecruitRepository.saveAndFlush(xcRecruitOld);
     }
 
@@ -51,19 +51,19 @@ public class XcRecruitServiceImpl implements XcRecruitService {
     }
 
     @Override
-    public Optional<XcRecruitOld> findById(String id) {
-        Optional<XcRecruitOld> xcRecruitOld=xcRecruitRepository.findById(Long.valueOf(id));
+    public Optional<XcRecruit> findById(String id) {
+        Optional<XcRecruit> xcRecruitOld=xcRecruitRepository.findById(Long.valueOf(id));
         return xcRecruitOld;
     }
 
     @Override
-    public List<XcRecruitOld> findByCreateTimeAndName(String startDate, String endDate, String postName) {
-        List<XcRecruitOld> resultList = null;
-        Specification querySpecifi = new Specification<XcRecruitOld>() {
+    public List<XcRecruit> findByCreateTimeAndName(String startDate, String endDate, String postName) {
+        List<XcRecruit> resultList = null;
+        Specification querySpecifi = new Specification<XcRecruit>() {
             @Override
             //root参数是我们用来对应实体的信息的。criteriaBuilder可以帮助我们制作查询信息。
             //如果有多个条件，我们就可以创建一个Predicate集合，最后用CriteriaBuilder的and和or方法进行组合，得到最后的Predicate对象。
-            public Predicate toPredicate(Root<XcRecruitOld> root, CriteriaQuery<?> criteriaQuery, CriteriaBuilder criteriaBuilder) {
+            public Predicate toPredicate(Root<XcRecruit> root, CriteriaQuery<?> criteriaQuery, CriteriaBuilder criteriaBuilder) {
                 List<Predicate> predicates = new ArrayList<>();
                 if(startDate.length()!=0 || endDate.length()!=0){
                     SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");//小写的mm表示的是分钟
@@ -86,7 +86,7 @@ public class XcRecruitServiceImpl implements XcRecruitService {
     }
 
     @Override
-    public void saveOrUpdate(XcRecruitOld xcRecruitOld) {
-        xcRecruitRepository.save(xcRecruitOld);
+    public void saveOrUpdate(XcRecruit xcRecruit) {
+        xcRecruitRepository.save(xcRecruit);
     }
 }
