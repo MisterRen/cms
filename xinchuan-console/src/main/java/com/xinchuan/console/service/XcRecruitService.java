@@ -19,7 +19,7 @@ import java.util.Optional;
  * @fileName XcRecruitService.java
  */
 public interface XcRecruitService {
-    //XcRecruitOld
+
     List<XcRecruit> findAll();
 
     void saveAndFlush(XcRecruit xcRecruit);

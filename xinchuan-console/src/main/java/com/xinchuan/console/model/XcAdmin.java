@@ -1,5 +1,7 @@
 package com.xinchuan.console.model;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -23,6 +25,7 @@ public class XcAdmin {
     private Long id;
     private String adminNme;
     private String adminPwd;
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date lastLoginTime;
 
     public Long getId() {

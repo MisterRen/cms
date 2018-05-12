@@ -1,4 +1,4 @@
-package com.xinchuan.console.model;
+package com.xinchuan.console.common;
 
 import java.util.HashMap;
 import java.util.Map;

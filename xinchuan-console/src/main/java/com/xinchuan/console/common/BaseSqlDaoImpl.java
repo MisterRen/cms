@@ -1,6 +1,5 @@
 package com.xinchuan.console.common;
 
-import com.xinchuan.console.model.PageModel;
 import org.hibernate.SQLQuery;
 import org.hibernate.criterion.CriteriaSpecification;
 import org.springframework.beans.factory.annotation.Autowired;

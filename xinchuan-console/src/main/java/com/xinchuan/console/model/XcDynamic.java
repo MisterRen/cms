@@ -1,9 +1,11 @@
 package com.xinchuan.console.model;
 
+import com.xinchuan.console.common.SeracherForm;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import java.util.Date;
 
 /**
  * <p>
@@ -16,7 +18,7 @@ import java.util.Date;
  * @fileName XcDynamic.java
  */
 @Entity
-public class XcDynamic extends  SeracherForm {
+public class XcDynamic extends SeracherForm {
 
     @Id
     @GeneratedValue
@@ -24,6 +26,7 @@ public class XcDynamic extends  SeracherForm {
     private String title;//标题
     private String image;//图片
     private int isShow;//是否显示
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private String createTime;//时间
 /*    private String summary;//摘要
     private  String content;//内容*/

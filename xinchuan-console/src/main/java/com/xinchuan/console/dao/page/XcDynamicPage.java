@@ -1,7 +1,7 @@
 package com.xinchuan.console.dao.page;
 
 import com.xinchuan.console.common.BaseSqlDaoImpl;
-import com.xinchuan.console.model.PageModel;
+import com.xinchuan.console.common.PageModel;
 import com.xinchuan.console.model.XcDynamic;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;

@@ -1,5 +1,7 @@
 package com.xinchuan.console.model;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -25,6 +27,7 @@ public class XcConsult {
     private String userPhone;
     private String userEmail;
     private String Remarks;//备注
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date createTime;//时间
     private int status;//1、新建，2、跟进，3、完成
 

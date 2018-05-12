@@ -47,7 +47,7 @@
             </label>
             <div class="layui-input-inline">
                 <input type="text" id="createTime" name="createTime"  value="${product.createTime!''}" required lay-verify="required"
-                       autocomplete="off" class="layui-input">
+                       placeholder="yyyy-MM-dd HH:mm:ss" autocomplete="off" class="layui-input">
             </div>
         </div>
         <div class="layui-form-item">
@@ -109,7 +109,8 @@
 
         //执行一个laydate实例
         laydate.render({
-            elem: '#createTime' //指定元素
+            elem: '#createTime', //指定元素
+            type: 'datetime'
         });
     })
     layui.use(['upload'], function(){

@@ -1,23 +1,14 @@
 package com.xinchuan.console.controller;
 
 import com.xinchuan.console.common.AjaxJson;
-import com.xinchuan.console.common.AjaxMsg;
-import com.xinchuan.console.model.PageModel;
+import com.xinchuan.console.common.PageModel;
 import com.xinchuan.console.model.XcNews;
-import com.xinchuan.console.model.XcTeamManage;
 import com.xinchuan.console.service.XcNewsService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
-import org.springframework.data.web.PageableDefault;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.Date;
-import java.util.List;
-import java.util.UUID;
 
 /**
  * <p>

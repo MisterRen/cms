@@ -2,7 +2,7 @@ package com.xinchuan.console.service.impl;
 
 import com.xinchuan.console.dao.XcProductRepository;
 import com.xinchuan.console.dao.page.XcProductPage;
-import com.xinchuan.console.model.PageModel;
+import com.xinchuan.console.common.PageModel;
 import com.xinchuan.console.model.XcProduct;
 import com.xinchuan.console.service.XcProductService;
 import org.springframework.beans.factory.annotation.Autowired;

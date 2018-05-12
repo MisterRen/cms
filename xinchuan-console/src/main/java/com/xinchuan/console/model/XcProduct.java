@@ -1,9 +1,9 @@
 package com.xinchuan.console.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import java.util.Date;
+import com.xinchuan.console.common.SeracherForm;
+import org.springframework.format.annotation.DateTimeFormat;
+
+import javax.persistence.*;
 
 /**
  * <p>
@@ -22,10 +22,13 @@ public class XcProduct extends SeracherForm {
     @GeneratedValue
     private Long id;
     private String prodectName;//产品名称
+    @Lob
+    @Column(columnDefinition="TEXT")
     private String summary;//产品简介
     private String prodectIcon;//产品ICON
     private Integer isShow;//是否显示
     private Integer level;
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private String createTime;//时间
 
     public Long getId() {

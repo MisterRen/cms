@@ -47,8 +47,7 @@
             </label>
             <div class="layui-input-inline">
                 <input type="text" id="createTime" name="createTime" value="${dynamic.createTime!''}" required
-                       lay-verify="required"
-                       autocomplete="off" class="layui-input">
+                       placeholder="yyyy-MM-dd HH:mm:ss" lay-verify="required" autocomplete="off" class="layui-input">
             </div>
         </div>
 
@@ -92,7 +91,8 @@
     layui.use('laydate', function () {
         var laydate = layui.laydate;
         laydate.render({
-            elem: '#createTime' //指定元素
+            elem: '#createTime', //指定元素
+            type: 'datetime'
         });
     })
 

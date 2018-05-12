@@ -86,7 +86,7 @@
             </label>
             <div class="layui-input-inline">
                 <input type="text" id="createTime" name="createTime" required lay-verify="required"
-                   placeholder="yyyy-MM-dd"    autocomplete="off" class="layui-input"   value="${xcTeamManage.createTime!''}">
+                   placeholder="yyyy-MM-dd HH:mm:ss"    autocomplete="off" class="layui-input"   value="${xcTeamManage.createTime!''}">
             </div>
         </div>
 
@@ -115,7 +115,8 @@
 
         //执行一个laydate实例
         laydate.render({
-            elem: '#createTime' //指定元素
+            elem: '#createTime', //指定元素
+            type: 'datetime'
         });
     })
     layui.use(['form','layer','upload'], function(){

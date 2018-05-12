@@ -1,18 +1,12 @@
 package com.xinchuan.console.service.impl;
 
-import com.xinchuan.console.common.AjaxMsg;
 import com.xinchuan.console.dao.XcNewsRepository;
 import com.xinchuan.console.dao.page.XcNewsPage;
-import com.xinchuan.console.model.PageModel;
+import com.xinchuan.console.common.PageModel;
 import com.xinchuan.console.model.XcNews;
 import com.xinchuan.console.service.XcNewsService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
-
-import org.springframework.data.domain.Pageable;
-
-import java.util.Optional;
 
 
 /**

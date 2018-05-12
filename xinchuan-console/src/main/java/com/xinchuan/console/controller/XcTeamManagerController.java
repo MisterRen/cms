@@ -1,8 +1,7 @@
 package com.xinchuan.console.controller;
 
 import com.xinchuan.console.common.AjaxJson;
-import com.xinchuan.console.model.PageModel;
-import com.xinchuan.console.model.XcDynamic;
+import com.xinchuan.console.common.PageModel;
 import com.xinchuan.console.model.XcTeamManage;
 import com.xinchuan.console.service.XcTeamManageService;
 import lombok.extern.slf4j.Slf4j;
@@ -44,10 +43,9 @@ public class XcTeamManagerController {
     public AjaxJson add(XcTeamManage xcTeamManage){
         AjaxJson ajaxJson=new AjaxJson();
         try {
+            xcTeamManageService.saveOrUpdate(xcTeamManage);
             ajaxJson.setSuccess(true);
             ajaxJson.setMsg("添加成功");
-            xcTeamManageService.saveOrUpdate(xcTeamManage);
-
         } catch (Exception e) {
             ajaxJson.setSuccess(false);
             ajaxJson.setMsg("添加失败");
@@ -67,7 +65,7 @@ public class XcTeamManagerController {
             ajaxJson.setSuccess(false);
             ajaxJson.setMsg("删除失败");
             e.printStackTrace();
-            log.error("*****teamManager:delAll*******" + e.getMessage());
+            //log.error("*****teamManager:delAll*******" + e.getMessage());
         }
         return ajaxJson;
     }

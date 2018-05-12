@@ -1,27 +1,13 @@
 package com.xinchuan.console.controller;
 
 import com.xinchuan.console.common.AjaxJson;
-import com.xinchuan.console.common.UploadImageUtil;
-import com.xinchuan.console.model.PageModel;
+import com.xinchuan.console.common.PageModel;
 import com.xinchuan.console.model.XcDynamic;
-import com.xinchuan.console.model.XcTeamManage;
 import com.xinchuan.console.service.XcDynamicService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-import java.io.File;
-import java.io.IOException;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Random;
 
 @RestController
 @RequestMapping("/xd")

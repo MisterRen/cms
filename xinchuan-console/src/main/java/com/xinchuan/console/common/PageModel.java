@@ -1,4 +1,4 @@
-package com.xinchuan.console.model;
+package com.xinchuan.console.common;
 
 import java.io.Serializable;
 import java.util.List;

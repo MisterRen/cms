@@ -2,7 +2,7 @@ package com.xinchuan.console.service.impl;
 
 import com.xinchuan.console.dao.XcDynamicRepository;
 import com.xinchuan.console.dao.page.XcDynamicPage;
-import com.xinchuan.console.model.PageModel;
+import com.xinchuan.console.common.PageModel;
 import com.xinchuan.console.model.XcDynamic;
 import com.xinchuan.console.service.XcDynamicService;
 import org.springframework.beans.factory.annotation.Autowired;

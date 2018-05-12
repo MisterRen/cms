@@ -1,9 +1,8 @@
 package com.xinchuan.console.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import com.xinchuan.console.common.SeracherForm;
+
+import javax.persistence.*;
 import java.util.Date;
 
 /**
@@ -17,7 +16,7 @@ import java.util.Date;
  * @fileName XcNews.java
  */
 @Entity
-public class XcNews extends  SeracherForm{
+public class XcNews extends SeracherForm {
     @Id
     @GeneratedValue
     private Long id;
@@ -26,7 +25,9 @@ public class XcNews extends  SeracherForm{
     private int isShow;//是否显示
     private Date createTime;//时间
     private String summary;//摘要
-    private  String content;//内容
+    @Lob
+    @Column(columnDefinition="TEXT")
+    private String content;//内容
 
     public Long getId() {
         return id;

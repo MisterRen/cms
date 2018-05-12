@@ -1,8 +1,6 @@
 package com.xinchuan.console.service;
-import com.xinchuan.console.model.PageModel;
-import com.xinchuan.console.model.XcDynamic;
+import com.xinchuan.console.common.PageModel;
 import com.xinchuan.console.model.XcProduct;
-import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 import java.util.Optional;
