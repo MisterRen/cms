@@ -104,11 +104,13 @@
         var laydate = layui.laydate;
         //执行一个laydate实例
         laydate.render({
-            elem: '#startDate' //指定元素
+            elem: '#startDate',
+            type: 'datetime'//指定元素
         });
         //执行一个laydate实例
         laydate.render({
-            elem: '#endDate' //指定元素
+            elem: '#endDate',
+            type: 'datetime'//指定元素
         });
     });
 

@@ -105,10 +105,12 @@
     layui.use('laydate', function () {
         var laydate = layui.laydate;
         laydate.render({
-            elem: '#startTime' //指定元素
+            elem: '#startTime',
+            type: 'datetime'//指定元素
         });
         laydate.render({
-            elem: '#endTime' //指定元素
+            elem: '#endTime',
+            type: 'datetime'//指定元素
         });
     });
     /*删除所有*/
