@@ -96,7 +96,7 @@
                 <a onclick="member_enable(this,${news.id},${news.isShow})" href="javascript:;">
                     <i class="layui-icon">&#xe601;</i>
                 </a>
-                <a onclick="x_admin_show('修改新闻','addView?id='+${news.id},800,500)" href="javascript:;">
+                <a onclick="x_admin_show('修改新闻','addView?id='+${news.id})" href="javascript:;">
                     <i class="layui-icon">&#xe642;</i>
                 </a>
                 <a title="删除" onclick="member_del(this,${news.id})" href="javascript:;">

@@ -25,7 +25,7 @@
             </label>
             <div class="layui-input-inline">
                 <div class="layui-upload">
-                    <div class="layui-upload-drag" id="uploadDemo">
+                    <div class="layui-upload-drag" id="fileUpload">
                         <i class="layui-icon"></i>
                         <p>点击上传，或将文件拖拽到此处(图片大小不超过1M)</p>
                     </div>
@@ -34,7 +34,7 @@
             <div class="layui-input-inline">
                 <div class="layui-upload">
                     <div class="layui-upload-drag" style="width: 100px;height: 100px">
-                        <img class="layui-upload-img" style="max-width: 100px;max-height: 100px" src="${dynamic.image!''}" id="demo1">
+                        <img class="layui-upload-img" style="max-width: 100px;max-height:100px" src="${dynamic.image!''}" id="uploadImg">
                         <input type="hidden" id="pic" name="image" value="${dynamic.prodectIcon!''}">
                         <p id="demoText"></p>
                     </div>
@@ -134,7 +134,7 @@
                             } else {
                                 layer.closeAll();
                                 $('.layui-form')[0].reset();
-                                //location.href="/xd/listView"
+                                //parent.location.reload();
                             }
                         })
                     } else {// 提示失败
@@ -151,12 +151,12 @@
         var $ = layui.jquery
                 , upload = layui.upload;
         var uploadInst = upload.render({
-            elem: '#uploadDemo'
+            elem: '#fileUpload'
             , url: '/loadImgae'
             , before: function (obj) {
                 //预读本地文件示例，不支持ie8
                 obj.preview(function (index, file, result) {
-                    $('#demo1').attr('src', result); //图片链接（base64）
+                    $('#uploadImg').attr('src', result); //图片链接（base64）
                 });
             }
             , done: function (res) {

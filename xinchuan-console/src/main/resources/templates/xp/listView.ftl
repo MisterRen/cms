@@ -82,7 +82,7 @@
                 </#if>
             </#if>
             </td>
-            <td>${product.createTime}</td>
+            <td>${product.createTime!''}</td>
             <td>
             <#if product.isShow==1>
                 <span class="layui-btn layui-btn-disabled layui-btn-mini">未发布</span>

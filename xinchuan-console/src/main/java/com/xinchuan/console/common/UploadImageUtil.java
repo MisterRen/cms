@@ -4,8 +4,12 @@ import org.springframework.web.multipart.MultipartFile;
 import sun.misc.BASE64Decoder;
 
 import javax.imageio.ImageIO;
+import javax.servlet.http.HttpServletRequest;
 import java.awt.image.BufferedImage;
 import java.io.*;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.UUID;
 
 /**
  * 图片上传工具类
@@ -13,22 +17,27 @@ import java.io.*;
  */
 public  class UploadImageUtil {
 
-    public static String uploadImg(MultipartFile file,String sqlPath)
+    public static Map<String,String> uploadImg(MultipartFile file, HttpServletRequest req)
             throws IOException {
+        Map<String,String> returnMap = new HashMap<>();
         if (null != file) {
             String fileName = file.getOriginalFilename();// 文件原名称
-            File directory = new File("");// 参数为空
-            String projectPath = directory.getCanonicalPath();
-            String pat=projectPath+"/src/main/resources/static";//获取文件保存路径
-            File fileDir=new File(pat+sqlPath);
+            String newFileName = UUID.randomUUID().toString()+fileName.substring(fileName.indexOf("."),fileName.length());
+            String pathRoot = req.getSession().getServletContext().getRealPath("");
+            String path = "/images/upload/";//获取文件保存路径
+            String savePath = pathRoot + path;
+            File fileDir = new File(savePath);
             if (!fileDir.exists()) { //如果不存在 则创建
                 fileDir.mkdirs();
             }
-            String path=pat+sqlPath+fileName;
-            File localFile = new File(path);
+            File localFile = new File(savePath + newFileName);
             try {
                 file.transferTo(localFile);
-                return sqlPath+fileName;
+                returnMap.put("newFileName",newFileName);
+                returnMap.put("oldFileName",fileName);
+                returnMap.put("savePath",savePath);
+                returnMap.put("path", path + newFileName);
+                return returnMap;
             } catch (IllegalStateException e) {
                 // TODO Auto-generated catch block
                 e.printStackTrace();

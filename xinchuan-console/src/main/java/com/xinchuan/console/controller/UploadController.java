@@ -18,19 +18,22 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.UUID;
 
 @RestController
 public class UploadController {
 
-    private static String sqlPath = "\\images\\upload\\";
-
     @PostMapping(value = "/loadImgae")
     @ResponseBody
-    public AjaxJson loadImgae(MultipartFile file) {
+    public AjaxJson loadImgae(MultipartFile file,HttpServletRequest req) {
         AjaxJson json = new AjaxJson();
         if (!file.isEmpty()) {
             try {
-                UploadImageUtil.uploadImg(file, sqlPath);
+                Map<String,String> returnMap = UploadImageUtil.uploadImg(file,req);
+                String fileName = file.getOriginalFilename();// 文件原名称
+                json.setSuccess(true);
+                json.setMsg(returnMap.get("path"));
+                return json;
             } catch (IOException e) {
                 e.printStackTrace();
                 json.setSuccess(false);
@@ -42,49 +45,30 @@ public class UploadController {
             json.setMsg("没有选择文件");
             return json;
         }
-        String fileName = file.getOriginalFilename();// 文件原名称
-        //sqlPath+"\\"+fileName;
-        json.setSuccess(true);
-        json.setMsg(sqlPath + fileName);
-        return json;
     }
 
+    /**
+     * 富文本图片上传
+     * @param req
+     * @return
+     */
     @PostMapping(value = "/ueditor/loadImage")
     @ResponseBody
     public Map<String, Object> loadImgae(HttpServletRequest req) {
         Map<String, Object> rs = new HashMap<String, Object>();
         MultipartHttpServletRequest mReq = null;
         MultipartFile file = null;
-        String fileName = "";
-        // 原始文件名   UEDITOR创建页面元素时的alt和title属性
-        String originalFileName = "";
         try {
             mReq = (MultipartHttpServletRequest) req;
             // 从config.json中取得上传文件的ID
             file = mReq.getFile("upfile");
-
             if (!file.isEmpty()) {
-                // 取得文件的原始文件名称
-                fileName = file.getOriginalFilename();
-                originalFileName = fileName;
-
-                String ext = (FilenameUtils.getExtension(file.getOriginalFilename())).toLowerCase();
-                String storePath = "upload/image/";
-                //将图片和视频保存在本地服务器
-                String pathRoot = req.getSession().getServletContext().getRealPath("");
-                String path = pathRoot + "/" + storePath;
-                UploadImageUtil.uploadImg(file, sqlPath);
-                //file.transferTo(new File(sqlPath+fileName));
-                //String doMain = readProperties.getFileDomain();
-                //String httpImgPath = doMain + storePath + fileName;
-
+                Map<String,String> returnMap = UploadImageUtil.uploadImg(file,req);
                 rs.put("state", "SUCCESS");// UEDITOR的规则:不为SUCCESS则显示state的内容
-                rs.put("url", originalFileName);         //能访问到你现在图片的路径
-                rs.put("title", originalFileName);
-                rs.put("original", originalFileName);
+                rs.put("url", returnMap.get("newFileName"));         //能访问到你现在图片的路径
+                rs.put("title", returnMap.get("oldFileName"));
+                rs.put("original", returnMap.get("oldFileName"));
             }
-
-
         } catch (Exception e) {
             e.printStackTrace();
             rs.put("state", "文件上传失败!"); //在此处写上错误提示信息，这样当错误的时候就会显示此信息
@@ -105,6 +89,7 @@ public class UploadController {
     @RequestMapping(value = "/config", headers = "Accept=application/json")
     public String imgUpload(HttpServletRequest request, HttpServletResponse response) {
         response.setContentType("application/json;charset=utf-8");
+        String host = request.getScheme()+"://"+request.getServerName()+":"+request.getLocalPort();
         String config = "/* 前后端通信相关的配置,注释只允许使用多行方式 */\n" +
                 "{\n" +
                 "    /* 上传图片配置项 */\n" +
@@ -115,7 +100,7 @@ public class UploadController {
                 "    \"imageCompressEnable\": true, /* 是否压缩图片,默认是true */\n" +
                 "    \"imageCompressBorder\": 1600, /* 图片压缩最长边限制 */\n" +
                 "    \"imageInsertAlign\": \"none\", /* 插入的图片浮动方式 */\n" +
-                "    \"imageUrlPrefix\": \"http://localhost:8080/images/upload/\", /* 图片访问路径前缀 */\n" +
+                "    \"imageUrlPrefix\": \"https://renxiansen.com/images/upload/\", /* 图片访问路径前缀 */\n" +
                 "    \"imagePathFormat\": \"/ueditor/jsp/upload/image/{yyyy}{mm}{dd}/{time}{rand:6}\", /* 上传保存路径,可以自定义保存路径和文件名格式 */\n" +
                 "                                /* {filename} 会替换成原文件名,配置这项需要注意中文乱码问题 */\n" +
                 "                                /* {rand:6} 会替换成随机数,后面的数字是随机数的位数 */\n" +

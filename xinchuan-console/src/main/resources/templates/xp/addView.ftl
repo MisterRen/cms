@@ -14,6 +14,11 @@
     <script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
     <script src="/lib/layui/layui.js" charset="utf-8"></script>
     <script type="text/javascript" src="/js/xadmin.js"></script>
+    <script type="text/javascript" charset="utf-8" src="/ueditor/ueditor.config.js"></script>
+    <script type="text/javascript" charset="utf-8" src="/ueditor/ueditor.all.js"> </script>
+    <!--建议手动加在语言，避免在ie下有时因为加载语言失败导致编辑器加载失败-->
+    <!--这里加载的语言文件会覆盖你在配置项目里添加的语言类型，比如你在配置项目里配置的是英文，这里加载的中文，那最后就是中文-->
+    <script type="text/javascript" charset="utf-8" src="/ueditor/lang/zh-cn/zh-cn.js"></script>
 </head>
 
 <body>
@@ -25,7 +30,7 @@
             </label>
             <div class="layui-input-inline">
                 <div class="layui-upload">
-                    <div class="layui-upload-drag" id="uploadDemo">
+                    <div class="layui-upload-drag" id="fileUpload">
                         <i class="layui-icon"></i>
                         <p>点击上传，或将文件拖拽到此处(图片大小不超过1M)</p>
                     </div>
@@ -34,7 +39,8 @@
             <div class="layui-input-inline">
                 <div class="layui-upload">
                     <div class="layui-upload-drag" style="width: 100px;height: 100px">
-                        <img class="layui-upload-img" style="max-width: 100px;max-height: 100px" src="${product.prodectIcon!''}" id="demo1">
+                        预览图：
+                        <img class="layui-upload-img" style="max-width: 100px;max-height:100px" src="${product.prodectIcon!''}" id="uploadImg">
                         <input type="hidden" id="pic" name="prodectIcon" value="${product.prodectIcon!''}">
                         <p id="demoText"></p>
                     </div>
@@ -66,8 +72,7 @@
                 <span class="x-red">*</span>产品简介
             </label>
             <div class="layui-input-block">
-                <textarea name="summary"  required lay-verify="summary"  placeholder="最大长度在10-300之间"
-                          class="layui-textarea">${product.summary!""}</textarea>
+                <script id="summary" name="summary" type="text/plain" style="width:100%;height:400px;"></script>
             </div>
         </div>
 
@@ -103,6 +108,21 @@
 </div>
 
 <script>
+
+    var summary = UE.getEditor('summary');
+    UE.Editor.prototype._bkGetActionUrl=UE.Editor.prototype.getActionUrl;
+    UE.Editor.prototype.getActionUrl=function(action){
+        if (action == 'uploadimage'){
+            return '/ueditor/loadImage';
+        }else if(action == 'uploadvideo'){
+            return '/loadImgae';
+        }else{
+            return this._bkGetActionUrl.call(this, action);
+        }
+    };
+    summary.ready(function () {
+        summary.setContent('${product.summary!""}');
+    })
     var uploadFile;
     layui.use('laydate', function () {
         var laydate = layui.laydate;
@@ -117,12 +137,12 @@
         var $ = layui.jquery
                 ,upload = layui.upload;
         upload.render({
-            elem: '#uploadDemo'
+            elem: '#fileUpload'
             ,url: '/loadImgae'
             ,before: function(obj){
                 //预读本地文件示例，不支持ie8
                 obj.preview(function(index, file, result){
-                    $('#demo1').attr('src', result); //图片链接（base64）
+                    $('#uploadImg').attr('src', result); //图片链接（base64）
                 });
             }
             ,done: function(res){
@@ -195,7 +215,7 @@
                             }else{
                                 layer.closeAll();
                                 $('.layui-form')[0].reset();
-                                //location.href="/xp/listView"
+                                //parent.location.reload();
                             }
                         })
                     } else {// 提示失败
