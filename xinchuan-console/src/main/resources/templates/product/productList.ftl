@@ -84,7 +84,7 @@
             <td>${product.level}</td>
             <td class="td-manage">
                 <a title="编辑" onclick="x_admin_show('编辑','saveOrUpdatePage?id='+${product.id})" href="javascript:;">
-                    <i class="layui-icon layui-btn-big">&#xe642;</i>
+                    <i class="layui-icon layui-icon-edit site-doc-icon">&#xe642;</i>
                 </a>
             </td>
         </tr>
@@ -139,9 +139,8 @@
         var data = tableCheck.getData();
         var ids=data.toString();
         layer.confirm('确认要删除吗？'+data,function(index){
-            $.post("/xinchuan//deleteProduct",{ids:ids},function(result){
-                layer.msg('删除成功', {icon: 1});
-                $(".layui-form-checked").not('.header').parents('tr').remove();
+            $.post("/product//deleteProduct",{ids:ids},function(result){
+                location.replace(location.href);
             });
 
         });

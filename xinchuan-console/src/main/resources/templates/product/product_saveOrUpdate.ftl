@@ -48,7 +48,7 @@
                 <span class="x-red">*</span>产品名称
             </label>
             <div class="layui-input-block">
-                <input type="hidden" name="id" value="${product.id}">
+                <input type="hidden" name="id" value="${product.id!''}">
                 <input type="text" id="prodectName" name="prodectName"  value="${product.prodectName!''}" lay-verify="prodectName"  placeholder="最大长度在2-30之间"  required lay-verify="prodectName"
                        autocomplete="off" class="layui-input">
             </div>
@@ -71,7 +71,7 @@
             <div class="layui-input-block">
             <input type="checkbox" name="isShow" id="isShow"
                   <#if product.isShow??> <#if product.isShow=1>checked </#if></#if>
-                   lay-skin="switch" lay-text="YES|NO" >
+                   lay-skin="switch" lay-text="ON|OFF" >
             </div>
         </div>
         <div class="layui-form-item">
@@ -79,13 +79,13 @@
                 <span class="x-red">*</span>产品顺序
             </label>
             <div class="layui-input-inline">
-                <input type="number" class="layui-input"  alue="${product.level!''}" required  lay-verify="required|number|level" name="level" id="level" min="1" max="7">
+                <input type="number" class="layui-input"  value="${product.level!''}" required  lay-verify="required|number|level" name="level" id="level" min="1" max="7">
             </div>
         </div>
         <div class="layui-form-item">
             <label for="L_repass" class="layui-form-label">
             </label>
-            <button class="layui-btn" lay-filter="dynamicAdd" lay-submit="" id="dynamicAdd">
+            <button class="layui-btn" lay-filter="productcAdd" lay-submit="" id="productcAdd">
                 增加
             </button>
             <button type="reset" class="layui-btn layui-btn-primary">重置</button>
@@ -163,7 +163,7 @@
             }
         });
         //监听提交
-        form.on('submit(dynamicAdd)', function(data){
+        form.on('submit(productcAdd)', function(data){
             console.log(data);
             data.field.isShow = data.field.isShow=='on'?0:1;
             $.ajax({
@@ -183,7 +183,7 @@
                                 var index = parent.layer.getFrameIndex(window.name);
                                 //关闭当前frame
                                 parent.layer.close(index);
-                                location.href=""
+                                location.replace(location.href);
                             }else{
                                 layer.closeAll();
                                 $('.layui-form')[0].reset();
@@ -199,41 +199,6 @@
 
     });
 
-    function save() {
-        //var fd = new FormData();
-        var formData = $("#prodectForm").serialize();
-        $.ajax({
-            type: "post",
-            url: "/product/productSave",
-            data: formData,
-            dataType: 'JSON',
-            cache: false,                      // 不缓存
-            processData: false,                // jQuery不要去处理发送的数据
-            contentType: false,
-            error:function (request){
-               layer.alert("网络超时");
-            },
-            success: function (data) {
-                if (data.success) {
-                    layer.alert("增加成功", {icon: 6}, function () {
-                        this.index;
-                        // 获得frame索引
-                        if(window.name != ""){
-                            var index = parent.layer.getFrameIndex(window.name);
-                            //关闭当前frame
-                            parent.layer.close(index);
-                        }else{
-                            layer.closeAll();
-                            $('.layui-form')[0].reset();
-                        }
-                        location.href = "/product/findAll"
-                    })
-                } else {// 提示失败
-                    layer.alert(data, {title: '提示信息', icon: 5});
-                }
-            }
-        });
-    }
 
 </script>
 

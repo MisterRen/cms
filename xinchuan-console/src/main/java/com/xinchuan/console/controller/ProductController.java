@@ -33,11 +33,7 @@ public class ProductController {
     public void deleteProduct(String[] ids){
         productService.deleteProduct(ids);
     }
-    @GetMapping("/productAdd")
-    public ModelAndView goAddPage(){
-        ModelAndView modelAndView = new ModelAndView("product/product_add");
-        return modelAndView;
-    }
+
     @PostMapping(value = "/productSave")
     @ResponseBody
     public AjaxJson productSave(XcProduct productForm){
@@ -45,7 +41,7 @@ public class ProductController {
         String result=productService.saveProduct(productForm);
         if ("success".equals(result)){
             json.setSuccess(true);
-            json.setMsg("添加成功");
+            json.setMsg("保存成功");
         } else {
             json.setSuccess(false);
             json.setMsg(result);

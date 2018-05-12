@@ -42,7 +42,7 @@
     </div>
     <xblock>
         <button class="layui-btn layui-btn-danger" onclick="delAll()"><i class="layui-icon"></i>批量删除</button>
-        <button class="layui-btn" onclick="x_admin_show('添加动态','dynamicAdd')"><i class="layui-icon"></i>添加</button>
+        <button class="layui-btn" onclick="x_admin_show('添加动态','saveOrUpdatePage')"><i class="layui-icon"></i>添加</button>
         <span class="x-right" style="line-height:40px">共有数据：${dynamics.totalCount} 条</span>
     </xblock>
     <table class="layui-table">
@@ -79,7 +79,7 @@
             </#if>
             </td>
             <td class="td-manage">
-                <a title="编辑" onclick="x_admin_show('编辑','findById?id='+${dynamic.id})" href="javascript:;">
+                <a title="编辑" onclick="x_admin_show('编辑','saveOrUpdatePage?id='+${dynamic.id})" href="javascript:;">
                     <i class="layui-icon layui-btn-big">&#xe642;</i>
                 </a>
             </td>
@@ -103,37 +103,12 @@
         });
     });
 
-    /*用户-停用*/
-    function member_stop(obj, id) {
-        layer.confirm('确认要停用吗？', function (index) {
-
-            if ($(obj).attr('title') == '启用') {
-
-                //发异步把用户状态进行更改
-                $(obj).attr('title', '停用')
-                $(obj).find('i').html('&#xe62f;');
-
-                $(obj).parents("tr").find(".td-status").find('span').addClass('layui-btn-disabled').html('已停用');
-                layer.msg('已停用!', {icon: 5, time: 1000});
-
-            } else {
-                $(obj).attr('title', '启用')
-                $(obj).find('i').html('&#xe601;');
-
-                $(obj).parents("tr").find(".td-status").find('span').removeClass('layui-btn-disabled').html('已启用');
-                layer.msg('已启用!', {icon: 5, time: 1000});
-            }
-
-        });
-    }
-
     function delAll(argument) {
         var data = tableCheck.getData();
         var ids = data.toString();
         layer.confirm('确认要删除吗？' + data, function (index) {
-            $.post("/xinchuan//deleteDynamic", {ids: ids}, function (result) {
-                layer.msg('删除成功', {icon: 1});
-                $(".layui-form-checked").not('.header').parents('tr').remove();
+            $.post("/dynamic/deleteDynamic", {ids: ids}, function (result) {
+                location.replace(location.href);
             });
 
         });
