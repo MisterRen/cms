@@ -169,7 +169,7 @@
 <script src="/index/common/swiper/swiper.animate.min.js"></script>
 <script src="/index/common/wow/wow.min.js"></script>
 <script type="text/javascript" src="/lib/layui/layui.js" charset="utf-8"></script>
-<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=dYvdoiRD3W5IGIzQmbFqfp6GBbm4q2hu"></script>
+<script type="text/javascript" src="https://api.map.baidu.com/api?v=2.0&ak=dYvdoiRD3W5IGIzQmbFqfp6GBbm4q2hu"></script>
 <script src="/index/js/common.js"></script>
 <script src="/index/js/about.js"></script>
 </body>

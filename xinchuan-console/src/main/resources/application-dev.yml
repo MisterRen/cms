@@ -50,7 +50,6 @@ logging:
   path:
   pattern:
     console: "%d [%highlight(%level)] %c %L %msg%n"
-
 upload:
   file:
   savePath: D:/file/

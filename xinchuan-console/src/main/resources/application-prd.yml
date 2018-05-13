@@ -35,6 +35,11 @@ spring:
     dialect: org.hibernate.dialect.MySQL5Dialect
     naming:
          physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+  http:
+    encoding:
+      charset: UTF-8
+  banner:
+    charset: UTF-8
 logging:
   level:
     org.springframework.web: info

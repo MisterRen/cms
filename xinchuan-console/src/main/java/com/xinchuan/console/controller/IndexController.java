@@ -136,7 +136,7 @@ public class IndexController {
         modelAndView.addObject("newsPage", newsPage);//新闻
         return modelAndView;
     }
-    
+
     @GetMapping("/xinchuan/newsDetail")
     public ModelAndView newsDetail(Long id) {
         ModelAndView modelAndView = new ModelAndView("index/newsDetail");
