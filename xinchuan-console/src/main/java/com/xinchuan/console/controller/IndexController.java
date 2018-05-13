@@ -88,11 +88,7 @@ public class IndexController {
         XcAdmin admin=xcAdminService.login(xcAdmin.getAdminNme(),xcAdmin.getAdminPwd());
         if(admin!=null){
             session.setAttribute("userInfo",admin);
-<<<<<<< HEAD
-            modelAndView= new ModelAndView("redirect:/index");
-=======
             modelAndView= new ModelAndView("redirect:admin/index");
->>>>>>> e2c3162e8cb5c451ac8a9d3eb8d229bd122de678
         }else {
             modelAndView= new ModelAndView("redirect:/login");
         }
