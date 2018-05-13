@@ -1,6 +1,7 @@
 package com.xinchuan.console.service.impl;
 
 import com.xinchuan.console.common.PageModel;
+import com.xinchuan.console.common.SendMail;
 import com.xinchuan.console.dao.XcConsultRepository;
 import com.xinchuan.console.dao.page.XcConsultPage;
 import com.xinchuan.console.model.XcConsult;
@@ -9,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * <p>
@@ -21,13 +23,15 @@ import org.springframework.stereotype.Service;
  * @fileName XcConsultServiceImpl.java
  */
 @Service
+@Transactional
 public class XcConsultServiceImpl implements XcConsultService {
 
     @Autowired
     private XcConsultRepository xcConsultRepository;
     @Autowired
     private XcConsultPage consultPage;
-
+    @Autowired
+    private SendMail sendMail;
     @Override
     public PageModel<XcConsult> pageQuery(XcConsult consultForm) {
         return consultPage.queryXcConsultPage(consultForm);
@@ -48,6 +52,8 @@ public class XcConsultServiceImpl implements XcConsultService {
 
     @Override
     public void saveOrUpdate(XcConsult xcConsult) {
-        xcConsultRepository.save(xcConsult);
+        xcConsultRepository.save(xcConsult);//保存成功
+        //发送邮件
+        sendMail.send(xcConsult);
     }
 }

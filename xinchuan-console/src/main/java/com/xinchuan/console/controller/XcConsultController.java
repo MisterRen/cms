@@ -2,6 +2,7 @@ package com.xinchuan.console.controller;
 
 import com.xinchuan.console.common.AjaxJson;
 import com.xinchuan.console.common.PageModel;
+import com.xinchuan.console.common.SendMail;
 import com.xinchuan.console.model.XcConsult;
 import com.xinchuan.console.model.XcNews;
 import com.xinchuan.console.service.XcConsultService;
@@ -40,13 +41,6 @@ public class XcConsultController {
         modelAndView.addObject("consultList",consultPage);
         return modelAndView;
     }
-
-/*
-    @GetMapping("/pageQuery")
-    public Page<XcConsult> pageQuery(@PageableDefault(value = 10, sort = {"id"}, direction = Sort.Direction.DESC) Pageable pageable) {
-        return xcConsultService.pageQuery(pageable);
-    }
-*/
 
     @PostMapping("/delete")
     public AjaxJson delete(@RequestParam(value = "id", required = true) Long id) {
