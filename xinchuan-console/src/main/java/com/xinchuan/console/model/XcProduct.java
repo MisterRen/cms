@@ -24,7 +24,8 @@ public class XcProduct extends SeracherForm {
     private String prodectName;//产品名称
     @Lob
     @Column(columnDefinition="TEXT")
-    private String summary;//产品简介
+    private String content;//产品简介
+    private String summary;//产品摘要
     private String prodectIcon;//产品ICON
     private Integer isShow;//是否显示
     private Integer level;
@@ -85,5 +86,13 @@ public class XcProduct extends SeracherForm {
 
     public void setCreateTime(String createTime) {
         this.createTime = createTime;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
     }
 }

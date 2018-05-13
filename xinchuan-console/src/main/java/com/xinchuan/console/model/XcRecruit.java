@@ -25,7 +25,7 @@ public class XcRecruit  extends SeracherForm {
     @GeneratedValue
     private Long id;
     private String postName;//岗位名称
-    private int isShow;//是否显示
+    private Integer isShow;//是否显示
     @Lob
     @Column(columnDefinition="TEXT")
     private String duty;//职责
@@ -75,11 +75,11 @@ public class XcRecruit  extends SeracherForm {
         this.requirements = requirements;
     }
 
-    public int getIsShow() {
+    public Integer getIsShow() {
         return isShow;
     }
 
-    public void setIsShow(int isShow) {
+    public void setIsShow(Integer isShow) {
         this.isShow = isShow;
     }
 }

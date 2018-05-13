@@ -74,14 +74,13 @@
             <td>${product.id}</td>
             <td>${product.prodectName}</td>
             <td><img src="${product.prodectIcon!''}"></td>
-            <td>
-                ${product.summary!''}
-            <#--<#if product.summary ??>
-                <#if product.summary?length gt 30>${product.summary?substring(0,30)}...
+            <td width="35%">
+            <#if product.summary ??>
+                <#if product.summary?length gt 30>${product.summary?substring(0,50)}...
                 <#else>
                     ${product.summary!''}
                 </#if>
-            </#if>-->
+            </#if>
             </td>
             <td>${product.createTime!''}</td>
             <td>
@@ -92,7 +91,7 @@
             </#if>
             </td>
             <td>${product.level}</td>
-            <td class="td-manage">
+            <td class="td-manage" width="15%">
                 <a  title="发布" onclick="member_enable(this,${product.id},${product.isShow})" href="javascript:;">
                     <i class="layui-icon">&#xe601;</i>
                 </a>

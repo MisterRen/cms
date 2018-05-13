@@ -21,6 +21,10 @@ public class XcTeamManagePage extends BaseSqlDaoImpl {
         StringBuilder hql = new StringBuilder();
         hql.append("select t from XcTeamManage t where 1=1 ");
         if(xcTeamManage != null){
+            if(xcTeamManage.getIsShow()!=null){
+                hql.append(" and t.isShow = :isShow ");
+                map.put("isShow", xcTeamManage.getIsShow());
+            }
             if(StringUtils.isNotBlank(xcTeamManage.getName())){
                 hql.append(" and t.name like :name ");
                 map.put("name", "%"+xcTeamManage.getName()+"%");

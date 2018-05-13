@@ -26,6 +26,10 @@ public class XcNewsPage extends BaseSqlDaoImpl  {
         StringBuilder hql = new StringBuilder();
         hql.append("select t from XcNews t where 1=1 ");
         if(news != null){
+            if(news.getIsShow()!=null){
+                hql.append(" and t.isShow =:isShow");
+                map.put("isShow", +news.getIsShow());
+            }
             if(StringUtils.isNotBlank(news.getTitle())){
                 hql.append(" and t.title like :title ");
                 map.put("title", "%"+news.getTitle()+"%");

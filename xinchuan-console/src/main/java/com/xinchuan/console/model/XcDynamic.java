@@ -25,7 +25,7 @@ public class XcDynamic extends SeracherForm {
     private Long id;
     private String title;//标题
     private String image;//图片
-    private int isShow;//是否显示
+    private Integer isShow;//是否显示
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private String createTime;//时间
 /*    private String summary;//摘要
@@ -55,11 +55,11 @@ public class XcDynamic extends SeracherForm {
         this.image = image;
     }
 
-    public int getIsShow() {
+    public Integer getIsShow() {
         return isShow;
     }
 
-    public void setIsShow(int isShow) {
+    public void setIsShow(Integer isShow) {
         this.isShow = isShow;
     }
 

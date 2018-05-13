@@ -27,6 +27,10 @@ public class XcRecruitPage extends BaseSqlDaoImpl  {
         StringBuilder hql = new StringBuilder();
         hql.append("select t from XcRecruit t where 1=1 ");
         if(recruit != null){
+            if(recruit.getIsShow()!=null){
+                hql.append(" and t.isShow =:isShow");
+                map.put("isShow", +recruit.getIsShow());
+            }
             if(StringUtils.isNotBlank(recruit.getPostName())){
                 hql.append(" and t.postName like :name ");
                 map.put("name", "%"+recruit.getPostName()+"%");

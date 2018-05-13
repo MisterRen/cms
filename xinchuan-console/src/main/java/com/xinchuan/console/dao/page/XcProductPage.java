@@ -3,10 +3,12 @@ package com.xinchuan.console.dao.page;
 import com.xinchuan.console.common.BaseSqlDaoImpl;
 import com.xinchuan.console.common.PageModel;
 import com.xinchuan.console.model.XcProduct;
+import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -25,7 +27,11 @@ public class XcProductPage extends BaseSqlDaoImpl  {
         Map<String,Object> map = new HashMap<String,Object>();
         StringBuilder hql = new StringBuilder();
         hql.append("select t from XcProduct t where 1=1 ");
-        if(product != null){
+        if(product!=null){
+            if(product.getIsShow()!=null){
+                hql.append(" and t.isShow =:isShow");
+                map.put("isShow", +product.getIsShow());
+            }
             if(StringUtils.isNotBlank(product.getProdectName())){
                 hql.append(" and t.prodectName like :name ");
                 map.put("name", "%"+product.getProdectName()+"%");
@@ -41,9 +47,10 @@ public class XcProductPage extends BaseSqlDaoImpl  {
                 map.put("endTime", product.getEndTime());
             }
         }
-        hql.append(" order by t.createTime desc ");
+        hql.append(" order by t.level asc,t.createTime desc ");
         return this.queryForPageWithParams(hql.toString(),map,product.getCurrentPage(),product.getPageSize());
     }
+
 
 
 }

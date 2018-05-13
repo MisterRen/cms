@@ -62,17 +62,27 @@
             </label>
             <div class="layui-input-block">
                 <input type="hidden" name="id" value="${product.id!''}">
-                <input type="text" id="prodectName" name="prodectName"  value="${product.prodectName!''}" lay-verify="prodectName"  placeholder="最大长度在2-30之间"  required lay-verify="prodectName"
+                <input type="text" id="prodectName" name="prodectName"  style="width: 80%"  value="${product.prodectName!''}" lay-verify="prodectName"  placeholder="最大长度在2-30之间"  required lay-verify="prodectName"
                        autocomplete="off" class="layui-input">
             </div>
         </div>
-
         <div class="layui-form-item">
-            <label for="summary" class="layui-form-label">
-                <span class="x-red">*</span>产品简介
+            <label for="L_summary" class="layui-form-label">
+                <span class="x-red">*</span>产品摘要
             </label>
             <div class="layui-input-block">
-                <script id="summary" name="summary" type="text/plain" style="width:100%;height:400px;"></script>
+                </textarea>
+                <textarea name="summary" required lay-verify="title" style="width: 80%" placeholder="摘要在10-100之间"
+                          class="layui-textarea"> ${product.summary!''}</textarea>
+                </textarea>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label for="content" class="layui-form-label">
+                <span class="x-red">*</span>产品内容
+            </label>
+            <div class="layui-input-block">
+                <script id="content" name="content" type="text/plain" style="width:100%;height:400px;"></script>
             </div>
         </div>
 
@@ -98,7 +108,7 @@
             <label for="L_repass" class="layui-form-label">
             </label>
             <button class="layui-btn" lay-filter="productcAdd" lay-submit="" id="productcAdd">
-                增加
+                保存
             </button>
             <button type="reset" class="layui-btn layui-btn-primary">重置</button>
         </div>
@@ -109,7 +119,7 @@
 
 <script>
 
-    var summary = UE.getEditor('summary');
+    var content = UE.getEditor('content');
     UE.Editor.prototype._bkGetActionUrl=UE.Editor.prototype.getActionUrl;
     UE.Editor.prototype.getActionUrl=function(action){
         if (action == 'uploadimage'){
@@ -120,8 +130,8 @@
             return this._bkGetActionUrl.call(this, action);
         }
     };
-    summary.ready(function () {
-        summary.setContent('${product.summary!""}');
+            content.ready(function () {
+                content.setContent('${product.content!""}');
     })
     var uploadFile;
     layui.use('laydate', function () {
@@ -204,7 +214,7 @@
                 },
                 success: function (data) {
                     if (data.success) {
-                        layer.alert("增加成功", {icon: 6}, function () {
+                        layer.alert("保存成功", {icon: 6}, function () {
                             this.index;
                             // 获得frame索引
                             if(window.name != ""){

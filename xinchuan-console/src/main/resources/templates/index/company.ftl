@@ -152,16 +152,19 @@
                 <div class="mid-line"></div>
                 <!--swiper-wrapper-->
                 <div class="swiper-wrapper">
+                     <#if dynamicPage ??>
+                         <#list dynamicPage.list as dynamic>
+                             <#if (dynamic_index %2==1)>
                     <div class="swiper-slide slide-swiper1">
                         <!--图片在左的模板-->
                         <div class="enter-l-template">
-                            <div class="keep-xy enter-item1" style="background-image: url('/index/img/company/h1.jpg')">
+                            <div class="keep-xy enter-item1" style="background-image: url(${dynamic.image})">
                             </div>
                             <div class="enter-item2 flex-fate">
                                 <img src="/index/img/company/dot.png" alt="">
                             </div>
                             <div class="enter-item3 flex-fate">
-                                <h3 class="act-title">参加“2017国际创新创业大赛”并荣获优胜奖荣获“科创杯”首届全国智能制造二等奖 </h3>
+                                <h3 class="act-title">${dynamic.title} </h3>
                                 <!--<p>发布日期：-->
                                     <!--<span class="act-date">-->
                                         <!--2017-05-12 18:50-->
@@ -171,33 +174,38 @@
                                     <!--<span class="p-v-line"></span>-->
                                     <!--<p class="act-det">10月20日9:00,首届全国智能制造(工业4.0 )创新创业大赛总决赛在广东顺德维也纳国际酒店正式开赛，来自全国100家优秀企业和团队经过多轮激烈PK,一路过关斩将，最终带着自己优秀的项目来到了国赛的舞台之上，迎接属于双创英雄们的精彩时刻。</p>-->
                                 <!--</div>-->
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide slide-swiper1">
-                        <!--图片在右的模板-->
-                        <div class="enter-r-template">
-                            <div class="enter-item3 flex-fate">
-                                <h3 class="act-title">实地了解客户需要</h3>
-                                <!--<p>发布日期：-->
-                                    <!--<span class="act-date">-->
-                                        <!--2017-05-12 18:50-->
-                                    <!--</span>-->
-                                <!--</p>-->
-                                <!--<div class="act-info">-->
-                                    <!--<span class="p-v-line"></span>-->
-                                    <!--<p class="act-det">10月20日9:00,首届全国智能制造(工业4.0 )创新创业大赛总决赛在广东顺德维也纳国际酒店正式开赛，来自全国100家优秀企业和团队经过多轮激烈PK,一路过关斩将，最终带着自己优秀的项目来到了国赛的舞台之上，迎接属于双创英雄们的精彩时刻。</p>-->
-                                <!--</div>-->
-                            </div>
-                            <div class="enter-item2 flex-fate">
-                                <img src="/index/img/company/dot.png" alt="">
-                            </div>
-                            <div class="keep-xy enter-item1" style="background-image: url('/index/img/company/h2.jpg')">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide slide-swiper1">
-                        <!--图片在左的模板-->
+                          <#else>
+                              <div class="swiper-slide slide-swiper1">
+                                  <!--图片在右的模板-->
+                                  <div class="enter-r-template">
+                                      <div class="enter-item3 flex-fate">
+                                          <h3 class="act-title">${dynamic.title}</h3>
+                                          <!--<p>发布日期：-->
+                                          <!--<span class="act-date">-->
+                                          <!--2017-05-12 18:50-->
+                                          <!--</span>-->
+                                          <!--</p>-->
+                                          <!--<div class="act-info">-->
+                                          <!--<span class="p-v-line"></span>-->
+                                          <!--<p class="act-det">10月20日9:00,首届全国智能制造(工业4.0 )创新创业大赛总决赛在广东顺德维也纳国际酒店正式开赛，来自全国100家优秀企业和团队经过多轮激烈PK,一路过关斩将，最终带着自己优秀的项目来到了国赛的舞台之上，迎接属于双创英雄们的精彩时刻。</p>-->
+                                          <!--</div>-->
+                                      </div>
+                                      <div class="enter-item2 flex-fate">
+                                          <img src="${dynamic.image}" alt="">
+                                      </div>
+                                      <div class="keep-xy enter-item1" style="background-image: url('/index/img/company/h2.jpg')">
+                                      </div>
+                                  </div>
+                              </div>
+                             </#if>
+
+                         </#list>
+                         </#if>
+                    <#--<div class="swiper-slide slide-swiper1">
+                        <!--图片在左的模板&ndash;&gt;
                         <div class="enter-l-template">
                             <div class="keep-xy enter-item1" style="background-image: url('/index/img/company/h3.jpg')">
                             </div>
@@ -206,17 +214,17 @@
                             </div>
                             <div class="enter-item3 flex-fate">
                                 <h3 class="act-title">参加"第十一届全国绿色低成本炼铁技术专题论坛"</h3>
-                                <!--<p>发布日期：-->
-                                    <!--<span class="act-date">-->
-                                        <!--2017-05-12 18:50-->
-                                    <!--</span>-->
-                                <!--</p>-->
-                                <!--<div class="act-info">-->
-                                    <!--<span class="p-v-line"></span>-->
-                                    <!--<p class="act-det">10月20日9:00,首届全国智能制造(工业4.0 )创新创业大赛总决赛在广东顺德维也纳国际酒店正式开赛，来自全国100家优秀企业和团队经过多轮激烈PK,一路过关斩将，最终带着自己优秀的项目来到了国赛的舞台之上，迎接属于双创英雄们的精彩时刻。</p>-->
-                                <!--</div>-->
+                                <!--<p>发布日期：&ndash;&gt;
+                                    <!--<span class="act-date">&ndash;&gt;
+                                        <!--2017-05-12 18:50&ndash;&gt;
+                                    <!--</span>&ndash;&gt;
+                                <!--</p>&ndash;&gt;
+                                <!--<div class="act-info">&ndash;&gt;
+                                    <!--<span class="p-v-line"></span>&ndash;&gt;
+                                    <!--<p class="act-det">10月20日9:00,首届全国智能制造(工业4.0 )创新创业大赛总决赛在广东顺德维也纳国际酒店正式开赛，来自全国100家优秀企业和团队经过多轮激烈PK,一路过关斩将，最终带着自己优秀的项目来到了国赛的舞台之上，迎接属于双创英雄们的精彩时刻。</p>&ndash;&gt;
+                                <!--</div>&ndash;&gt;
                             </div>
-                        </div>
+                        </div>-->
                     </div>
                 </div>
             </div>

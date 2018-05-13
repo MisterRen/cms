@@ -74,9 +74,9 @@
         </td>-->
             <td>${news.id}</td>
             <td>${news.title}</td>
-            <td>
+            <td width="35%">
                 <#if news.summary??>
-               <#if news.summary?length gt 30>${news.summary?substring(0,30)}...
+               <#if news.summary?length gt 30>${news.summary?substring(0,50)}...
                <#else>
                    ${news.summary!''}
                </#if>

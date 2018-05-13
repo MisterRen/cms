@@ -4,8 +4,9 @@ import com.baidu.ueditor.ActionEnter;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.xinchuan.console.common.Menu;
-import com.xinchuan.console.model.XcAdmin;
-import com.xinchuan.console.service.XcAdminService;
+import com.xinchuan.console.common.PageModel;
+import com.xinchuan.console.model.*;
+import com.xinchuan.console.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Controller;
@@ -34,9 +35,18 @@ public class IndexController {
 
     @Autowired
     Resource resource;
-
+    @Autowired
+    XcProductService xcProductService;
+    @Autowired
+    XcNewsService xcNewsService;
+    @Autowired
+    XcTeamManageService xcTeamManageService;
     @Autowired
     private XcAdminService xcAdminService;
+    @Autowired
+    private XcDynamicService xcDynamicService;
+    @Autowired
+    private XcRecruitService xcRecruitService;
 
     @GetMapping("/admin/index")
     public ModelAndView index(){
@@ -59,11 +69,7 @@ public class IndexController {
         return modelAndView;
     }
 
-    @GetMapping("/")
-    public ModelAndView first(){
-        ModelAndView modelAndView = new ModelAndView("index/index");
-        return modelAndView;
-    }
+
     @GetMapping("/welcome")
     public ModelAndView welcome(){
         ModelAndView modelAndView = new ModelAndView("xinchuan/welcome");
@@ -82,16 +88,40 @@ public class IndexController {
         XcAdmin admin=xcAdminService.login(xcAdmin.getAdminNme(),xcAdmin.getAdminPwd());
         if(admin!=null){
             session.setAttribute("userInfo",admin);
-            modelAndView= new ModelAndView("redirect:/xinchuan/index");
+            modelAndView= new ModelAndView("redirect:/index");
         }else {
-            modelAndView= new ModelAndView("redirect:/xinchuan/login");
+            modelAndView= new ModelAndView("redirect:/login");
         }
 
+        return modelAndView;
+    }
+
+    @GetMapping("/")
+    public ModelAndView first(){
+        ModelAndView modelAndView = new ModelAndView("index/index");
+        XcProduct p=new XcProduct();
+        p.setIsShow(0);
+        PageModel<XcProduct> productPage=xcProductService.allProduct(p);
+        modelAndView.addObject("productPage",productPage);//产品
+        //新闻//
+        XcNews n=new XcNews();
+        n.setIsShow(0);
+        PageModel<XcNews> newsPage=xcNewsService.pageQuery(n);
+        modelAndView.addObject("newsPage",newsPage);//新闻
+        //团队//
+        XcTeamManage t=new XcTeamManage();
+        t.setIsShow(0);
+        PageModel<XcTeamManage> teamPage=xcTeamManageService.allXcTeamManage(t);
+        modelAndView.addObject("teamPage",teamPage);//新闻
         return modelAndView;
     }
     @GetMapping("/xinchuan/company")
     public ModelAndView company(){
         ModelAndView modelAndView = new ModelAndView("index/company");
+        XcDynamic d=new XcDynamic();
+        d.setIsShow(0);
+        PageModel<XcDynamic> dynamicPage=xcDynamicService.allDynamic(d);
+        modelAndView.addObject("dynamicPage",dynamicPage);//公司
         return modelAndView;
     }
 
@@ -116,6 +146,10 @@ public class IndexController {
     @GetMapping("/xinchuan/recruit")
     public ModelAndView recruit(){
         ModelAndView modelAndView = new ModelAndView("index/recruit");
+        XcRecruit r=new XcRecruit();
+        r.setIsShow(0);
+        PageModel<XcRecruit> recruitPage=xcRecruitService.findAll(r);
+        modelAndView.addObject("recruitPage",recruitPage);//公司
         return modelAndView;
     }
 

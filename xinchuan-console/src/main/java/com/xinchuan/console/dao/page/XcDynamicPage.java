@@ -26,6 +26,10 @@ public class XcDynamicPage extends BaseSqlDaoImpl  {
         StringBuilder hql = new StringBuilder();
         hql.append("select t from XcDynamic t where 1=1 ");
         if(dynamic != null){
+            if(dynamic.getIsShow()!=null){
+                hql.append(" and t.isShow = :isShow ");
+                map.put("isShow", dynamic.getIsShow());
+            }
             if(StringUtils.isNotBlank(dynamic.getTitle())){
                 hql.append(" and t.title like :title ");
                 map.put("title", "%"+dynamic.getTitle()+"%");
@@ -41,7 +45,7 @@ public class XcDynamicPage extends BaseSqlDaoImpl  {
                 map.put("endTime", dynamic.getEndTime());
             }
         }
-        hql.append(" order by t.createTime desc ");
+        hql.append(" order by t.createTime desc");
         return this.queryForPageWithParams(hql.toString(),map,dynamic.getCurrentPage(),dynamic.getPageSize());
     }
 

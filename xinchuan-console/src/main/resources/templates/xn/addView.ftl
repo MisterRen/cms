@@ -33,8 +33,8 @@
             <label for="L_email" class="layui-form-label">
                 <span class="x-red">*</span>新闻标题
             </label>
-            <div class="layui-input-inline">
-                <input type="text" id="L_title" name="title" required  lay-verify="required"
+            <div class="layui-input-block">
+                <input type="text" id="L_title" name="title" style="width: 80%"  required  lay-verify="required"
                        autocomplete="off" class="layui-input" value="${news.title!''}">
             </div>
         </div>
@@ -42,9 +42,10 @@
             <label for="L_username" class="layui-form-label">
                 <span class="x-red">*</span>新闻摘要
             </label>
-            <div class="layui-input-inline">
-                <input type="text" id="L_summary" name="summary" required lay-verify="required"
-                       autocomplete="off" class="layui-input" value="${news.summary!''}">
+            <div class="layui-input-block">
+                   <textarea name="summary" required lay-verify="title" style="width: 80%" placeholder="摘要在10-100之间"
+                             class="layui-textarea"> ${news.summary!''}</textarea>
+                </textarea>
             </div>
         </div>
         <div class="layui-form-item">
@@ -99,7 +100,7 @@
             <label for="L_repass" class="layui-form-label">
             </label>
             <button  class="layui-btn" lay-filter="add" lay-submit="">
-                增加
+                    保存
             </button>
         </div>
     </form>
@@ -154,7 +155,7 @@
                 dataType:'JSON',
                 success:function (d) {
                     //发异步，把数据提交给php
-                    layer.alert("增加成功", {icon: 6},function () {
+                    layer.alert("保存成功", {icon: 6},function () {
                         this.index;
                         // 获得frame索引
                         if(window.name != ""){

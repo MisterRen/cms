@@ -115,80 +115,23 @@
         <!--<p class="wow flipInX" data-wow-duration="0.5s" data-wow-delay="0s">RECRUITMENT INFORMATION</p>-->
         <div class="rc-con">
             <!-- 单个招聘要求 -->
+             <#if recruitPage ??>
+                 <#list recruitPage.list as recruit>
             <div class="rc-item">
-                <h3>项目咨询经理（冶金方向）</h3>
+                <h3>${recruit.postName}</h3>
                 <div class="rc-item-duty">
                     <span>岗位职责:</span>
-                    <ol class="rc-item-duty-ul">
-                        <li>负责在项目推进与落地过程中，向客户解释讲解产品的行业技术相关问题等；</li>
-                        <li>与客户保持良好沟通，实时把握客户需求与问题解决；</li>
-                        <li>依照项目管理方法，及时进行风险、成本分析、并提出具体建议与措施；</li>
-                        <li>管理团队，管理团队及时完成项目咨询报告；</li>
-                        <li>出差拜访客户，进行专业的咨询及项目跟进；</li>
-                        <li>公司领导指派的其他任务。</li>
-                    </ol>
+                    ${recruit.duty}
                 </div>
                 <div class="rc-item-req">
                     <span>岗位要求：</span>
-                    <ol class="rc-item-req-ul">
-                        <li>冶金相关专业，有炼铁行业从业经验（必须）；</li>
-                        <li>较强的分析解决问题能力、沟通能力和表达能力；</li>
-                        <li>较强的持续学习能力；</li>
-                        <li>本科以上学历，应届生须研究生及以上学历。</li>
-                    </ol>
+                    ${recruit.requirements}
                 </div>
-                <p style="color:#686565;font-size:16px;line-height:2em;margin-top:14px;">薪资福利：底薪10-20k/月+提成+奖金+期权，做五休二+全额五险一金+全薪病假</p>
+               <#-- <p style="color:#686565;font-size:16px;line-height:2em;margin-top:14px;">福利：全额五险一金+绩效+奖金+期权，全薪病假 </p>-->
             </div>
-            <div class="rc-item">
-                <h3>市场专员/品牌专员</h3>
-                <div class="rc-item-duty">
-                    <span>岗位职责:</span>
-                    <ol class="rc-item-duty-ul">
-                        <li>负责企业市场营销活动方案和文案的撰写；</li>
-                        <li>整合内外资源，有效进行市场宣传推广，促进产品销售提供品牌认知度和公司知名度；</li>
-                        <li>根据产品整体发展及市场情况，规划并调整市场推广计划；</li>
-                        <li>协助完成市场活动的企划、组织、实施；</li>
-                        <li>负责软文的创意策划与刊发工作；</li>
-                        <li>执行由领导安排的其他市场部相关工作。</li>
-                    </ol>
-                </div>
-                <div class="rc-item-req">
-                    <span>岗位要求：</span>
-                    <ol class="rc-item-req-ul">
-                        <li>全日制统招本科及以上学历；</li>
-                        <li>2年以上相关工作经验；</li>
-                        <li>口齿清晰、普通话流利，逻辑性强，有较强的语言表达能力，善于沟通交流；</li>
-                        <li>抗压性强，亲和力佳、勤奋踏实，具有良好的拓展和营销能力；</li>
-                        <li>具备一定的市场分析及判断能力，良好的客户服务意识。</li>
-                    </ol>
-                </div>
-                <p style="color:#686565;font-size:16px;line-height:2em;margin-top:14px;">福利：全额五险一金+绩效+奖金+期权，全薪病假 </p>
-            </div>
-            <div class="rc-item">
-                <h3>软件工程师</h3>
-                <div class="rc-item-duty">
-                    <span>岗位职责:</span>
-                    <ol class="rc-item-duty-ul">
-                        <li>参与公司项目的设计、开发与维护；</li>
-                        <li>具有独立完成模块开发工作的能力；</li>
-                        <li>有较好的沟通能力，能积极对应工作，具备较好的抗压性；</li>
-                        <li>学习能力强，能够快速接受并掌握新知识，具有分析和解决问题的能力；</li>
-                        <li>做事认真负责，有责任心，有良好的团队合作精神。</li>
-                    </ol>
-                </div>
-                <div class="rc-item-req">
-                    <span>岗位要求：</span>
-                    <ol class="rc-item-req-ul">
-                        <li>学历要求：本科以上学历，计算机及其相关专业毕业；</li>
-                        <li>工作经验1-3年，有ERP公司工作经验者优先；</li>
-                        <li>熟练掌握java基础，java web基础，具有面向对象思想；</li>
-                        <li>逻辑性强，持续学习能力强，掌握一定的设计模式、数据结构；</li>
-                        <li>熟练使用MYSQL数据库，熟练使用SQL；</li>
-                        <li>做事认真细心，责任心和服务意识强，积极诚恳；</li>
-                        <li>具有团队精神，可以很好地与团队沟通，有学习热情。</li>
-                    </ol>
-                </div>
-            </div>
+                 </#list>
+             </#if>
+            
         </div>
         <!--contact email-->
         <div class="contact-email">

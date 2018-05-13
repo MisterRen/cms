@@ -22,7 +22,7 @@ public class XcNews extends SeracherForm {
     private Long id;
     private String title;//标题
     private String newsImage;//封面
-    private int isShow;//是否显示
+    private Integer isShow;//是否显示
     private Date createTime;//时间
     private String summary;//摘要
     @Lob
@@ -53,11 +53,11 @@ public class XcNews extends SeracherForm {
         this.newsImage = newsImage;
     }
 
-    public int getIsShow() {
+    public Integer getIsShow() {
         return isShow;
     }
 
-    public void setIsShow(int isShow) {
+    public void setIsShow(Integer isShow) {
         this.isShow = isShow;
     }
 
