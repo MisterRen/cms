@@ -99,15 +99,22 @@
     <h3 class="serve-t wow flipInX" data-wow-duration="0.5s" data-wow-delay="0s">产品和服务</h3>
     <!--<p class="serve-t-en wow flipInX" data-wow-duration="0.5s" data-wow-delay="0s">Products and services</p>-->
     <ul class="serve-nav">
-        <a href="server.html" class="serve-item active wow zoomIn" data-wow-duration="0.5s" data-wow-delay="0s">产品简介</a>
+        <#if productPage.list??>
+            <#list productPage.list as product>
+                <a href="./server?requestId=${product.id}" class="serve-item <#if xcProduct.id == product.id>active</#if> wow zoomIn" data-wow-duration="0.5s" data-wow-delay="0s">${product.prodectName}</a>
+            </#list>
+        </#if>
+        <#--<a href="server.html" class="serve-item active wow zoomIn" data-wow-duration="0.5s" data-wow-delay="0s">产品简介</a>
         <a href="server1.html" class="serve-item wow zoomIn" data-wow-duration="0.5s" data-wow-delay="0.1s">单矿分析</a>
         <a href="server2.html" class="serve-item wow zoomIn" data-wow-duration="0.5s" data-wow-delay="0.2s">综合分析</a>
         <a href="server3.html" class="serve-item wow zoomIn" data-wow-duration="0.5s" data-wow-delay="0.3s">成本优化</a>
-        <a href="server4.html" class="serve-item wow zoomIn" data-wow-duration="0.5s" data-wow-delay="0.4s">利润优化</a>
+        <a href="server4.html" class="serve-item wow zoomIn" data-wow-duration="0.5s" data-wow-delay="0.4s">利润优化</a>-->
     </ul>
     <!--serve-con1-->
     <div style="" class="serve-con1 choose-show">
-        <p class="serve-con1-p1 wow slideInLeft" data-wow-duration="0.5s" data-wow-delay="0s">
+
+        ${xcProduct.content!''}
+        <#--<p class="serve-con1-p1 wow slideInLeft" data-wow-duration="0.5s" data-wow-delay="0s">
             在整个国民经济当中，工业制造业的体量占比最高。在工业制造业当中，原材料的成本占比又是最高，通常可以达到50-80%。原材料具有资源的属性，未来的价格趋势必然逐步提升。传统制造业企业面临着产品利润率下降和原材料成本上升的双重挤压。
         </p>
         <ul class="serve-con1-ul">
@@ -129,14 +136,14 @@
         </p>
         <p class="serve-con1-p3 wow slideInLeft" data-wow-duration="0.5s" data-wow-delay="0s">
             行业应用方面,目前我们已经开发了针对钢铁行业炼铁原材料配方优化的成熟产品,在烧结、球团、高炉的利润提升以及成本降低方面积累了扎实的成功经验和案例。未来，公司将会把整套方法论和产品拓展应用于煤炭、有色金属、水泥等行业。
-        </p>
+        </p>-->
     </div>
 </div>
 <!--footer-->
 <div class="footer" style="">
     <div class="container">
         <img class="footer-logo" src="/index/img/index/logo-m.png" alt="">
-        <a href="./index.html#slide7" class="footer-contact">
+        <a href="/xinchuan/about" class="footer-contact">
             <img src="/index/img/index/phone-logo.png" alt="">
             联系我们
         </a>

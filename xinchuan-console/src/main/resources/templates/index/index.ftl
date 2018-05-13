@@ -221,7 +221,7 @@
                                         <#list productPage.list as product>
                                             <#if product_index < 5 >
                                             <div class="swiper-slide slide-swiper4">
-                                                <a href="/xinchuan/server" class="flex-fate serve-item">
+                                                <a href="/xinchuan/server?requestId=${product.id}" class="flex-fate serve-item">
                                                     <div class="col-sm-12 purpleitem purple${product_index+1} transition-ani">
                                                         <h3>${product.prodectName}</h3>
                                                         <p>
@@ -245,7 +245,7 @@
                                 <#if productPage??>
                                     <#list productPage.list as product>
                                         <#if product_index < 5 >
-                                          <a href="/xinchuan/server"
+                                          <a href="/xinchuan/server?requestId=${product.id}"
                                              class="col-xs-6 col-sm-6 grayitem gray${product_index+1} transition-ani">
                                               <h3>${product.prodectName}</h3>
                                               <p class="pc-show">
@@ -512,22 +512,22 @@
                     <div class="form-con">
                         <h3>在线留言</h3>
                         <!--<p>Online Message</p>-->
-                        <form class="form-sub" action="">
+                        <form class="form-sub" id="form-sub" action="">
                             <div>
-                                <label for="name">联系人</label>
-                                <input id="name" type="text">
+                                <label for="userName">联系人</label>
+                                <input id="userName" name="userName" type="text">
                             </div>
                             <div>
-                                <label for="email">邮箱地址</label>
-                                <input id="email" type="text">
+                                <label for="userEmail">邮箱地址</label>
+                                <input id="userEmail" name="userEmail" type="text">
                             </div>
                             <div>
-                                <label for="phone">联系电话</label>
-                                <input id="phone" type="text">
+                                <label for="userPhone">联系电话</label>
+                                <input id="userPhone" name="userPhone" type="text">
                             </div>
                             <div class="note-con">
-                                <label for="note">备注说明</label>
-                                <textarea id="note" type="text"></textarea>
+                                <label for="remarks">备注说明</label>
+                                <textarea id="remarks" name="remarks" type="text"></textarea>
                             </div>
                             <div id="commit">提交</div>
                         </form>
@@ -551,8 +551,7 @@
                     </p>
                     <div>
                         <span>技术支持:</span>
-                        <a href="http://www.qiniuniu.com" target="_blank"><img src="/index/img/index/qiniuniu.png"
-                                                                               alt=""></a>
+                        <a href="http://www.qiniuniu.com" target="_blank"><img src="/index/img/index/qiniuniu.png" alt=""></a>
                     </div>
                 </div>
             </div>
@@ -567,6 +566,7 @@
 <script src="/index/common/swiper/swiper.min.js"></script>
 <script src="/index/common/swiper/swiper.animate.min.js"></script>
 <script src="/index/common/wow/wow.min.js"></script>
+<script type="text/javascript" src="/lib/layui/layui.js" charset="utf-8"></script>
 <script src="/index/js/common.js"></script>
 <script src="/index/js/index.js"></script>
 </body>

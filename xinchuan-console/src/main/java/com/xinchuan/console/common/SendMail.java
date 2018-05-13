@@ -31,7 +31,8 @@ public class SendMail {
 
     private String mail_head_value = "来自传信官网咨询";
 
-    private String mail_to = "liny@infomax.net.cn";//收件人
+    //private String mail_to = "liny@infomax.net.cn";//收件人
+    private String mail_to = "my.love.beijing@163.com";//收件人
 
     private String mail_subject = "客户联系信息";
 

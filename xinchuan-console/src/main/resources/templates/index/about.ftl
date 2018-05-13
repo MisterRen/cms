@@ -148,7 +148,7 @@
 <div class="footer" style="">
     <div class="container">
         <img class="footer-logo" src="/index/img/index/logo-m.png" alt="">
-        <a href="html/index.html#slide7" class="footer-contact">
+        <a href="javascript:;" class="footer-contact">
             <img src="/index/img/index/phone-logo.png" alt="">
             联系我们
         </a>
