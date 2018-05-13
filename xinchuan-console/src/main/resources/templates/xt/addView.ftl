@@ -95,7 +95,7 @@
                 <span class="x-red">*</span>是否显示
             </label>
             <div class="layui-input-inline">
-                <input <#if xcTeamManage.isShow??><#if xcTeamManage.isShow==0><#else>checked="checked"</#if></#if> name="isShow" lay-skin="switch" lay-filter="switchTest" lay-text="ON|OFF" type="checkbox">
+                <input <#if xcTeamManage.isShow??><#if xcTeamManage.isShow==0>checked="checked"</#if></#if> name="isShow" lay-skin="switch" lay-filter="switchTest" lay-text="ON|OFF" type="checkbox">
             </div>
         </div>
 
@@ -145,7 +145,6 @@
                             if(window.name != ""){
                                 var index = parent.layer.getFrameIndex(window.name);
                                 //关闭当前frame
-                                alert(index);
                                 parent.layer.close(index);
                                 parent.location.reload()
                             }else{

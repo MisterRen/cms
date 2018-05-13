@@ -84,11 +84,7 @@
         </ul>
         <div class="layui-tab-content">
             <div class="layui-tab-item layui-show">
-<<<<<<< HEAD
-                <iframe src='welcome' frameborder="0" scrolling="yes" class="x-iframe"></iframe>
-=======
                 <iframe src='/welcome' frameborder="0" scrolling="yes" class="x-iframe"></iframe>
->>>>>>> e2c3162e8cb5c451ac8a9d3eb8d229bd122de678
             </div>
         </div>
     </div>

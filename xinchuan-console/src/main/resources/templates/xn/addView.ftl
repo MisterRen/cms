@@ -53,7 +53,7 @@
                 <span class="x-red">*</span>是否启用
             </label>
             <div class="layui-input-inline">
-                <input <#if news.isShow??><#if news.isShow==1><#else>checked="checked"</#if></#if> name="isShow" lay-skin="switch" lay-filter="switchTest" lay-text="ON|OFF" type="checkbox">
+                <input <#if news.isShow??><#if news.isShow==0>checked="checked"</#if></#if> name="isShow" lay-skin="switch" lay-filter="switchTest" lay-text="ON|OFF" type="checkbox">
             </div>
         </div>
         <div class="layui-form-item">
