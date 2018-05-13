@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="/index/css/reset.css">
     <link rel="stylesheet" href="/index/css/header.css">
     <link rel="stylesheet" href="/index/css/about.css">
-
+    <#--<link rel="stylesheet" href="/css/xadmin.css">-->
 </head>
 <body>
 <!--header-->
@@ -121,22 +121,22 @@
         <!--right-->
         <div class="col-sm-7 col-sm-offset-5 contact-r">
             <div class="flex-fate contact-form wow slideInRight" data-wow-duration="0.5s" data-wow-delay="0s">
-                <form class="form-sub" action="">
+                <form id="form-sub" class="form-sub" action="">
                     <div>
-                        <label for="name">联系人</label>
-                        <input id="name" type="text">
+                        <label for="userName">联系人</label>
+                        <input id="userName" name="userName" type="text">
                     </div>
                     <div>
-                        <label for="email">邮箱地址</label>
-                        <input id="email" type="text">
+                        <label for="userEmail">邮箱地址</label>
+                        <input id="userEmail" name="userEmail" type="text">
                     </div>
                     <div>
-                        <label for="phone">联系电话</label>
-                        <input id="phone" type="text">
+                        <label for="userPhone">联系电话</label>
+                        <input id="userPhone" name="userPhone" type="text">
                     </div>
                     <div class="note-con">
-                        <label for="note">备注说明</label>
-                        <textarea id="note" type="text"></textarea>
+                        <label for="remarks">备注说明</label>
+                        <textarea id="remarks" name="remarks" type="text"></textarea>
                     </div>
                     <div id="commit">发送</div>
                 </form>
@@ -168,6 +168,7 @@
 <script src="/index/common/swiper/swiper.min.js"></script>
 <script src="/index/common/swiper/swiper.animate.min.js"></script>
 <script src="/index/common/wow/wow.min.js"></script>
+<script type="text/javascript" src="/lib/layui/layui.js" charset="utf-8"></script>
 <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=dYvdoiRD3W5IGIzQmbFqfp6GBbm4q2hu"></script>
 <script src="/index/js/common.js"></script>
 <script src="/index/js/about.js"></script>

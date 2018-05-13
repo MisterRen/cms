@@ -1,4 +1,12 @@
 $(function(){
+
+    //加载弹出层
+    layui.use(["form",'element'],
+        function() {
+            layer = layui.layer;
+            element = layui.element;
+        });
+
     //模糊图片
     var img = new Image();
     img.src = "/index/img/recruit/banner.png";
@@ -35,38 +43,38 @@ $(function(){
     }
     // 验证
     var check_name = function() {
-        if ($("#name").val().length <= 0) {
-            show_info("#name")
+        if ($("#userName").val().length <= 0) {
+            show_info("#userName")
             return false;
         }
-        show_info("#name", true)
+        show_info("#userName", true)
         return true;
     }
     var check_phone = function() {
         var reg = /^((\d{11})|^((\d{7,8})|(\d{4}|\d{3})-(\d{7,8})|(\d{4}|\d{3})-(\d{7,8})-(\d{4}|\d{3}|\d{2}|\d{1})|(\d{7,8})-(\d{4}|\d{3}|\d{2}|\d{1}))$)$/
-        var num = $("#phone").val();
+        var num = $("#userPhone").val();
         if (!reg.test(num)) {
-            show_info("#phone")
+            show_info("#userPhone")
             return false
         }
-        show_info("#phone", true)
+        show_info("#userPhone", true)
         return true
     }
     var check_email = function() {
         var reg = /^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/
-        if (!reg.test($("#email").val())) {
-            show_info("#email")
+        if (!reg.test($("#userEmail").val())) {
+            show_info("#userEmail")
             return false
         }
-        show_info("#email", true)
+        show_info("#userEmail", true)
         return true
     }
     var check_text = function() {
-        if ($("#note").val().length <= 0) {
-            show_info("#note")
+        if ($("#remarks").val().length <= 0) {
+            show_info("#remarks")
             return false;
         }
-        show_info("#note", true)
+        show_info("#remarks", true)
         return true;
     }
     // 表单验证
@@ -74,43 +82,49 @@ $(function(){
         return check_name() && check_email() && check_phone() && check_text()
     }
     //keyup触发验证
-    $("#name").on("keydown keyup blur",function () {
+    $("#userName").on("keydown keyup blur",function () {
         check_name()
     });
-    $("#email").on("keydown keyup blur",function () {
+    $("#userEmail").on("keydown keyup blur",function () {
         check_email()
     });
-    $("#phone").on("keydown keyup blur",function () {
+    $("#userPhone").on("keydown keyup blur",function () {
         check_phone()
     });
-    $("#note").on("keydown keyup blur",function () {
+    $("#remarks").on("keydown keyup blur",function () {
         check_text()
     });
+
     //stop submit
     $("#commit").on("click",function(e) {
-        e.preventDefault();
+        submit();
+    });
+
+    function submit() {
+        $("#commit").unbind('click');
         if(!require()){
             return false;
         }
         $.ajax({
-            // type: "POST",
-            // dataType: "json",
-            // url: '/index/message/message' ,
-            // data: $('.get_form').serialize(),
-            // success: function (res) {
-            //     console.log(res);
-            //     if(res.state=='success'){
-            //         alert(res.msg);
-            //         all_swiper.slideTo(0,500,true);
-            //         $(".get_form")[0].reset();
-            //     }else{
-            //         alert(res.msg);
-            //     }
-            //
-            // }
-        });
-    });
+            type: "POST",
+            dataType: "json",
+            url: '/xc/add' ,
+            data: $('#form-sub').serialize(),
+            success: function (res) {
+                if(res.success){
+                    layer.msg(res.msg, {icon: 1, time: 1000});
+                    //all_swiper.slideTo(0,500,true);
+                    $('#form-sub')[0].reset();
+                    $("#commit").on("click",function(e) {
+                        submit();
+                    });
+                }else{
+                    layer.msg(res.msg, {icon: 1, time: 1000});
+                }
 
+            }
+        });
+    }
 
 });
 

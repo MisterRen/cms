@@ -39,7 +39,7 @@
             <dl class="layui-nav-child"> <!-- 二级菜单 -->
                 <#--<dd><a onclick="x_admin_show('个人信息','http://www.baidu.com')">个人信息</a></dd>
                 <dd><a onclick="x_admin_show('切换帐号','http://www.baidu.com')">切换帐号</a></dd>-->
-                <dd><a href="/xinchuan/login">退出</a></dd>
+                <dd><a href="/login">退出</a></dd>
             </dl>
         </li>
         <#--<li class="layui-nav-item to-index"><a href="/">前台首页</a></li>-->
@@ -84,7 +84,11 @@
         </ul>
         <div class="layui-tab-content">
             <div class="layui-tab-item layui-show">
+<<<<<<< HEAD
                 <iframe src='welcome' frameborder="0" scrolling="yes" class="x-iframe"></iframe>
+=======
+                <iframe src='/welcome' frameborder="0" scrolling="yes" class="x-iframe"></iframe>
+>>>>>>> e2c3162e8cb5c451ac8a9d3eb8d229bd122de678
             </div>
         </div>
     </div>

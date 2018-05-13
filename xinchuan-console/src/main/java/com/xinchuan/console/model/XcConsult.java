@@ -27,7 +27,7 @@ public class XcConsult extends SeracherForm {
     private String userName;
     private String userPhone;
     private String userEmail;
-    private String Remarks;//备注
+    private String remarks;//备注
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date createTime;//时间
     private int status;//1、新建，2、跟进，3、完成
@@ -65,11 +65,11 @@ public class XcConsult extends SeracherForm {
     }
 
     public String getRemarks() {
-        return Remarks;
+        return remarks;
     }
 
     public void setRemarks(String remarks) {
-        Remarks = remarks;
+        this.remarks = remarks;
     }
 
     public Date getCreateTime() {
