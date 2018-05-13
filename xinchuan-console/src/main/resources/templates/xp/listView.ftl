@@ -76,7 +76,7 @@
             <td><img src="${product.prodectIcon!''}"></td>
             <td width="35%">
             <#if product.summary ??>
-                <#if product.summary?length gt 30>${product.summary?substring(0,50)}...
+                <#if product.summary?length gt 30>${product.summary?substring(0,30)}...
                 <#else>
                     ${product.summary!''}
                 </#if>

@@ -13,7 +13,7 @@
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon"/>
     <link rel="stylesheet" href="/css/font.css">
     <link rel="stylesheet" href="/css/xadmin.css">
-    <script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" src="/js/jquery-3.2.1.min.js"></script>
     <script type="text/javascript" src="/lib/layui/layui.js" charset="utf-8"></script>
     <script type="text/javascript" src="/js/xadmin.js"></script>
 </head>
@@ -76,12 +76,12 @@
             <td>${team.id}</td>
             <td><img style="width: 30%" src="${team.userIcon!''}"></td>
             <td>${team.name}</td>
-            <td>${team.profile}</td>
-            <td>${team.position}
-                 <#if team.position??>
-                     <#if  team.position?length gt 30>${team.position?substring(0,30)}...
+            <td>${team.position}</td>
+            <td width="35%">
+                 <#if team.profile??>
+                     <#if  team.profile?length gt 30>${team.profile?substring(0,30)}...
                      <#else>
-                         ${team.position!''}
+                         ${team.profile!''}
                      </#if>
                  </#if>
             </td>
