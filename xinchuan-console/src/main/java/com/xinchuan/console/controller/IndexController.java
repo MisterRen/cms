@@ -145,8 +145,15 @@ public class IndexController {
     }
 
     @GetMapping("/xinchuan/server")
-    public ModelAndView prouct() {
+    public ModelAndView prouct(@RequestParam(value = "requestId",defaultValue = "-1",required = false) Long id) {
         ModelAndView modelAndView = new ModelAndView("index/server");
+        XcProduct p = new XcProduct();
+        p.setIsShow(0);
+        PageModel<XcProduct> productPage = xcProductService.allProduct(p);//查询所有显示的产品
+
+        XcProduct xcProduct = xcProductService.findById(id).orElse(productPage.getList().get(0));
+        modelAndView.addObject("productPage", productPage);//所有产品
+        modelAndView.addObject("xcProduct", xcProduct);//当前产品
         return modelAndView;
     }
 

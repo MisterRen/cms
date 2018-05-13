@@ -143,7 +143,7 @@
 <div class="footer" style="">
     <div class="container">
         <img class="footer-logo" src="/index/img/index/logo-m.png" alt="">
-        <a href="./index.html#slide7" class="footer-contact">
+        <a href="/xinchuan/about" class="footer-contact">
             <img src="/index/img/index/phone-logo.png" alt="">
             联系我们
         </a>
