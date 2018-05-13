@@ -1,5 +1,5 @@
 server:
-  port: 8080
+  port: 80
   tomcat:
       #编码格式
       uri-encoding: utf-8
@@ -22,8 +22,6 @@ spring:
   freemarker:
     cache: false
     request-context-attribute: request
-    prefix: classpath:/templates/
-    suffix: .ftl
   datasource:
     url: jdbc:mysql://123.56.16.123:3306/xinchuan?useUnicode=true&characterEncoding=utf8&serverTimezone=PRC&useSSL=false&rewriteBatchedStatements=TRUE&autoReconnect=true&allowMultiQueries=true
     driver-class-name: com.mysql.cj.jdbc.Driver
@@ -43,3 +41,7 @@ logging:
   path:
   pattern:
     console: "%d [%highlight(%level)] %c %L %msg%n"
+
+upload:
+  file:
+  savePath: \opt\xinchuan\files\
