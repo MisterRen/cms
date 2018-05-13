@@ -70,7 +70,7 @@
             </td>-->
             <td width="5%">${recruit.id}</td>
             <td width="15%">${recruit.postName}</td>
-            <td  width="25%"> ${recruit.duty!''} </td>
+            <td  width="25%"> ${recruit.duty!""} </td>
             <td width="25%">${recruit.requirements!""}</td>
             <td width="5%">
              <#if recruit.isShow==1>

@@ -1,0 +1,347 @@
+.h-con{
+    background-color: #ffffff!important;
+}
+.company-b-c{
+    margin-top: 74px;
+    position: relative;
+}
+.company-banner{
+    width: 100%;
+    height: 0;
+    padding-bottom: 43%;
+    overflow:hidden;
+    background-position:center center;
+    background-repeat:no-repeat;
+    -webkit-background-size:cover;
+    -moz-background-size:cover;
+    background-size:cover;
+    background-image: url("/index/img/company/banner-s.png");
+    align-items: center;
+}
+.banner-txt{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    align-items: center;
+    justify-content: center;
+}
+.banner-txt-con{
+    border: 1px solid #ffffff;
+    color: #ffffff;
+    width: 40%;
+    height: 30%;
+    text-align: center;
+    flex-direction: column;
+    justify-content: center;
+}
+.banner-txt-con>h3{
+    font-size: 52px;
+    font-family: Arial;
+    font-weight: bold;
+    margin-bottom: 5%;
+}
+.banner-txt-con>span{
+    display: inline-block;
+    font-size: 14px;
+    line-height: 20px;
+    padding: 0 10%;
+
+}
+.who-am{
+    margin-top: -6%;
+    padding: 6% 0 6% 6%;
+    background-color: #ffffff;
+    overflow: hidden;
+    position: relative;
+    z-index: 100;
+    box-shadow: 0px 0px 6px #ccc;
+}
+.who-am-l{
+    float: left;
+    width: 45%;
+}
+.who-am-r{
+    float: left;
+    width: 45%;
+    margin-left: 10%;
+}
+.who-am-l>h3,.who-am-r>h3{
+    font-size: 26px;
+    margin-bottom: 5%;
+}
+.who-am-l>p{
+    font-size: 14px;
+    line-height: 2em;
+    margin-bottom: 3%;
+    color: #818181;
+}
+.who-am-l>p:nth-child(2){
+    font-size: 16px;
+    margin-bottom: 2%;
+    color: #555555;
+}
+.who-am-r>p{
+    font-size: 16px;
+    line-height: 2em;
+    margin-bottom: 3%;
+}
+.who-can{
+    margin-top: 10%;
+    text-align: center;
+}
+.who-can>h3{
+    font-size: 36px;
+    font-weight: bold;
+    margin-bottom: 2em;
+}
+.who-can>span{
+    font-size: 14px;
+    line-height: 6em;
+}
+.what-can-con{
+    overflow: hidden;
+    margin-top: 3%;
+}
+.what-can-con-l{
+    float: left;
+    width: 48%;
+    height: 0;
+    padding-bottom: 35%;
+    background-image: url("/index/img/company/cando.png");
+}
+.what-can-con-r{
+    float: left;
+    width: 48%;
+    height: 100%;
+    margin-left: 4%;
+    text-align: left;
+}
+.what-can-con-r>h3{
+    font-size: 24px;
+    line-height: 2em;
+    margin-top: 10%;
+}
+.what-can-con-r>p{
+    font-size: 16px;
+    line-height: 1.6em;
+    color: #767676;
+    margin-bottom: 1em;
+}
+.can-item{
+    font-size: 16px;
+    padding: 1em 0;
+}
+.p-line{
+    display: inline-block;
+    width: 26px;
+    height: 1px;
+    background-color: #58328b;
+    margin-right: 10px;
+    vertical-align: middle;
+}
+.enter-l-template{
+    overflow: hidden;
+}
+.enter-r-template{
+    overflow: hidden;
+}
+.enter-item1,.enter-item2,.enter-item3{
+    float: left;
+}
+.enter-item1{
+    width: 40%;
+    height: 0;
+    padding-bottom: 25.5%;
+}
+.enter-item2{
+    width: 20%;
+    position: absolute;
+    top: 0;
+    left: 40%;
+    right: 40%;
+    bottom: 0;
+    justify-content: center;
+    align-items: center;
+}
+.enter-item2>img{
+    display: inline-block;
+    width: 28px;
+}
+.enter-item3{
+    width: 40%;
+    position: absolute;
+    top: 0;
+    left: 60%;
+    right: 0;
+    bottom: 0;
+    text-align: left;
+    align-items: center;
+}
+.enter-r-template>.enter-item3{
+    width: 40%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 60%;
+    bottom: 0;
+    text-align: left;
+    align-items: center;
+}
+.enter-r-template>.enter-item1{
+    margin-left: 60%;
+}
+.act-title{
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 4px;
+    line-height: 1.4em;
+}
+.enter-item3>p{
+    font-size: 14px;
+    line-height: 2em;
+    color: #a6a6a6;
+}
+.act-info{
+    font-size: 16px;
+    line-height: 1.6em;
+    color: #838383;
+    position: relative;
+    padding-left: 10px;
+}
+.p-v-line{
+    position: absolute;
+    top: 7px;
+    left: 0;
+    width: 2px;
+    height: 41px;
+    background-color: #58328b;
+}
+.enter-news-con{
+    position: relative;
+}
+.mid-line{
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 1px;
+    height: 100%;
+    background-color: #e6e6e6;
+}
+.slide-swiper1{
+    height: auto!important;
+    padding: 20px 0;
+}
+.swiper-button-next1{
+    position: relative;
+    margin: 20px auto 6%;
+    background-image: url("/index/img/company/more.png");
+    right: 0;
+    background-size: 44px 44px;
+    z-index: 1000;
+    outline: none;
+}
+/**********************************/
+@media screen and (max-width: 768px) {
+    .company-container{
+        padding: 0 35px;
+    }
+    .banner-txt-con{
+        width: 75%;
+        height: 56%;
+    }
+    .banner-txt-con>h3{
+        font-size: 20px;
+        margin-bottom: 2%;
+    }
+    .banner-txt-con>span{
+        font-size: 12px;
+        line-height: 1.4em;
+        padding: 0 6px;
+        text-align: left;
+    }
+    .who-am{
+        padding: 1px;
+        box-shadow: none;
+    }
+    .who-am-l{
+        width: 100%;
+        box-shadow: 0px 0px 6px #ccc;
+        padding: 5%;
+    }
+    .who-am-r{
+        width: 100%;
+        margin: 0;
+        box-shadow: 0px 0px 6px #ccc;
+        padding: 5%;
+        margin-top: 5%;
+    }
+    .who-am-r>h3{
+        margin-top: 6%;
+    }
+    .who-am-l>h3, .who-am-r>h3{
+        font-size: 20px;
+        margin-top: 0;
+        margin-bottom: 2%;
+    }
+    .who-am-r>p{
+        font-size: 14px;
+        color: #818181;
+        margin:0;
+    }
+    .who-can>h3{
+        font-size: 20px;
+    }
+    .what-can-con-l{
+        width: 100%;
+        padding-bottom: 72.91%;
+    }
+    .what-can-con-r{
+        width: 100%;
+        margin: 0;
+    }
+    .what-can-con-r>h3{
+        font-size: 16px;
+        line-height: 1.4em;
+        margin-top: 3%;
+    }
+    .what-can-con-r>p{
+        font-size: 14px;
+    }
+    .can-item{
+        font-size: 14px;
+        padding: 6px 0;
+        overflow: hidden;
+    }
+    .p-line{
+        width: 10px;
+        margin-right: 2px;
+        float: left;
+        margin-top: 6px;
+    }
+    .act-title{
+        font-size: 14px;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 6;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        line-height: 1.2em;
+    }
+    .enter-item3>p{
+        font-size: 12px;
+        line-height: 1.4em;
+    }
+    .act-info{
+        display: none;
+    }
+    .who-can>span{
+        line-height: 3em;
+    }
+    .can-item>span:last-child{
+        display: inline-block;
+        float: left;
+        width: 90%;
+    }
+}

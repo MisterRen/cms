@@ -1,0 +1,173 @@
+.h-con{
+    background-color: #ffffff!important;
+}
+.banner {
+    margin-top: 74px;
+    width: 100%;
+    height: 0;
+    padding-bottom: 20.5%;
+    background-image: url("/index/img/recruit/banner-s.png");
+}
+.about-us-con{
+    overflow: hidden;
+}
+.about-us-con>h3{
+    font-size: 32px;
+    color: #393939;
+    line-height: 1.3em;
+    text-align: center;
+    margin-top: 3%;
+    margin-bottom: 3%;
+}
+.about-us-con>p{
+    color: #d5d5d5;
+    font-size: 14px;
+    margin-bottom: 3%;
+    text-align: center;
+}
+#map{
+    /*margin-top: 74px;*/
+    width: 100%;
+    height: 0;
+    padding-bottom: 37.5%;
+}
+.contact-row{
+    padding: 6% 0;
+    overflow: hidden;
+}
+.contact-info{
+    height: 100%;
+    flex-direction: column;
+    justify-content: center;
+    font-size: 18px;
+    color: #6f6f6f;
+    line-height: 2em;
+}
+.contact-l{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    align-items: center;
+}
+.start-t{
+    font-size: 18px;
+}
+.contact-time{
+    margin-bottom: 4%;
+}
+.contact-form{
+    width: 100%;
+    height: 100%;
+    align-items: center;
+}
+.form-sub{
+    width: 100%;
+}
+.form-sub>div{
+    border: 1px solid #4f4f4f;
+    padding: 20px 9px;
+    margin-bottom: 2%;
+    position: relative;
+}
+.form-sub>div>label{
+    color: #4f4f4f;
+}
+
+.form-sub>div>input{
+    background-color: transparent;
+    -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+    -webkit-user-select: none;
+    -moz-user-focus: none;
+    -moz-user-select: none;
+    -webkit-appearance:none;
+    outline: none;
+    border: none;
+    color: #4f4f4f;
+    font-size: 16px;
+    position: absolute;
+    top: 0;
+    left: 80px;
+    bottom: 0;
+    width: calc(100% - 80px);
+}
+.form-sub>div:first-child>input{
+    left: 64px;
+}
+.form-sub>.note-con{
+    height: 60px;
+    margin-bottom: 4%;
+    height: 78px;
+}
+.form-sub>div>textarea{
+    background-color: transparent;
+    -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+    -webkit-user-select: none;
+    -moz-user-focus: none;
+    -moz-user-select: none;
+    -webkit-appearance:none;
+    outline: none;
+    border: none;
+    overflow:hidden;
+    resize:none;
+    color: #4f4f4f;
+    font-size: 16px;
+    position: absolute;
+    top: 20px;
+    left: 80px;
+    bottom: 20px;
+    width: calc(100% - 80px);
+}
+#commit{
+    width: 212px;
+    height: 48px;
+    line-height: 48px;
+    background-color: #58328b;
+    color: #ffffff;
+    text-align: center;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+}
+input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0px 1000px #ffffff inset;
+    border: 1px solid #ffffff!important;
+    text-fill-color: #4f4f4f;
+    -webkit-text-fill-color: #4f4f4f;
+}
+/****************************************************/
+@media screen and (max-width: 768px) {
+    .contact-l{
+        position: relative;
+    }
+    .form-sub>div{
+        padding: 8px 9px;
+    }
+    .about-us-con{
+        padding: 0 35px;
+    }
+    .about-us-con>h3{
+        font-size: 20px;
+        margin-top: 1em;
+    }
+    .contact-info{
+        font-size: 16px;
+    }
+    .contact-add{
+        margin-bottom: 6%;
+    }
+    .form-sub>div>textarea{
+        top: 8px;
+        bottom: 8px;
+        line-height: 16px;
+    }
+    .form-sub>.note-con{
+        height: 68px;
+    }
+    #commit{
+        width: 100px;
+        height: 32px;
+        line-height: 32px;
+        font-size: 14px;
+    }
+}

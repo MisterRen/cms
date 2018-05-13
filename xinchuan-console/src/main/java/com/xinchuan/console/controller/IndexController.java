@@ -29,7 +29,7 @@ import java.util.Map;
  * @fileName IndexController.java
  */
 @RestController
-@RequestMapping("/xinchuan")
+/*@RequestMapping("/")*/
 public class IndexController {
 
     @Autowired
@@ -38,7 +38,7 @@ public class IndexController {
     @Autowired
     private XcAdminService xcAdminService;
 
-    @GetMapping("/index")
+    @GetMapping("/admin/index")
     public ModelAndView index(){
         ModelAndView modelAndView = new ModelAndView("xinchuan/index");
         XcAdmin admin = xcAdminService.findOne(1l);
@@ -59,6 +59,11 @@ public class IndexController {
         return modelAndView;
     }
 
+    @GetMapping("/")
+    public ModelAndView first(){
+        ModelAndView modelAndView = new ModelAndView("index/index");
+        return modelAndView;
+    }
     @GetMapping("/welcome")
     public ModelAndView welcome(){
         ModelAndView modelAndView = new ModelAndView("xinchuan/welcome");
@@ -84,7 +89,35 @@ public class IndexController {
 
         return modelAndView;
     }
+    @GetMapping("/xinchuan/company")
+    public ModelAndView company(){
+        ModelAndView modelAndView = new ModelAndView("index/company");
+        return modelAndView;
+    }
 
+    @GetMapping("/xinchuan/news")
+    public ModelAndView news(){
+        ModelAndView modelAndView = new ModelAndView("index/news");
+        return modelAndView;
+    }
+
+    @GetMapping("/xinchuan/server")
+    public ModelAndView prouct(){
+        ModelAndView modelAndView = new ModelAndView("index/server");
+        return modelAndView;
+    }
+
+    @GetMapping("/xinchuan/about")
+    public ModelAndView about(){
+        ModelAndView modelAndView = new ModelAndView("index/about");
+        return modelAndView;
+    }
+
+    @GetMapping("/xinchuan/recruit")
+    public ModelAndView recruit(){
+        ModelAndView modelAndView = new ModelAndView("index/recruit");
+        return modelAndView;
+    }
 
 
 

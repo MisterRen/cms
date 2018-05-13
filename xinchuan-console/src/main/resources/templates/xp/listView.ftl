@@ -75,12 +75,13 @@
             <td>${product.prodectName}</td>
             <td><img src="${product.prodectIcon!''}"></td>
             <td>
-            <#if product.summary ??>
+                ${product.summary!''}
+            <#--<#if product.summary ??>
                 <#if product.summary?length gt 30>${product.summary?substring(0,30)}...
                 <#else>
                     ${product.summary!''}
                 </#if>
-            </#if>
+            </#if>-->
             </td>
             <td>${product.createTime}</td>
             <td>
