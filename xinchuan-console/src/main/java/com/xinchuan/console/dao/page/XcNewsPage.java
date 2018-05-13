@@ -45,7 +45,7 @@ public class XcNewsPage extends BaseSqlDaoImpl  {
                 map.put("endTime", news.getEndTime());
             }
         }
-        hql.append(" order by t.createTime desc ");
+        hql.append(" order by t.id desc ");
         return this.queryForPageWithParams(hql.toString(),map,news.getCurrentPage(),news.getPageSize());
     }
    /* public PageModel<XcNews> queryXcNewsNext(Long id){

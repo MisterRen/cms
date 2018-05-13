@@ -8,6 +8,9 @@ import com.xinchuan.console.service.XcNewsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
+import java.util.List;
+
 
 /**
  * <p>
@@ -57,4 +60,15 @@ public class XcNewsServiceImpl implements XcNewsService {
         }
         return xcNews;
     }
+
+    @Override
+    public List<XcNews> findNewsPrevId(Long id) {
+        return xcNewsRepository.findNewsPrevId(id);
+    }
+
+    @Override
+    public List<XcNews> findNewsNextId(Long id) {
+        return xcNewsRepository.findNewsNextId(id);
+    }
+
 }

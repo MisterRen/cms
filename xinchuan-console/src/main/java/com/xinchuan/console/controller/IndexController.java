@@ -136,10 +136,19 @@ public class IndexController {
         modelAndView.addObject("newsPage", newsPage);//新闻
         return modelAndView;
     }
+    
     @GetMapping("/xinchuan/newsDetail")
     public ModelAndView newsDetail(Long id) {
         ModelAndView modelAndView = new ModelAndView("index/newsDetail");
         XcNews news = xcNewsService.findNewsById(id);
+        List<XcNews> prevNew = xcNewsService.findNewsPrevId(id);//上一条
+        List<XcNews> nextNew = xcNewsService.findNewsNextId(id);//下一条
+        if(!prevNew.isEmpty()){
+            modelAndView.addObject("prevNew", prevNew.get(0));//上一条新闻
+        }
+        if(!nextNew.isEmpty()){
+            modelAndView.addObject("nextNew", nextNew.get(0));//下一条新闻
+        }
         modelAndView.addObject("news", news);//新闻
         return modelAndView;
     }

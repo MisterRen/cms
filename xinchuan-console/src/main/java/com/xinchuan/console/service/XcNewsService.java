@@ -3,6 +3,9 @@ package com.xinchuan.console.service;
 import com.xinchuan.console.common.PageModel;
 import com.xinchuan.console.model.XcNews;
 
+import java.util.Date;
+import java.util.List;
+
 
 /**
  * <p>
@@ -24,5 +27,10 @@ public interface XcNewsService {
 
     void saveOrUpdate(XcNews news);
 
-    public XcNews findNewsById(Long id);
+    XcNews findNewsById(Long id);
+
+    List<XcNews> findNewsPrevId(Long id);
+
+    List<XcNews> findNewsNextId(Long id);
+
 }

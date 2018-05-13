@@ -133,13 +133,26 @@
 </div>
 <div class="container share">
     <p class="detail-pre">
-        <span>上一篇：</span>
-        <span>暂无更多</span>
+        <#if prevNew??>
+            <a style="color:#999;" href="/xinchuan/newsDetail?id=${prevNew.id}">
+            <span>上一篇：</span>
+            <span>${prevNew.title}</span>
+        <#else>
+            <a style="color:#999;" href="javascript:;">
+            <span>上一篇：</span>
+            <span>暂无更多</span>
+        </#if>
     </p>
     <p class="detail-next">
-        <a style="color:#999;" href="detail2.html">
-        <span>下一篇：</span>
-        <span>智能钢企了解一下</span>
+        <#if nextNew??>
+            <a style="color:#999;" href="/xinchuan/newsDetail?id=${nextNew.id}">
+            <span>下一篇：</span>
+            <span>${nextNew.title}</span>
+        <#else>
+            <a style="color:#999;" href="javascript:;">
+            <span>下一篇：</span>
+            <span>暂无更多</span>
+        </#if>
         </a>
     </p>
     <div class="share3 bdsharebuttonbox">

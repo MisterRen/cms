@@ -6,6 +6,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
+import java.util.List;
+
 /**
  * <p>
  *  新闻DAO
@@ -20,4 +22,11 @@ public interface XcNewsRepository extends JpaRepository<XcNews,Long> {
 
     @Query("from XcNews a where a.id=:id")
     XcNews findNewsById(@Param("id") Long id);
+
+    @Query("from XcNews a where a.id>:id and isShow=0 order by a.id ")
+    List<XcNews> findNewsPrevId(@Param("id") Long id);
+
+    @Query("from XcNews a where a.id<:id and isShow=0 order by a.id desc")
+    List<XcNews> findNewsNextId(@Param("id") Long id);
+
 }
