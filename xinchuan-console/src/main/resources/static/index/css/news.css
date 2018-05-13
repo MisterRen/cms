@@ -81,6 +81,11 @@
 .news-li{
     height: 128px;
 }
+.page-dis{
+    background-color: #F5F5F5 !important;
+    color:#ACA899 !important;
+cursor: not-allowed!important;
+}
 /*page*/
 .page-con{
     text-align: center;

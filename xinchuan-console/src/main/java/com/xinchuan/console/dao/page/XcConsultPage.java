@@ -33,13 +33,13 @@ public class XcConsultPage extends BaseSqlDaoImpl  {
             }
 
             if(StringUtils.isNotBlank(consult.getUserPhone())){
-                hql.append("and t.userPhone >= :userPhone ");
-                map.put("userPhone", consult.getUserPhone());
+                hql.append("and t.userPhone like :userPhone ");
+                map.put("userPhone", "%"+consult.getUserPhone()+"%");
             }
 
             if(StringUtils.isNotBlank(consult.getUserEmail())){
-                hql.append(" and t.userEmail <= :userEmail ");
-                map.put("userEmail", consult.getUserEmail());
+                hql.append(" and t.userEmail like :userEmail ");
+                map.put("userEmail", "%"+consult.getUserEmail()+"%");
             }
         }
         hql.append(" order by t.createTime desc ");

@@ -189,36 +189,32 @@
         </a>-->
     </ul>
     <!--切换页码-->
-   <div class="page-con">
-        <a href="javascript:void(0)" class="page-pre">上一页</a>
+   <div class="page-con" id="page">
+       <form class="layui-form layui-col-md12 x-so" action="/xinchuan/news" method="get" id="pageForm">
+           <input type="hidden" id="totalPage" value="${newsPage.totalPage}">
+           <input type="hidden" name="currentPage" id="currentPage" value="${newsPage.currentPage}">
+       </form>
+        <a href="javascript:void(0)"
+           onclick="goPage(${newsPage.currentPage-1})" class="page-pre
+             <#if newsPage.currentPage=1> page-dis  </#if>
+            ">上一页</a>
         <ul class="page-num">
             <li class="active">
                 <a href="#" class="page-num-i">
                     1
                 </a>
             </li>
-             <#if newsPage??>
-                 <#list newsPage.list as news>
+            <li class="active">
+                <a href="#" class="page-num-i">
+                    1
+                </a>
+            </li>
+        </ul>
+       <a href="javascript:void(0)"
+          onclick="goPage(${newsPage.currentPage+1})" class="page-pre
+         <#if newsPage.currentPage=newsPage.totalPage> page-dis </#if>
+        ">下一页</a>
 
-
-                 </#list>
-             </#if>
-            <!--<li>&ndash;&gt;
-                <!--<a href="#" class="page-num-i">&ndash;&gt;
-                    <!--2&ndash;&gt;
-                <!--</a>&ndash;&gt;
-            <!--</li>&ndash;&gt;
-            <!--<li>&ndash;&gt;
-                <!--<a href="#" class="page-num-i">&ndash;&gt;
-                    <!--...&ndash;&gt;
-                <!--</a>&ndash;&gt;
-            <!--</li>&ndash;&gt;
-        </ul>-->
-       <#-- <a href="javascript:void(0)" class="page-pre">下一页</a>-->
-   <form class="layui-form layui-col-md12 x-so" action="/xinchuan/news" method="get" id="pageForm">
-        <input type="hidden" id="totalCount" value="${newsPage.totalCount}">
-        <input type="hidden" name="currentPage" id="currentPage" value="${newsPage.currentPage}">
-    </form>
     </div>
 </div>
 <!--footer-->
@@ -247,8 +243,12 @@
 <script src="/index/common/wow/wow.min.js"></script>
 <script src="/index/js/common.js"></script>
 <script src="/index/js/news.js"></script>
-<script src="/lib/layui/layui.js" charset="utf-8"></script>
+<#--<script src="/lib/layui/layui.js" charset="utf-8"></script>
 <script type="text/javascript" src="/js/xadmin.js"></script>
-<script src="/common/pagination.js"></script>
+<script src="/common/pagination.js"></script>-->
+<script>
+
+
+</script>
 </body>
 </html>

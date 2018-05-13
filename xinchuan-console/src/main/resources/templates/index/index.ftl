@@ -286,13 +286,13 @@
                                 <#list newsPage.list as news>
                                     <#if news_index =0 >
                             <div class="new-img" style="background-image: url(${news.newsImage})"></div>
-                            <a href="/xinchuan/server?id=${news.id}" class="flex-fate new-info">
+                            <a href="/xinchuan/newsDetail?id=${news.id}" class="flex-fate new-info">
                                 <div class="new-info-left">
                                     <div class="date-con">
-                                        <p class="dd">27</p>
+                                        <p class="dd"> ${news.createTime?string("dd")}</p>
                                         <p class="lg-dd">
-                                            <span class="mm">Apr</span>
-                                            <span class="yy">2018</span>
+                                            <span class="mm">${news.createTime?string("MMMM")}</span>
+                                            <span class="yy">${news.createTime?string("yyyy")}</span>
                                         </p>
                                     </div>
                                 </div>
@@ -321,7 +321,7 @@
                             <#if newsPage??>
                                 <#list newsPage.list as news>
                                     <#if (news_index lt 4 && news_index gt 0)>
-                                        <a href="./detail2.html" class="flex-fate new-info">
+                                        <a href="/xinchuan/newsDetail?id=${news.id}" class="flex-fate new-info">
                                             <div class="new-info-left">
                                                 <div class="date-con">
                                                     <p class="dd"> ${news.createTime?string("dd")}</p>
@@ -350,7 +350,7 @@
                             </div>
                         </div>
                         <!-- mobile show one news -->
-                        <a href="./detail2.html" class="flex-fate new-info m-show m-news-one">
+                        <#--<a href="./detail2.html" class="flex-fate new-info m-show m-news-one">
                             <div class="new-info-left">
                                 <div class="date-con">
                                     <p class="dd">08</p>
@@ -365,7 +365,7 @@
                                 <h3 class="news-title">“十三五
                                     ”以来，智能制造在钢铁生产制造、企业管理、物流配送、产品销售等方面应用不断深化，关键工艺流程数控化率超过65%，企业资源计划装备率超过70%。</h3>
                             </div>
-                        </a>
+                        </a>-->
                         <!--buttons-->
                         <div class="swiper5-buttons">
                             <!-- swiper5 button -->

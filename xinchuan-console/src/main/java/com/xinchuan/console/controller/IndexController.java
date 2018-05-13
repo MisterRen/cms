@@ -127,12 +127,12 @@ public class IndexController {
     }
 
     @GetMapping("/xinchuan/news")
-    public ModelAndView news() {
+    public ModelAndView news(XcNews xcNews) {
         ModelAndView modelAndView = new ModelAndView("index/news");
         //新闻//
-        XcNews n = new XcNews();
-        n.setIsShow(0);
-        PageModel<XcNews> newsPage = xcNewsService.pageQuery(n);
+        xcNews.setIsShow(0);
+        xcNews.setPageSize(5);
+        PageModel<XcNews> newsPage = xcNewsService.pageQuery(xcNews);
         modelAndView.addObject("newsPage", newsPage);//新闻
         return modelAndView;
     }

@@ -6,7 +6,7 @@ import java.util.Map;
 public class SeracherForm {
     private String startTime;
     private String endTime;
-    private Integer currentPage=0;
+    private Integer currentPage=1;
     private Integer pageSize=10;
 
     public String getStartTime() {
