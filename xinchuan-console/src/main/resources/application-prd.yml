@@ -14,6 +14,7 @@ server:
       #是否开启access log ，默认: false
       accesslog:
         enabled: true
+      basedir: \tmp\xinchuan-console-tomcat
   servlet:
       context-path: /
       session:
@@ -41,7 +42,6 @@ logging:
   path:
   pattern:
     console: "%d [%highlight(%level)] %c %L %msg%n"
-
 upload:
   file:
   savePath: \opt\xinchuan\files\

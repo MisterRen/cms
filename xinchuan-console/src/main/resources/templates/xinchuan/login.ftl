@@ -22,7 +22,7 @@
     <div class="message">信传-管理登录</div>
     <div id="darkbannerwrap"></div>
 
-    <form method="post" class="layui-form" action="/xinchuan/loginCheck" >
+    <form method="post" class="layui-form" action="/loginCheck" >
         <input name="adminNme" placeholder="用户名"  type="text" lay-verify="required" class="layui-input" >
         <hr class="hr15">
         <input name="adminPwd" lay-verify="required" placeholder="密码"  type="password" class="layui-input">

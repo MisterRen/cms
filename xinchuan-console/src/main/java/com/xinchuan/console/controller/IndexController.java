@@ -44,7 +44,7 @@ public class IndexController {
         XcAdmin admin = xcAdminService.findOne(1l);
         XcAdmin admin1 = xcAdminService.findByName("laxi");
         try {
-            String str = new String(IOUtils.readFully(resource.getInputStream(), -1,true));
+            String str = new String(IOUtils.readFully(resource.getInputStream(), -1,true),"UTF-8");
             Gson gson = new Gson();
             modelAndView.addObject("menu",gson.fromJson(str,new TypeToken<List<Menu>>(){}.getType()));
         } catch (IOException e) {
@@ -82,9 +82,9 @@ public class IndexController {
         XcAdmin admin=xcAdminService.login(xcAdmin.getAdminNme(),xcAdmin.getAdminPwd());
         if(admin!=null){
             session.setAttribute("userInfo",admin);
-            modelAndView= new ModelAndView("redirect:/xinchuan/index");
+            modelAndView= new ModelAndView("redirect:admin/index");
         }else {
-            modelAndView= new ModelAndView("redirect:/xinchuan/login");
+            modelAndView= new ModelAndView("redirect:/login");
         }
 
         return modelAndView;

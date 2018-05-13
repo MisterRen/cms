@@ -97,10 +97,10 @@
             <#--<span class="layui-btn layui-btn-warm layui-btn-mini" v-if="consult.status == 2">完成</span>-->
             </td>
             <td class="td-manage">
-                <a onclick="member_enable(this,consult.id,consult.status)" href="javascript:;" title="跟进">
+                <a onclick="member_enable(this,${consult.id},${consult.status})" href="javascript:;" title="跟进">
                     <i class="layui-icon">&#xe601;</i>
                 </a>
-                <a title="删除" onclick="member_del(this,consult.id)" href="javascript:;">
+                <a title="删除" onclick="member_del(this,${consult.id})" href="javascript:;">
                     <i class="layui-icon">&#xe640;</i>
                 </a>
             </td>

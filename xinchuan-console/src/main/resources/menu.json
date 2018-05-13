@@ -83,7 +83,7 @@
   {
     "id": 1005,
     "name": "产品管理",
-    "icon": "&#xe656;",
+    "icon": "&#xe63c;",
     "url":"",
     "children": [
       {
@@ -105,7 +105,7 @@
   {
     "id": 1006,
     "name": "公司动态",
-    "icon": "&#xe663;",
+    "icon": "&#xe6ce;",
     "url":"",
     "children": [
       {

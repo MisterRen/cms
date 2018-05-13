@@ -98,7 +98,7 @@
                 <a  title="发布" onclick="member_enable(this,${team.id},${team.isShow})" href="javascript:;">
                     <i class="layui-icon">&#xe601;</i>
                 </a>
-                <a title="编辑" onclick="x_admin_show('编辑','saveOrUpdate?id='+${team.id})" href="javascript:;">
+                <a title="编辑" onclick="x_admin_show('编辑','addView?id='+${team.id})" href="javascript:;">
                     <i class="layui-icon">&#xe642;</i>
                 </a>
                 <a title="删除" onclick="member_del(this,${team.id})" href="javascript:;">

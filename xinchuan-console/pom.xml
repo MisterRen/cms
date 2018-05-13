@@ -5,8 +5,8 @@
 
     <groupId>com.xinchuan.console</groupId>
     <artifactId>xinchuan-console</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
-    <packaging>jar</packaging>
+    <version>1.0.0-SNAPSHOT</version>
+    <packaging>war</packaging>
 
     <name>xinchuan-console</name>
     <description>xinchuan console manager</description>
@@ -58,7 +58,11 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
-
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-tomcat</artifactId>
+            <scope>provided</scope>
+        </dependency>
         <!--shiJiaLiang-->
         <!--sl4j注解架包-->
         <dependency>
@@ -100,6 +104,4 @@
             </plugin>
         </plugins>
     </build>
-
-
 </project>
