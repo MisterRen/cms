@@ -194,9 +194,9 @@
                                           <!--</div>-->
                                       </div>
                                       <div class="enter-item2 flex-fate">
-                                          <img src="${dynamic.image}" alt="">
+                                          <img src="/index/img/company/dot.png" alt="">
                                       </div>
-                                      <div class="keep-xy enter-item1" style="background-image: url('/index/img/company/h2.jpg')">
+                                      <div class="keep-xy enter-item1" style="background-image: url(${dynamic.image})">
                                       </div>
                                   </div>
                               </div>
