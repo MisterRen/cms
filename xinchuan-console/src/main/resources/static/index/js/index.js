@@ -223,7 +223,7 @@ $(function () {
 
     //swiper6
     var mySwiper6 = new Swiper ('.index-swiper6', {
-        // autoplay: true,
+         autoplay: true,
         nested:true,
         // pagination: {
         //     el: '.index-swiperpagination6',

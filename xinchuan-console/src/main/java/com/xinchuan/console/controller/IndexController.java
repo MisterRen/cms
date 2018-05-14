@@ -1,5 +1,6 @@
 package com.xinchuan.console.controller;
 
+import com.baidu.ueditor.ActionEnter;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.xinchuan.console.common.Menu;
@@ -8,13 +9,19 @@ import com.xinchuan.console.model.*;
 import com.xinchuan.console.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import sun.misc.IOUtils;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author xinhe.REN (Create on:2018年05月09日)
@@ -27,8 +34,6 @@ public class IndexController {
 
     @Autowired
     Resource resource;
-    @Autowired
-    XcProductService xcProductService;
     @Autowired
     XcNewsService xcNewsService;
     @Autowired
@@ -92,10 +97,10 @@ public class IndexController {
     @GetMapping("/")
     public ModelAndView first() {
         ModelAndView modelAndView = new ModelAndView("index/index");
-        XcProduct p = new XcProduct();
+   /*     XcProduct p = new XcProduct();
         p.setIsShow(0);
         PageModel<XcProduct> productPage = xcProductService.allProduct(p);
-        modelAndView.addObject("productPage", productPage);//产品
+        modelAndView.addObject("productPage", productPage);//产品*/
         //新闻//
         XcNews n = new XcNews();
         n.setIsShow(0);
@@ -146,6 +151,7 @@ public class IndexController {
         return modelAndView;
     }
 
+/*
     @GetMapping("/xinchuan/serverDetail")
     public ModelAndView prouct(@RequestParam(value = "requestId",defaultValue = "-1",required = false) Long id) {
         ModelAndView modelAndView = new ModelAndView("index/serverDetail");
@@ -158,6 +164,7 @@ public class IndexController {
         modelAndView.addObject("xcProduct", xcProduct);//当前产品
         return modelAndView;
     }
+*/
 
     @GetMapping("/xinchuan/about")
     public ModelAndView about() {

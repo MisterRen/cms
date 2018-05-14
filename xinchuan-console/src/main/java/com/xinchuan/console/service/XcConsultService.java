@@ -2,6 +2,8 @@ package com.xinchuan.console.service;
 
 import com.xinchuan.console.common.PageModel;
 import com.xinchuan.console.model.XcConsult;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 /**
  * <p>

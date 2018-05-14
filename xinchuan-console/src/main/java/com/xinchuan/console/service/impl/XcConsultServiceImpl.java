@@ -7,6 +7,8 @@ import com.xinchuan.console.dao.page.XcConsultPage;
 import com.xinchuan.console.model.XcConsult;
 import com.xinchuan.console.service.XcConsultService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 

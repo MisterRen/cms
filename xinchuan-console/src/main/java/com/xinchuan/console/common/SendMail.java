@@ -4,9 +4,12 @@ import com.sun.mail.util.MailSSLSocketFactory;
 import com.xinchuan.console.model.XcConsult;
 import org.springframework.stereotype.Component;
 
+import javax.activation.DataHandler;
+import javax.activation.DataSource;
+import javax.activation.FileDataSource;
 import javax.mail.*;
-import javax.mail.internet.InternetAddress;
-import javax.mail.internet.MimeMessage;
+import javax.mail.internet.*;
+import java.io.File;
 import java.io.UnsupportedEncodingException;
 import java.security.GeneralSecurityException;
 import java.util.Date;
@@ -29,7 +32,7 @@ public class SendMail {
     private String mail_head_value = "来自传信官网咨询";
 
     //private String mail_to = "liny@infomax.net.cn";//收件人
-    private String mail_to = "my.love.beijing@163.com";//收件人
+    private String mail_to = "liny@infomax.net.cn";//收件人
 
     private String mail_subject = "客户联系信息";
 

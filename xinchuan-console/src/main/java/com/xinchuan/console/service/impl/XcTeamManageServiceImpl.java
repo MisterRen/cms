@@ -1,8 +1,8 @@
 package com.xinchuan.console.service.impl;
 
-import com.xinchuan.console.common.PageModel;
 import com.xinchuan.console.dao.XcTeamManageRepository;
 import com.xinchuan.console.dao.page.XcTeamManagePage;
+import com.xinchuan.console.common.PageModel;
 import com.xinchuan.console.model.XcTeamManage;
 import com.xinchuan.console.service.XcTeamManageService;
 import org.springframework.beans.factory.annotation.Autowired;

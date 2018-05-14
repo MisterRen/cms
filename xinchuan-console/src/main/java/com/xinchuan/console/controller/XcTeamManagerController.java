@@ -2,6 +2,7 @@ package com.xinchuan.console.controller;
 
 import com.xinchuan.console.common.AjaxJson;
 import com.xinchuan.console.common.PageModel;
+import com.xinchuan.console.model.XcRecruit;
 import com.xinchuan.console.model.XcTeamManage;
 import com.xinchuan.console.service.XcTeamManageService;
 import lombok.extern.slf4j.Slf4j;

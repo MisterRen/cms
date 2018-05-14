@@ -206,7 +206,7 @@
                             </p>
                             <p>细节精良，满足您对原材料所有的幻想</p>
                             <div></div>
-                            <a href="./server.html">查看更多</a>
+                            <a href="/xinchuan/server">查看更多</a>
                         </div>
                     </div>
                     <!-- stream3-right -->
@@ -216,7 +216,7 @@
                             <div class="swiper-container index-swiper4">
                                 <div class="swiper-wrapper">
                                     <div class="swiper-slide slide-swiper4">
-                                        <a href="./server.html" class="flex-fate serve-item">
+                                        <a href="/xinchuan/server" class="flex-fate serve-item">
                                             <div class="col-sm-12 purpleitem purple1 transition-ani">
                                                 <h3>产品简介</h3>
                                                 <p>在整个国民经济当中，工业制造业的体量占比最高。在工业制造业当中，原材料的成本占比又是最高，通常可以达到50-80%。原材料具有</p>
@@ -224,7 +224,7 @@
                                         </a>
                                     </div>
                                     <div class="swiper-slide slide-swiper4">
-                                        <a href="./server4.html" class="flex-fate serve-item">
+                                        <a href="/xinchuan/server4" class="flex-fate serve-item">
                                             <div class="col-sm-12 purpleitem purple3 transition-ani">
                                                 <h3>利润优化</h3>
                                                 <p>制造业企业的终极目标是单位时间内利润的最大化,具体的可以定义为年利润；</p>
@@ -232,7 +232,7 @@
                                         </a>
                                     </div>
                                     <div class="swiper-slide slide-swiper4">
-                                        <a href="./server1.html" class="flex-fate serve-item">
+                                        <a href="/xinchuan/server1" class="flex-fate serve-item">
                                             <div class="col-sm-12 purpleitem purple5 transition-ani">
                                                 <h3>单矿分析</h3>
                                                 <p>我们的单矿分析模块是基于单种原材料的实际生产经济性分析，以利润或者成本为...</p>
@@ -240,7 +240,7 @@
                                         </a>
                                     </div>
                                     <div class="swiper-slide slide-swiper4">
-                                        <a href="./server3.html" class="flex-fate serve-item">
+                                        <a href="/xinchuan/server3" class="flex-fate serve-item">
                                             <div class="col-sm-12 purpleitem purple4 transition-ani">
                                                 <h3>成本优化</h3>
                                                 <p>成本优化的理念和做法在当今制造业企业中持续增强，向管理和成本要效益正在越...</p>
@@ -248,7 +248,7 @@
                                         </a>
                                     </div>
                                     <div class="swiper-slide slide-swiper4">
-                                        <a href="./server2.html" class="flex-fate serve-item">
+                                        <a href="/xinchuan/server2" class="flex-fate serve-item">
                                             <div class="col-sm-12 purpleitem purple2 transition-ani">
                                                 <h3> 综合分析</h3>
                                                 <p>我们的综合分析模块是基于原材料整体组合经济性分析，以利润或者成本为主...</p>
@@ -258,23 +258,23 @@
                                 </div>
                             </div>
                             <div class="rot-con">
-                                <a href="./server.html" class="col-xs-6 col-sm-6 grayitem gray1 transition-ani">
+                                <a href="/xinchuan/server" class="col-xs-6 col-sm-6 grayitem gray1 transition-ani">
                                     <h3>产品简介</h3>
                                     <p class="pc-show">在整个国民经济当中，工业制造业的体量占比最高。在工业制造业当中，原材料的成本占比又是最高，通常可以达到50-80%。原材料具有</p>
                                 </a>
-                                <a href="./server2.html" class="col-xs-6 col-sm-6 grayitem gray2 transition-ani">
+                                <a href="/xinchuan/server2" class="col-xs-6 col-sm-6 grayitem gray2 transition-ani">
                                     <h3>综合分析</h3>
                                     <p class="pc-show">我们的综合分析模块是基于原材料整体组合经济性分析，以利润或者成本为主...</p>
                                 </a>
-                                <a href="./server3.html" class="col-xs-6 col-sm-6 grayitem gray4 transition-ani">
+                                <a href="/xinchuan/server3" class="col-xs-6 col-sm-6 grayitem gray4 transition-ani">
                                     <h3>成本优化</h3>
                                     <p class="pc-show">成本优化的理念和做法在当今制造业企业中持续增强，向管理和成本要效益正在越...</p>
                                 </a>
-                                <a href="./server1.html" class="col-xs-6 col-sm-6 grayitem gray5 transition-ani">
+                                <a href="/xinchuan/server1" class="col-xs-6 col-sm-6 grayitem gray5 transition-ani">
                                     <h3>单矿分析</h3>
                                     <p class="pc-show">我们的单矿分析模块是基于单种原材料的实际生产经济性分析，以利润或者成本为...</p>
                                 </a>
-                                <a href="./server4.html" class="col-xs-6 col-sm-6 grayitem gray3 transition-ani">
+                                <a href="/xinchuan/server4" class="col-xs-6 col-sm-6 grayitem gray3 transition-ani">
                                     <h3>利润优化</h3>
                                     <p class="pc-show">制造业企业的终极目标是单位时间内利润的最大化,具体的可以定义为年利润；</p>
                                 </a>
@@ -369,7 +369,7 @@
                         <#if newsPage??>
                             <#list newsPage.list as news>
                                 <#if (news_index lt 2 && news_index gt 0)>
-                                    <a href="./detail2.html" class="flex-fate new-info m-show m-news-one">
+                                    <a href="/xinchuan/newsDetail?id=${news.id}" class="flex-fate new-info m-show m-news-one">
                                         <div class="new-info-left">
                                             <div class="date-con">
                                                 <p class="dd">${news.createTime?string("dd")}</p>
@@ -407,12 +407,11 @@
             </div>
         </div>
         <#--!-- stream5 -->
-        <div class="swiper-slide index-swiper1-slide5">
+  <#--      <div class="swiper-slide index-swiper1-slide5">
         <div class="container">
         <div class="col-sm-5 flex-fate index-stream3-left index-stream4-left ani" swiper-animate-effect="slideInLeft" swiper-animate-duration="0.5s" swiper-animate-delay="0s">
         <div>
-        <!--&lt;!&ndash;&ndash;&gt;-->
-           <#-- <img src="/index/img/index/our_team.png" alt="">-->
+       &lt;#&ndash;<img src="/index/img/index/our_team.png" alt="">&ndash;&gt&ndash;&gt;;
         <p class="pg-txt">
         <span class="pg-txt1">我的</span>
         <span class="pg-txt2">团队</span>
@@ -431,7 +430,7 @@
         </div>
         </div>
         <div class="col-sm-7 flex-fate team-del ani" swiper-animate-effect="slideInRight" swiper-animate-duration="0.5s" swiper-animate-delay="0s">
-        <!--&lt;!&ndash; swiper6 &ndash;&gt;-->
+
         <div class="swiper-container index-swiper6">
         <div class="swiper-wrapper">
             <#if teamPage??>
@@ -446,8 +445,8 @@
                     <span class="staff-work">${team.position}</span>
                     </div>
                     <p class="staff-des1">${team.profile}</p>
-                   <#-- <p class="staff-des2">创始人职业发展专注于制造业升级转型 曾任麦肯锡咨询顾问，负责大中华区运营项目设计与执行；
-                    创始人职业发展专注于制造业升级转型，</p>-->
+                   &lt;#&ndash; <p class="staff-des2">创始人职业发展专注于制造业升级转型 曾任麦肯锡咨询顾问，负责大中华区运营项目设计与执行；
+                    创始人职业发展专注于制造业升级转型，</p>&ndash;&gt;
                     </div>
                     </div>
                     <div class="keep-xy staff-big-img"
@@ -459,7 +458,6 @@
 
         </div>
         </div>
-       <!-- &lt;!&ndash; swiper6 page&ndash;&gt;-->
         <div class="swiper-pagination index-swiperpagination6"></div>
         <div class="team-ball-m m-show">
             <#if teamPage??>
@@ -473,7 +471,7 @@
         </div>
         </div>
         </div>
-        <!-- stream6 &ndash;&gt;-->
+        -->
         <div class="swiper-slide index-swiper1-slide6">
             <div class="container">
                 <div class="employ-img m-show ani" swiper-animate-effect="slideInRight" swiper-animate-duration="0.5s"
@@ -487,7 +485,7 @@
                             <span class="pg-txt1">招聘</span>
                             <span class="pg-txt2">合作</span>
                         </div>
-                         <!--swiper7 -->
+                         <!--swiper7 &ndash;&gt;-->
                         <div class="swiper-container index-swiper7">
                             <div class="swiper-wrapper">
                                 <div class="swiper-slide slide-swiper7">
@@ -499,7 +497,7 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- swiper3 page-->
+                        <!-- swiper3 page&ndash;&gt;-->
                         <div class="swiper-pagination index-swiperpagination7"></div>
                         <a href="/xinchuan/recruit">查看更多</a>
                     </div>

@@ -1,6 +1,7 @@
 package com.xinchuan.console.dao;
 
 import com.xinchuan.console.model.XcRecruit;
+import com.xinchuan.console.model.XcTeamManage;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 

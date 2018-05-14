@@ -1,5 +1,6 @@
 package com.xinchuan.console.dao;
 
+import com.xinchuan.console.model.XcAdmin;
 import com.xinchuan.console.model.XcNews;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
