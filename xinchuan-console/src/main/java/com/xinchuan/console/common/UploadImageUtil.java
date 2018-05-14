@@ -1,13 +1,10 @@
 package com.xinchuan.console.common;
 
 import org.springframework.web.multipart.MultipartFile;
-import sun.applet.Main;
-import sun.misc.BASE64Decoder;
 
-import javax.imageio.ImageIO;
 import javax.servlet.http.HttpServletRequest;
-import java.awt.image.BufferedImage;
-import java.io.*;
+import java.io.File;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;

@@ -3,7 +3,6 @@ package com.xinchuan.console.service;
 import com.xinchuan.console.common.PageModel;
 import com.xinchuan.console.model.XcNews;
 
-import java.util.Date;
 import java.util.List;
 
 

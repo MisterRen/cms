@@ -1,6 +1,6 @@
 package com.xinchuan.console.service;
+
 import com.xinchuan.console.common.PageModel;
-import com.xinchuan.console.model.XcDynamic;
 import com.xinchuan.console.model.XcProduct;
 
 import java.util.List;

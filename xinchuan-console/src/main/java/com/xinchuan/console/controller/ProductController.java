@@ -2,7 +2,6 @@ package com.xinchuan.console.controller;
 
 import com.xinchuan.console.common.AjaxJson;
 import com.xinchuan.console.common.PageModel;
-import com.xinchuan.console.model.XcDynamic;
 import com.xinchuan.console.model.XcProduct;
 import com.xinchuan.console.service.XcProductService;
 import org.springframework.beans.factory.annotation.Autowired;

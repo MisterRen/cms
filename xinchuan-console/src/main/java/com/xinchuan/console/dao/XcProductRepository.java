@@ -1,12 +1,9 @@
 package com.xinchuan.console.dao;
 
-import com.xinchuan.console.model.XcDynamic;
 import com.xinchuan.console.model.XcProduct;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.query.Param;
 
-import java.util.Date;
 import java.util.List;
 
 /**

@@ -1,7 +1,6 @@
 package com.xinchuan.console.service;
 
 import com.xinchuan.console.common.PageModel;
-import com.xinchuan.console.model.XcProduct;
 import com.xinchuan.console.model.XcTeamManage;
 
 import java.util.List;

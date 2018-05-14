@@ -1,8 +1,5 @@
 package com.xinchuan.console.common;
 
-import java.util.HashMap;
-import java.util.Map;
-
 public class SeracherForm {
     private String startTime;
     private String endTime;

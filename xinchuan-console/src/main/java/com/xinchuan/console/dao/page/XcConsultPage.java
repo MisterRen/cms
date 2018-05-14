@@ -3,7 +3,6 @@ package com.xinchuan.console.dao.page;
 import com.xinchuan.console.common.BaseSqlDaoImpl;
 import com.xinchuan.console.common.PageModel;
 import com.xinchuan.console.model.XcConsult;
-import com.xinchuan.console.model.XcProduct;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
 

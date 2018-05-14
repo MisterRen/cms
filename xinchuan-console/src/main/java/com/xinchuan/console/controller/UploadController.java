@@ -1,9 +1,7 @@
 package com.xinchuan.console.controller;
 
-import com.baidu.ueditor.ActionEnter;
 import com.xinchuan.console.common.AjaxJson;
 import com.xinchuan.console.common.UploadImageUtil;
-import org.apache.commons.io.FilenameUtils;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -13,12 +11,9 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.File;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.UUID;
 
 @RestController
 public class UploadController {
