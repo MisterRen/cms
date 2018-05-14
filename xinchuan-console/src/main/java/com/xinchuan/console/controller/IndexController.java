@@ -153,9 +153,9 @@ public class IndexController {
         return modelAndView;
     }
 
-    @GetMapping("/xinchuan/server")
+    @GetMapping("/xinchuan/serverDetail")
     public ModelAndView prouct(@RequestParam(value = "requestId",defaultValue = "-1",required = false) Long id) {
-        ModelAndView modelAndView = new ModelAndView("index/server");
+        ModelAndView modelAndView = new ModelAndView("index/serverDetail");
         XcProduct p = new XcProduct();
         p.setIsShow(0);
         PageModel<XcProduct> productPage = xcProductService.allProduct(p);//查询所有显示的产品
@@ -179,6 +179,31 @@ public class IndexController {
         r.setIsShow(0);
         PageModel<XcRecruit> recruitPage = xcRecruitService.findAll(r);
         modelAndView.addObject("recruitPage", recruitPage);//公司
+        return modelAndView;
+    }
+    @GetMapping("/xinchuan/server")
+    public ModelAndView server() {
+        ModelAndView modelAndView = new ModelAndView("index/server/server");
+        return modelAndView;
+    }
+    @GetMapping("/xinchuan/server1")
+    public ModelAndView server1() {
+        ModelAndView modelAndView = new ModelAndView("index/server/server1");
+        return modelAndView;
+    }
+    @GetMapping("/xinchuan/server2")
+    public ModelAndView server2() {
+        ModelAndView modelAndView = new ModelAndView("index/server/server2");
+        return modelAndView;
+    }
+    @GetMapping("/xinchuan/server3")
+    public ModelAndView server3() {
+        ModelAndView modelAndView = new ModelAndView("index/server/server3");
+        return modelAndView;
+    }
+    @GetMapping("/xinchuan/server4")
+    public ModelAndView server4() {
+        ModelAndView modelAndView = new ModelAndView("index/server/server4");
         return modelAndView;
     }
 

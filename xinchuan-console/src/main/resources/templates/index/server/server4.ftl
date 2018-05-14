@@ -38,13 +38,13 @@
                 </a>
                 <span class="h-angle"></span>
             </li>
-            <li>
+            <li class="active">
                 <a href="/xinchuan/server">
                     产品服务
                 </a>
                 <span class="h-angle"></span>
             </li>
-            <li class="active">
+            <li>
                 <a href="/xinchuan/news">
                     动态新闻
                 </a>
@@ -99,44 +99,48 @@
     <h3 class="serve-t wow flipInX" data-wow-duration="0.5s" data-wow-delay="0s">产品和服务</h3>
     <!--<p class="serve-t-en wow flipInX" data-wow-duration="0.5s" data-wow-delay="0s">Products and services</p>-->
     <ul class="serve-nav">
-        <#if productPage.list??>
-            <#list productPage.list as product>
-                <a href="./server?requestId=${product.id}" class="serve-item <#if xcProduct.id == product.id>active</#if> wow zoomIn" data-wow-duration="0.5s" data-wow-delay="0s">${product.prodectName}</a>
-            </#list>
-        </#if>
-        <#--<a href="server.html" class="serve-item active wow zoomIn" data-wow-duration="0.5s" data-wow-delay="0s">产品简介</a>
-        <a href="server1.html" class="serve-item wow zoomIn" data-wow-duration="0.5s" data-wow-delay="0.1s">单矿分析</a>
-        <a href="server2.html" class="serve-item wow zoomIn" data-wow-duration="0.5s" data-wow-delay="0.2s">综合分析</a>
-        <a href="server3.html" class="serve-item wow zoomIn" data-wow-duration="0.5s" data-wow-delay="0.3s">成本优化</a>
-        <a href="server4.html" class="serve-item wow zoomIn" data-wow-duration="0.5s" data-wow-delay="0.4s">利润优化</a>-->
+        <a href="/xinchuan/server" class="serve-item wow zoomIn" data-wow-duration="0.5s" data-wow-delay="0s">产品简介</a>
+        <a href="/xinchuan/server1" class="serve-item wow zoomIn" data-wow-duration="0.5s" data-wow-delay="0.1s">单矿分析</a>
+        <a href="/xinchuan/serverr2" class="serve-item wow zoomIn" data-wow-duration="0.5s" data-wow-delay="0.2s">综合分析</a>
+        <a href="/xinchuan/server3" class="serve-item wow zoomIn" data-wow-duration="0.5s" data-wow-delay="0.3s">成本优化</a>
+        <a href="/xinchuan/server4" class="serve-item active wow zoomIn" data-wow-duration="0.5s" data-wow-delay="0.4s">利润优化</a>
     </ul>
-    <!--serve-con1-->
-    <div style="" class="serve-con1 choose-show">
-
-        ${xcProduct.content!''}
-        <#--<p class="serve-con1-p1 wow slideInLeft" data-wow-duration="0.5s" data-wow-delay="0s">
-            在整个国民经济当中，工业制造业的体量占比最高。在工业制造业当中，原材料的成本占比又是最高，通常可以达到50-80%。原材料具有资源的属性，未来的价格趋势必然逐步提升。传统制造业企业面临着产品利润率下降和原材料成本上升的双重挤压。
-        </p>
-        <ul class="serve-con1-ul">
-            <li class="serve-con1-li wow zoomIn" data-wow-duration="0.5s" data-wow-delay="0s">
-                <img src="/index/img/server/serve1img1.png" alt="">
-                <p>降本增效</p>
-            </li>
-            <li class="serve-con1-li wow zoomIn" data-wow-duration="0.5s" data-wow-delay="0s">
-                <img src="/index/img/server/serve1img2.png" alt="">
-                <p>节能环保</p>
-            </li>
-            <li class="serve-con1-li wow zoomIn" data-wow-duration="0.5s" data-wow-delay="0s">
-                <img src="/index/img/server/serve1img3.png" alt="">
-                <p>智能制造</p>
-            </li>
-        </ul>
-        <p class="serve-con1-p2 wow slideInLeft" data-wow-duration="0.5s" data-wow-delay="0s">
-            我们是国内第一家专注为制造业原材料配方进行优化服务的技术公司。利用原材料选料和配料为抓手，实现利润最大化或者成本最低化。我们的产品建立了极为精细的利润和成本模型,自主开发了复杂先进的优化智能算法，使得产品能够在行业中挖掘到可观的优化潜力，并已获得国家知识产权保护。这是人工智能与制造业在原材料这个重要领域的重大结合，我们坚信这是未来的发展方向。
-        </p>
-        <p class="serve-con1-p3 wow slideInLeft" data-wow-duration="0.5s" data-wow-delay="0s">
-            行业应用方面,目前我们已经开发了针对钢铁行业炼铁原材料配方优化的成熟产品,在烧结、球团、高炉的利润提升以及成本降低方面积累了扎实的成功经验和案例。未来，公司将会把整套方法论和产品拓展应用于煤炭、有色金属、水泥等行业。
-        </p>-->
+    <!--serve-con5-->
+    <div style="overflow:hidden" class="serve-con1 choose-show">
+        <div class="single1">
+            <!--<div class="single1-t wow slideInLeft" data-wow-duration="0.5s" data-wow-delay="0s">-->
+                <!--<span class="single1-sp1">利润</span>-->
+                <!--<span class="single1-sp2">优化</span>-->
+                <!--<span>制造业企业的终极目标是单位时间内利润的最大化,具体的可以定义为年利润、月利润或者日利润。</span>-->
+            <!--</div>-->
+            <!--<div data-wow-duration="0.5s" data-wow-delay="0s" class="black-line wow slideInLeft"></div>-->
+            <p class="wow slideInLeft" data-wow-duration="0.5s" data-wow-delay="0s">
+                制造业企业的终极目标是单位时间内利润的最大化,具体的可以定义为年利润、月利润或者日利润。单位时间利润等于单位时间内总产量与单位产量利润的乘积，举例说明为每日利润=每日产量X单吨利润。为了获得每日产量的提升，制造业企业往往需要提高优质原材料的使用比例，而优质原材料使用比例的提升会带来单吨成本的提升即单吨利润的下降。一方面是每日产量的上升，另一方面是单吨利润下降，此时就存在一个最优点，使得每日利润最大化。
+            </p>
+            <div class="profit-con">
+                <div class="profit-i wow flipInX" data-wow-duration="0.5s" data-wow-delay="0s">
+                    <img src="/index/img/server/profit1.png" alt="">
+                    <p class="profit-i-p1">成品和原材料价格波动</p>
+                    <p class="profit-i-p2 pc-show">钢铁行业的一个显著特性是成品和原材料价格的波动性</p>
+                </div>
+                <div class="profit-i wow flipInX" data-wow-duration="0.5s" data-wow-delay="0s">
+                    <img src="/index/img/server/profit2.png" alt="">
+                    <p class="profit-i-p1">选用品位更高的矿粉</p>
+                    <p class="profit-i-p2 pc-show">此时通常的做法是选用品位更高的矿粉、提高高品位矿种的配比、增加球团矿的配比等</p>
+                </div>
+                <div class="profit-i wow flipInX" data-wow-duration="0.5s" data-wow-delay="0s">
+                    <img src="/index/img/server/profit3.png" alt="">
+                    <p class="profit-i-p1">建立每日铁水利润模型</p>
+                    <p class="profit-i-p2 pc-show">炼铁利润优化模块的做法是建立每日铁水利润模型，利用智能算法求解得到每日铁水利润最大化的原材料配比组合</p>
+                </div>
+            </div>
+            <p class="wow slideInLeft" data-wow-duration="0.5s" data-wow-delay="0s">
+                钢铁行业的一个显著特性是成品和原材料价格的波动性。当市场行情较好的时候，钢铁企业往往需要增加产量来获得更多的利润。此时通常的做法是选用品位更高的矿粉、提高高品位矿种的配比、增加球团矿的配比等，而这些措施往往会使得单吨铁水的成本上升从而使得单吨铁水的利润下降。
+            </p>
+            <p class="wow slideInLeft" data-wow-duration="0.5s" data-wow-delay="0s">
+                炼铁利润优化模块的做法是建立每日铁水利润模型，利用智能算法求解得到每日铁水利润最大化的原材料配比组合。
+            </p>
+        </div>
     </div>
 </div>
 <!--footer-->

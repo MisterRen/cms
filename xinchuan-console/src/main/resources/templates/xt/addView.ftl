@@ -34,7 +34,7 @@
                 <div class="layui-upload">
                     <div class="layui-upload-drag" id="uploadDemo">
                         <i class="layui-icon"></i>
-                        <p>点击上传，或将文件拖拽到此处(图片大小不超过1M)</p>
+                        <p>点击上传，或将文件拖拽到此处(<span class="x-red">建议比例15:17</span>)</p>
                     </div>
                 </div>
             </div>

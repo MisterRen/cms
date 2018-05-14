@@ -211,61 +211,79 @@
                         </div>
                     </div>
                     <!-- stream3-right -->
-                    <div class="col-sm-7 col-sm-offset-1 flex-fate index-stream3-right ani"
-                         swiper-animate-effect="slideInRight" swiper-animate-duration="0.5s" swiper-animate-delay="0s">
+                    <!-- stream3-right -->
+                    <div class="col-sm-7 col-sm-offset-1 flex-fate index-stream3-right ani" swiper-animate-effect="slideInRight" swiper-animate-duration="0.5s" swiper-animate-delay="0s">
                         <div class="serve-con">
                             <!-- swiper4 -->
                             <div class="swiper-container index-swiper4">
                                 <div class="swiper-wrapper">
-                                    <#if productPage??>
-                                        <#list productPage.list as product>
-                                            <#if product_index < 5 >
-                                            <div class="swiper-slide slide-swiper4">
-                                                <a href="/xinchuan/server?requestId=${product.id}" class="flex-fate serve-item">
-                                                    <div class="col-sm-12 purpleitem purple${product_index+1} transition-ani">
-                                                        <h3>${product.prodectName}</h3>
-                                                        <p>
-                                                            <#if product.summary ??>
-                                                           <#if product.summary?length gt 30>${product.summary?substring(0,30)}
-                                                               ...
-                                                           <#else>
-                                                               ${product.summary!''}
-                                                           </#if>
-                                                            </#if>
-                                                        </p>
-                                                    </div>
-                                                </a>
+                                    <div class="swiper-slide slide-swiper4">
+                                        <a href="/xinchuan/server" class="flex-fate serve-item">
+                                            <div class="col-sm-12 purpleitem purple1 transition-ani">
+                                                <h3>产品简介</h3>
+                                                <p>在整个国民经济当中，工业制造业的体量占比最高。在工业制造业当中，原材料的成本占比又是最高，通常可以达到50-80%。原材料具有</p>
                                             </div>
-                                            </#if>
-                                        </#list>
-                                    </#if>
+                                        </a>
+                                    </div>
+                                    <div class="swiper-slide slide-swiper4">
+                                        <a href="/xinchuan/server4" class="flex-fate serve-item">
+                                            <div class="col-sm-12 purpleitem purple3 transition-ani">
+                                                <h3>利润优化</h3>
+                                                <p>制造业企业的终极目标是单位时间内利润的最大化,具体的可以定义为年利润；</p>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div class="swiper-slide slide-swiper4">
+                                        <a href="/xinchuan/server1" class="flex-fate serve-item">
+                                            <div class="col-sm-12 purpleitem purple5 transition-ani">
+                                                <h3>单矿分析</h3>
+                                                <p>我们的单矿分析模块是基于单种原材料的实际生产经济性分析，以利润或者成本为...</p>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div class="swiper-slide slide-swiper4">
+                                        <a href="/xinchuan/server3" class="flex-fate serve-item">
+                                            <div class="col-sm-12 purpleitem purple4 transition-ani">
+                                                <h3>成本优化</h3>
+                                                <p>成本优化的理念和做法在当今制造业企业中持续增强，向管理和成本要效益正在越...</p>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div class="swiper-slide slide-swiper4">
+                                        <a href="/xinchuan/server2" class="flex-fate serve-item">
+                                            <div class="col-sm-12 purpleitem purple2 transition-ani">
+                                                <h3> 综合分析</h3>
+                                                <p>我们的综合分析模块是基于原材料整体组合经济性分析，以利润或者成本为主...</p>
+                                            </div>
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
                             <div class="rot-con">
-                                <#if productPage??>
-                                    <#list productPage.list as product>
-                                        <#if product_index < 5 >
-                                          <a href="/xinchuan/server?requestId=${product.id}"
-                                             class="col-xs-6 col-sm-6 grayitem gray${product_index+1} transition-ani">
-                                              <h3>${product.prodectName}</h3>
-                                              <p class="pc-show">
-                                                   <#if product.summary ??>
-                                                       <#if product.summary?length gt 30>${product.summary?substring(0,50)}
-                                                           ...
-                                                       <#else>
-                                                           ${product.summary!''}
-                                                       </#if>
-                                                   </#if>
-                                              </p>
-                                          </a>
-                                        </#if>
-                                    </#list>
-                                </#if>
+                                <a href="/xinchuan/server" class="col-xs-6 col-sm-6 grayitem gray1 transition-ani">
+                                    <h3>产品简介</h3>
+                                    <p class="pc-show">在整个国民经济当中，工业制造业的体量占比最高。在工业制造业当中，原材料的成本占比又是最高，通常可以达到50-80%。原材料具有</p>
+                                </a>
+                                <a href="/xinchuan/server2" class="col-xs-6 col-sm-6 grayitem gray2 transition-ani">
+                                    <h3>综合分析</h3>
+                                    <p class="pc-show">我们的综合分析模块是基于原材料整体组合经济性分析，以利润或者成本为主...</p>
+                                </a>
+                                <a href="/xinchuan/server3" class="col-xs-6 col-sm-6 grayitem gray4 transition-ani">
+                                    <h3>成本优化</h3>
+                                    <p class="pc-show">成本优化的理念和做法在当今制造业企业中持续增强，向管理和成本要效益正在越...</p>
+                                </a>
+                                <a href="/xinchuan/server1" class="col-xs-6 col-sm-6 grayitem gray5 transition-ani">
+                                    <h3>单矿分析</h3>
+                                    <p class="pc-show">我们的单矿分析模块是基于单种原材料的实际生产经济性分析，以利润或者成本为...</p>
+                                </a>
+                                <a href="/xinchuan/server4" class="col-xs-6 col-sm-6 grayitem gray3 transition-ani">
+                                    <h3>利润优化</h3>
+                                    <p class="pc-show">制造业企业的终极目标是单位时间内利润的最大化,具体的可以定义为年利润；</p>
+                                </a>
                             </div>
-                        </div>
-                    </div>
                 </div>
             </div>
+                </div></div>
             <!-- stream4 -->
             <div class="swiper-slide index-swiper1-slide4">
                 <div class="container">
@@ -349,23 +367,35 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- mobile show one news -->
-                        <#--<a href="./detail2.html" class="flex-fate new-info m-show m-news-one">
-                            <div class="new-info-left">
-                                <div class="date-con">
-                                    <p class="dd">08</p>
-                                    <p class="lg-dd">
-                                        <span class="mm">Mar</span>
-                                        <span class="yy">2018</span>
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="new-info-right">
-                                <p class="news-award fc-g">智能钢企了解一下</p>
-                                <h3 class="news-title">“十三五
-                                    ”以来，智能制造在钢铁生产制造、企业管理、物流配送、产品销售等方面应用不断深化，关键工艺流程数控化率超过65%，企业资源计划装备率超过70%。</h3>
-                            </div>
-                        </a>-->
+                        <#if newsPage??>
+                            <#list newsPage.list as news>
+                                <#if (news_index lt 2 && news_index gt 0)>
+                                    <a href="./detail2.html" class="flex-fate new-info m-show m-news-one">
+                                        <div class="new-info-left">
+                                            <div class="date-con">
+                                                <p class="dd">${news.createTime?string("dd")}</p>
+                                                <p class="lg-dd">
+                                                    <span class="mm">${news.createTime?string("MMMM")}</span>
+                                                    <span class="yy">${news.createTime?string("yyyy")}</span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="new-info-right">
+                                            <p class="news-award fc-g">${news.title}</p>
+                                            <h3 class="news-title">
+                                                <#if news.summary ??>
+                                                    <#if news.summary?length gt 20>${news.summary?substring(0,20)}...
+                                                    <#else>
+                                                    ${news.summary!''}
+                                                    </#if>
+                                                </#if>
+
+                                            </h3>
+                                  </div>
+                               </a>
+                                </#if>
+                            </#list>
+                        </#if>
                         <!--buttons-->
                         <div class="swiper5-buttons">
                             <!-- swiper5 button -->
@@ -377,13 +407,13 @@
                 </div>
             </div>
         </div>
-        <<#--!-- stream5 -->
+        <#--!-- stream5 -->
         <div class="swiper-slide index-swiper1-slide5">
         <div class="container">
         <div class="col-sm-5 flex-fate index-stream3-left index-stream4-left ani" swiper-animate-effect="slideInLeft" swiper-animate-duration="0.5s" swiper-animate-delay="0s">
         <div>
         <!--&lt;!&ndash;&ndash;&gt;-->
-            <img src="/index/img/index/our_team.png" alt="">
+           <#-- <img src="/index/img/index/our_team.png" alt="">-->
         <p class="pg-txt">
         <span class="pg-txt1">我的</span>
         <span class="pg-txt2">团队</span>
@@ -407,7 +437,7 @@
         <div class="swiper-wrapper">
             <#if teamPage??>
                 <#list teamPage.list as team>
-                    <#if (team_index lt 8)>
+                    <#if (team_index lt 9)>
                     <div class="swiper-slide slide-swiper6">
                     <div class="flex-fate staff-del">
                     <div class="staff-txt">
@@ -436,7 +466,7 @@
             <#if teamPage??>
                 <#list teamPage.list as team>
                     <#if (team_index lt 8)>
-                        <div class="keep-xy team-img" style="background-image:url(${team.userIcon});"></div>
+                        <div class="keep-xy team-img-m" style="background-image:url(${team.userIcon});"></div>
                     </#if>
                 </#list>
             </#if>

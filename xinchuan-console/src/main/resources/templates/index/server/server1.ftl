@@ -22,7 +22,7 @@
             <span></span>
             <span></span>
         </div>
-        <a href="./index.html">
+        <a href="/">
             <img src="/index/img/index/logo-m.png" alt="">
         </a>
         <ul class="h-ul">
@@ -99,11 +99,11 @@
     <h3 class="serve-t wow flipInX" data-wow-duration="0.5s" data-wow-delay="0s">产品和服务</h3>
     <!--<p class="serve-t-en wow flipInX" data-wow-duration="0.5s" data-wow-delay="0s">Products and services</p>-->
     <ul class="serve-nav">
-        <a href="./server.html" class="serve-item wow zoomIn" data-wow-duration="0.5s" data-wow-delay="0s">产品简介</a>
-        <a href="server1.html" class="serve-item active wow zoomIn" data-wow-duration="0.5s" data-wow-delay="0.1s">单矿分析</a>
-        <a href="server2.html" class="serve-item wow zoomIn" data-wow-duration="0.5s" data-wow-delay="0.2s">综合分析</a>
-        <a href="server3.html" class="serve-item wow zoomIn" data-wow-duration="0.5s" data-wow-delay="0.3s">成本优化</a>
-        <a href="server4.html" class="serve-item wow zoomIn" data-wow-duration="0.5s" data-wow-delay="0.4s">利润优化</a>
+        <a href="/xinchuan/server" class="serve-item wow zoomIn" data-wow-duration="0.5s" data-wow-delay="0s">产品简介</a>
+        <a href="/xinchuan/server1" class="serve-item active wow zoomIn" data-wow-duration="0.5s" data-wow-delay="0.1s">单矿分析</a>
+        <a href="/xinchuan/server2" class="serve-item wow zoomIn" data-wow-duration="0.5s" data-wow-delay="0.2s">综合分析</a>
+        <a href="/xinchuan/server3" class="serve-item wow zoomIn" data-wow-duration="0.5s" data-wow-delay="0.3s">成本优化</a>
+        <a href="/xinchuan/server4" class="serve-item wow zoomIn" data-wow-duration="0.5s" data-wow-delay="0.4s">利润优化</a>
     </ul>
     <!--serve-con2-->
     <div style="overflow: hidden" class="serve-con2 choose-show">
@@ -185,7 +185,7 @@
 <div class="footer" style="">
     <div class="container">
         <img class="footer-logo" src="/index/img/index/logo-m.png" alt="">
-        <a href="./index.html#slide7" class="footer-contact">
+        <a href="/xinchuan/about" class="footer-contact">
             <img src="/index/img/index/phone-logo.png" alt="">
             联系我们
         </a>

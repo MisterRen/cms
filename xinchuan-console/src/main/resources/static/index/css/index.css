@@ -49,7 +49,7 @@ html,body{
 .index-banner1>div>P:nth-child(3)::before{
      /*content: url("../img/index/line1.png");*/
     content: "";
-    background: url("/index/img/index/line1.png") no-repeat;
+    background: url("../img/index/line1.png") no-repeat;
     background-size: cover;
      width: 140px;
      height: 1px;
@@ -60,7 +60,7 @@ html,body{
 .index-banner1>div>P:nth-child(3)::after {
     /*content: url("../img/index/line2.png");*/
     content: "";
-    background: url("/index/img/index/line2.png") no-repeat;
+    background: url("../img/index/line2.png") no-repeat;
     background-size: cover;
     width: 140px;
     height: 1px;
@@ -160,13 +160,13 @@ html,body{
     overflow: hidden;
 }
 .slide-swiper2:nth-child(1){
-    background-image: url("/index/img/index/banner2-s.png");
+    background-image: url("../img/index/banner2-s.png");
 }
 .slide-swiper2:nth-child(2){
-    background-image: url("/index/img/index/banner1-s.png");
+    background-image: url("../img/index/banner1-s.png");
 }
 .slide-swiper2:nth-child(3){
-    background-image: url("/index/img/index/banner3-s.png");
+    background-image: url("../img/index/banner3-s.png");
 }
 /*stream2*/
 .index-swiper1-slide2>.container{
@@ -333,34 +333,40 @@ html,body{
 }
 .purple1::before,.purple2::before,.purple3::before,.purple4::before,.purple5::before{
     content: "";
-    background: url("/index/img/index/servelogo1.png") no-repeat;
-    background-size: cover;
-    width: 31px;
-    height: 35px;
+    background: url("../img/index/servelogo2.png");
     position: absolute;
     top: 5%;
     left: 24px;
+    width: 2.5em;
+    height: 0;
+    padding-bottom: 2.5em;
+    overflow:hidden;
+    background-position:center center;
+    background-repeat:no-repeat;
+    -webkit-background-size:cover;
+    -moz-background-size:cover;
+    background-size:cover;
 }
-.purple2::before{
-    background: url("/index/img/index/servelogo2.png") no-repeat;
-    width: 35px;
-    height: 35px;
-}
-.purple3::before{
-    background: url("/index/img/index/servelogo3.png") no-repeat;
-    width: 35px;
-    height: 35px;
-}
-.purple4::before{
-    background: url("/index/img/index/servelogo4.png") no-repeat;
-    width: 35px;
-    height: 35px;
-}
-.purple5::before{
-    background: url("/index/img/index/servelogo5.png") no-repeat;
-    width: 35px;
-    height: 35px;
-}
+/*.purple2::before{*/
+    /*background: url("../img/index/servelogo2.png") no-repeat;*/
+    /*width: 35px;*/
+    /*height: 35px;*/
+/*}*/
+/*.purple3::before{*/
+    /*background: url("../img/index/servelogo3.png") no-repeat;*/
+    /*width: 35px;*/
+    /*height: 35px;*/
+/*}*/
+/*.purple4::before{*/
+    /*background: url("../img/index/servelogo4.png") no-repeat;*/
+    /*width: 35px;*/
+    /*height: 35px;*/
+/*}*/
+/*.purple5::before{*/
+    /*background: url("../img/index/servelogo5.png") no-repeat;*/
+    /*width: 35px;*/
+    /*height: 35px;*/
+/*}*/
 /*转盘*/
 .rot-con{
     /*overflow: hidden;*/
@@ -373,34 +379,40 @@ html,body{
 }
 .gray1::before,.gray2::before,.gray3::before,.gray4::before,.gray5::before{
     content: "";
-    background: url("/index/img/index/servelogo-gray1.png") no-repeat;
-    background-size: cover;
-    width: 33px;
-    height: 37px;
+    background: url("../img/index/servelogo-gray2.png");
     position: absolute;
     top: 19%;
     left: 20px;
+    width: 2em;
+    height: 0;
+    padding-bottom: 2em;
+    overflow:hidden;
+    background-position:center center;
+    background-repeat:no-repeat;
+    -webkit-background-size:cover;
+    -moz-background-size:cover;
+    background-size:cover;
 }
-.gray2::before{
-    background: url("/index/img/index/servelogo-gray2.png") no-repeat;
-    width: 35px;
-    height: 35px;
-}
-.gray3::before{
-    background: url("/index/img/index/servelogo-gray3.png") no-repeat;
-    width: 35px;
-    height: 35px;
-}
-.gray4::before{
-    background: url("/index/img/index/servelogo-gray4.png") no-repeat;
-    width: 35px;
-    height: 33px;
-}
-.gray5::before{
-    background: url("/index/img/index/servelogo-gray5.png") no-repeat;
-    width: 35px;
-    height: 35px;
-}
+/*.gray2::before{*/
+    /*background: url("../img/index/servelogo-gray2.png") no-repeat;*/
+    /*width: 35px;*/
+    /*height: 35px;*/
+/*}*/
+/*.gray3::before{*/
+    /*background: url("../img/index/servelogo-gray3.png") no-repeat;*/
+    /*width: 35px;*/
+    /*height: 35px;*/
+/*}*/
+/*.gray4::before{*/
+    /*background: url("../img/index/servelogo-gray4.png") no-repeat;*/
+    /*width: 35px;*/
+    /*height: 33px;*/
+/*}*/
+/*.gray5::before{*/
+    /*background: url("../img/index/servelogo-gray5.png") no-repeat;*/
+    /*width: 35px;*/
+    /*height: 35px;*/
+/*}*/
 /*swiper4*/
 .index-swiperpagination4>.swiper-pagination-bullet-active{
     background-color: #58328b;
@@ -449,7 +461,7 @@ html,body{
     -webkit-background-size:cover;
     -moz-background-size:cover;
     background-size:cover;
-    background-image: url("/index/img/index/new-img.png");
+    background-image: url("../img/index/new-img.png");
 }
 .new-info{
     background-color: #ffffff;
@@ -534,13 +546,13 @@ html,body{
 .swiper5-buttons>.swiper-button-prev5{
     top: 0;
     left: 145px;
-    background-image: url("/index/img/index/turn-left.png");
+    background-image: url("../img/index/turn-left.png");
 }
 .swiper5-buttons>.swiper-button-next5{
     top: 0;
     left: 191px;
     right: auto;
-    background-image: url("/index/img/index/turn-right.png");
+    background-image: url("../img/index/turn-right.png");
 }
 .slide-swiper5>.new-info{
     margin-bottom: 10px;
@@ -991,7 +1003,7 @@ html,body{
     }
     .index-banner1>div>p:nth-child(3)::before{
          content: "";
-         background: url("/index/img/index/line1.png") no-repeat;
+         background: url("../img/index/line1.png") no-repeat;
          background-size: cover;
          width: 45px;
          height: 1px;
@@ -1000,7 +1012,7 @@ html,body{
      }
     .index-banner1>div>p:nth-child(3)::after{
         content: "";
-        background: url("/index/img/index/line2.png") no-repeat;
+        background: url("../img/index/line2.png") no-repeat;
         background-size: cover;
         background-position: -100px 0;
         width: 45px;
@@ -1127,8 +1139,10 @@ html,body{
         max-height: 3em;
     }
     .purple1::before, .purple2::before, .purple3::before, .purple4::before, .purple5::before{
-        top: 14%;
+        top: 18%;
         left: 14px;
+        width: 2em;
+        padding-bottom: 2em;
     }
     .grayitem{
         margin: 15px 0 10px;
