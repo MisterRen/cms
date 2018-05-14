@@ -197,20 +197,18 @@
             <div class="swiper-slide index-swiper1-slide3">
                 <div class="container">
                     <!-- stream3-left -->
-                    <div class="col-sm-4 flex-fate index-stream3-left ani" swiper-animate-effect="slideInLeft"
-                         swiper-animate-duration="0.5s" swiper-animate-delay="0s">
+                    <div class="col-sm-4 flex-fate index-stream3-left ani" swiper-animate-effect="slideInLeft" swiper-animate-duration="0.5s" swiper-animate-delay="0s">
                         <div>
-                            <!--<img src="/index/img/index/serve-title.png" alt="">-->
+                            <!--<img src="../img/index/serve-title.png" alt="">-->
                             <p class="pg-txt">
                                 <span class="pg-txt1">产品</span>
                                 <span class="pg-txt2">服务</span>
                             </p>
                             <p>细节精良，满足您对原材料所有的幻想</p>
                             <div></div>
-                            <a href="/xinchuan/server">查看更多</a>
+                            <a href="./server.html">查看更多</a>
                         </div>
                     </div>
-                    <!-- stream3-right -->
                     <!-- stream3-right -->
                     <div class="col-sm-7 col-sm-offset-1 flex-fate index-stream3-right ani" swiper-animate-effect="slideInRight" swiper-animate-duration="0.5s" swiper-animate-delay="0s">
                         <div class="serve-con">
@@ -218,7 +216,7 @@
                             <div class="swiper-container index-swiper4">
                                 <div class="swiper-wrapper">
                                     <div class="swiper-slide slide-swiper4">
-                                        <a href="/xinchuan/server" class="flex-fate serve-item">
+                                        <a href="./server.html" class="flex-fate serve-item">
                                             <div class="col-sm-12 purpleitem purple1 transition-ani">
                                                 <h3>产品简介</h3>
                                                 <p>在整个国民经济当中，工业制造业的体量占比最高。在工业制造业当中，原材料的成本占比又是最高，通常可以达到50-80%。原材料具有</p>
@@ -226,7 +224,7 @@
                                         </a>
                                     </div>
                                     <div class="swiper-slide slide-swiper4">
-                                        <a href="/xinchuan/server4" class="flex-fate serve-item">
+                                        <a href="./server4.html" class="flex-fate serve-item">
                                             <div class="col-sm-12 purpleitem purple3 transition-ani">
                                                 <h3>利润优化</h3>
                                                 <p>制造业企业的终极目标是单位时间内利润的最大化,具体的可以定义为年利润；</p>
@@ -234,7 +232,7 @@
                                         </a>
                                     </div>
                                     <div class="swiper-slide slide-swiper4">
-                                        <a href="/xinchuan/server1" class="flex-fate serve-item">
+                                        <a href="./server1.html" class="flex-fate serve-item">
                                             <div class="col-sm-12 purpleitem purple5 transition-ani">
                                                 <h3>单矿分析</h3>
                                                 <p>我们的单矿分析模块是基于单种原材料的实际生产经济性分析，以利润或者成本为...</p>
@@ -242,7 +240,7 @@
                                         </a>
                                     </div>
                                     <div class="swiper-slide slide-swiper4">
-                                        <a href="/xinchuan/server3" class="flex-fate serve-item">
+                                        <a href="./server3.html" class="flex-fate serve-item">
                                             <div class="col-sm-12 purpleitem purple4 transition-ani">
                                                 <h3>成本优化</h3>
                                                 <p>成本优化的理念和做法在当今制造业企业中持续增强，向管理和成本要效益正在越...</p>
@@ -250,7 +248,7 @@
                                         </a>
                                     </div>
                                     <div class="swiper-slide slide-swiper4">
-                                        <a href="/xinchuan/server2" class="flex-fate serve-item">
+                                        <a href="./server2.html" class="flex-fate serve-item">
                                             <div class="col-sm-12 purpleitem purple2 transition-ani">
                                                 <h3> 综合分析</h3>
                                                 <p>我们的综合分析模块是基于原材料整体组合经济性分析，以利润或者成本为主...</p>
@@ -260,30 +258,31 @@
                                 </div>
                             </div>
                             <div class="rot-con">
-                                <a href="/xinchuan/server" class="col-xs-6 col-sm-6 grayitem gray1 transition-ani">
+                                <a href="./server.html" class="col-xs-6 col-sm-6 grayitem gray1 transition-ani">
                                     <h3>产品简介</h3>
                                     <p class="pc-show">在整个国民经济当中，工业制造业的体量占比最高。在工业制造业当中，原材料的成本占比又是最高，通常可以达到50-80%。原材料具有</p>
                                 </a>
-                                <a href="/xinchuan/server2" class="col-xs-6 col-sm-6 grayitem gray2 transition-ani">
+                                <a href="./server2.html" class="col-xs-6 col-sm-6 grayitem gray2 transition-ani">
                                     <h3>综合分析</h3>
                                     <p class="pc-show">我们的综合分析模块是基于原材料整体组合经济性分析，以利润或者成本为主...</p>
                                 </a>
-                                <a href="/xinchuan/server3" class="col-xs-6 col-sm-6 grayitem gray4 transition-ani">
+                                <a href="./server3.html" class="col-xs-6 col-sm-6 grayitem gray4 transition-ani">
                                     <h3>成本优化</h3>
                                     <p class="pc-show">成本优化的理念和做法在当今制造业企业中持续增强，向管理和成本要效益正在越...</p>
                                 </a>
-                                <a href="/xinchuan/server1" class="col-xs-6 col-sm-6 grayitem gray5 transition-ani">
+                                <a href="./server1.html" class="col-xs-6 col-sm-6 grayitem gray5 transition-ani">
                                     <h3>单矿分析</h3>
                                     <p class="pc-show">我们的单矿分析模块是基于单种原材料的实际生产经济性分析，以利润或者成本为...</p>
                                 </a>
-                                <a href="/xinchuan/server4" class="col-xs-6 col-sm-6 grayitem gray3 transition-ani">
+                                <a href="./server4.html" class="col-xs-6 col-sm-6 grayitem gray3 transition-ani">
                                     <h3>利润优化</h3>
                                     <p class="pc-show">制造业企业的终极目标是单位时间内利润的最大化,具体的可以定义为年利润；</p>
                                 </a>
                             </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-                </div></div>
             <!-- stream4 -->
             <div class="swiper-slide index-swiper1-slide4">
                 <div class="container">

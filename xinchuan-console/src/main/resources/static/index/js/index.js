@@ -61,7 +61,7 @@ $(function () {
                 }
             },
             slideChangeTransitionStart: function () {
-                console.log(this.activeIndex);
+               // console.log(this.activeIndex);
                 if(this.activeIndex == 0){
                     $(".h-con").css("background-color","transparent");
                 }else{
@@ -130,8 +130,8 @@ $(function () {
     })
 
     //转盘
-    console.log($(".grayitem").eq(0).width());
-    console.log($(".grayitem").eq(0).height());
+  /*  console.log($(".grayitem").eq(0).width());
+    console.log($(".grayitem").eq(0).height());*/
     var rot_w = $(".grayitem").eq(0).width();
     var rot_h = $(".grayitem").eq(0).height();
     var rot1,rot2,rot3,rot4,rot5,rot6;

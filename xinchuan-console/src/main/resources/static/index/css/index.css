@@ -333,40 +333,34 @@ html,body{
 }
 .purple1::before,.purple2::before,.purple3::before,.purple4::before,.purple5::before{
     content: "";
-    background: url("../img/index/servelogo2.png");
+    background: url("../img/index/servelogo1.png") no-repeat;
+    background-size: cover;
+    width: 31px;
+    height: 35px;
     position: absolute;
     top: 5%;
     left: 24px;
-    width: 2.5em;
-    height: 0;
-    padding-bottom: 2.5em;
-    overflow:hidden;
-    background-position:center center;
-    background-repeat:no-repeat;
-    -webkit-background-size:cover;
-    -moz-background-size:cover;
-    background-size:cover;
 }
-/*.purple2::before{*/
-    /*background: url("../img/index/servelogo2.png") no-repeat;*/
-    /*width: 35px;*/
-    /*height: 35px;*/
-/*}*/
-/*.purple3::before{*/
-    /*background: url("../img/index/servelogo3.png") no-repeat;*/
-    /*width: 35px;*/
-    /*height: 35px;*/
-/*}*/
-/*.purple4::before{*/
-    /*background: url("../img/index/servelogo4.png") no-repeat;*/
-    /*width: 35px;*/
-    /*height: 35px;*/
-/*}*/
-/*.purple5::before{*/
-    /*background: url("../img/index/servelogo5.png") no-repeat;*/
-    /*width: 35px;*/
-    /*height: 35px;*/
-/*}*/
+.purple2::before{
+    background: url("../img/index/servelogo2.png") no-repeat;
+    width: 35px;
+    height: 35px;
+}
+.purple3::before{
+    background: url("../img/index/servelogo3.png") no-repeat;
+    width: 35px;
+    height: 35px;
+}
+.purple4::before{
+    background: url("../img/index/servelogo4.png") no-repeat;
+    width: 35px;
+    height: 35px;
+}
+.purple5::before{
+    background: url("../img/index/servelogo5.png") no-repeat;
+    width: 35px;
+    height: 35px;
+}
 /*转盘*/
 .rot-con{
     /*overflow: hidden;*/
@@ -379,40 +373,34 @@ html,body{
 }
 .gray1::before,.gray2::before,.gray3::before,.gray4::before,.gray5::before{
     content: "";
-    background: url("../img/index/servelogo-gray2.png");
+    background: url("../img/index/servelogo-gray1.png") no-repeat;
+    background-size: cover;
+    width: 33px;
+    height: 37px;
     position: absolute;
     top: 19%;
     left: 20px;
-    width: 2em;
-    height: 0;
-    padding-bottom: 2em;
-    overflow:hidden;
-    background-position:center center;
-    background-repeat:no-repeat;
-    -webkit-background-size:cover;
-    -moz-background-size:cover;
-    background-size:cover;
 }
-/*.gray2::before{*/
-    /*background: url("../img/index/servelogo-gray2.png") no-repeat;*/
-    /*width: 35px;*/
-    /*height: 35px;*/
-/*}*/
-/*.gray3::before{*/
-    /*background: url("../img/index/servelogo-gray3.png") no-repeat;*/
-    /*width: 35px;*/
-    /*height: 35px;*/
-/*}*/
-/*.gray4::before{*/
-    /*background: url("../img/index/servelogo-gray4.png") no-repeat;*/
-    /*width: 35px;*/
-    /*height: 33px;*/
-/*}*/
-/*.gray5::before{*/
-    /*background: url("../img/index/servelogo-gray5.png") no-repeat;*/
-    /*width: 35px;*/
-    /*height: 35px;*/
-/*}*/
+.gray2::before{
+    background: url("../img/index/servelogo-gray2.png") no-repeat;
+    width: 35px;
+    height: 35px;
+}
+.gray3::before{
+    background: url("../img/index/servelogo-gray3.png") no-repeat;
+    width: 35px;
+    height: 35px;
+}
+.gray4::before{
+    background: url("../img/index/servelogo-gray4.png") no-repeat;
+    width: 35px;
+    height: 33px;
+}
+.gray5::before{
+    background: url("../img/index/servelogo-gray5.png") no-repeat;
+    width: 35px;
+    height: 35px;
+}
 /*swiper4*/
 .index-swiperpagination4>.swiper-pagination-bullet-active{
     background-color: #58328b;
@@ -1139,10 +1127,8 @@ html,body{
         max-height: 3em;
     }
     .purple1::before, .purple2::before, .purple3::before, .purple4::before, .purple5::before{
-        top: 18%;
+        top: 14%;
         left: 14px;
-        width: 2em;
-        padding-bottom: 2em;
     }
     .grayitem{
         margin: 15px 0 10px;
