@@ -317,7 +317,7 @@
                                     <p class="news-award">${news.title!''}</p>
                                     <h3 class="news-title fw-b">
                                         <#if news.summary ??>
-                                            <#if news.summary?length gt 30>${news.summary?substring(0,50)}...
+                                            <#if news.summary?length gt 30>${news.summary?substring(0,30)}...
                                             <#else>
                                                 ${news.summary!''}
                                             </#if>
@@ -352,7 +352,7 @@
                                                 <p class="news-award fc-g">${news.title}</p>
                                                 <h3 class="news-title">
                                                     <#if news.summary ??>
-                                                    <#if news.summary?length gt 30>${news.summary?substring(0,50)}...
+                                                    <#if news.summary?length gt 30>${news.summary?substring(0,30)}...
                                                     <#else>
                                                         ${news.summary!''}
                                                     </#if>
