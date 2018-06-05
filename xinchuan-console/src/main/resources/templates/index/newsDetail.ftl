@@ -98,7 +98,7 @@
     <h3 class="del-t">${news.title}</h3>
     <p class="del-d">
         <span>发布日期：</span>
-        <span class="del-date">${news.createTime}</span>
+        <span class="del-date">${news.createTime?string("yyyy-MM-dd")}</span>
     </p>
     <p class="del-p">
 
@@ -162,6 +162,12 @@
         <a href="#" id="share-wx" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
         <a href="#" id="share-qq" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
     </div>
+
+    <#--<div class="share3 bdsharebuttonbox">
+        <a href="#" class="bds_more" data-cmd="more"></a>
+        <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+        <a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+    </div>-->
 </div>
 <!--footer-->
 <div class="footer" style="">
@@ -209,5 +215,20 @@
 <script src="/index/common/wow/wow.min.js"></script>
 <script src="/index/js/common.js"></script>
 <script src="/index/js/news.js"></script>
+
+<script>
+    window._bd_share_config = {
+    "common": {
+        "bdSnsKey": {},
+        "bdText": "",
+        "bdMini": "2",
+        "bdMiniList": false,
+        "bdPic": "http://sjl.s1.natapp.cc${news.newsImage}",
+        "bdStyle": "1",
+        "bdSize": "16"
+    }, "share": {}
+};
+    with (document) 0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src = 'http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion=' + ~(-new Date() / 36e5)];
+</script>
 </body>
 </html>

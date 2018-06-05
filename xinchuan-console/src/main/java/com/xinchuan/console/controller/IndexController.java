@@ -10,6 +10,7 @@ import com.xinchuan.console.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import sun.misc.IOUtils;
@@ -28,7 +29,7 @@ import java.util.Map;
  * @version 1.0
  * @fileName IndexController.java
  */
-@RestController
+@Controller
 /*@RequestMapping("/")*/
 public class IndexController {
 
@@ -136,19 +137,22 @@ public class IndexController {
     }
 
     @GetMapping("/xinchuan/newsDetail")
-    public ModelAndView newsDetail(Long id) {
-        ModelAndView modelAndView = new ModelAndView("index/newsDetail");
+    public String newsDetail(Long id, ModelMap modelMap) {
         XcNews news = xcNewsService.findNewsById(id);
+        if(news.getId()==null || news.getIsShow()==1){
+            return "redirect:/xinchuan/news";
+        }
+
         List<XcNews> prevNew = xcNewsService.findNewsPrevId(id);//上一条
         List<XcNews> nextNew = xcNewsService.findNewsNextId(id);//下一条
         if(!prevNew.isEmpty()){
-            modelAndView.addObject("prevNew", prevNew.get(0));//上一条新闻
+            modelMap.put("prevNew", prevNew.get(0));//上一条新闻
         }
         if(!nextNew.isEmpty()){
-            modelAndView.addObject("nextNew", nextNew.get(0));//下一条新闻
+            modelMap.put("nextNew", nextNew.get(0));//下一条新闻
         }
-        modelAndView.addObject("news", news);//新闻
-        return modelAndView;
+        modelMap.put("news", news);//新闻
+        return "index/newsDetail";
     }
 
 /*

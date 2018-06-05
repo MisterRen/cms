@@ -24,7 +24,8 @@ public  class UploadImageUtil {
         if (null != file) {
             String fileName = file.getOriginalFilename();// 文件原名称
             String newFileName = UUID.randomUUID().toString()+fileName.substring(fileName.indexOf("."),fileName.length());
-            String pathRoot = req.getSession().getServletContext().getRealPath("");
+            //String pathRoot = req.getSession().getServletContext().getRealPath("");
+            String pathRoot = "C:/Users/xi/Desktop/redis";
             String path = "/images/upload/";//获取文件保存路径
             String savePath = pathRoot + path;
             File fileDir = new File(savePath);

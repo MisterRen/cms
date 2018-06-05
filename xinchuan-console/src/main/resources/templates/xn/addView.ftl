@@ -116,6 +116,8 @@
             return '/ueditor/loadImage';
         }else if(action == 'uploadvideo'){
             return '/loadImgae';
+        }else if(action == 'uploadfile'){
+            return '/ueditor/loadImage';
         }else{
             return this._bkGetActionUrl.call(this, action);
         }

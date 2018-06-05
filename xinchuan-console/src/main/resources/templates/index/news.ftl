@@ -112,7 +112,7 @@
                     <h3 class="news-i-title">${news.title}</h3>
                     <p class="news-i-d">
                         <span>发布日期：</span>
-                        <span class="news-i-date">${news.createTime}</span>
+                        <span class="news-i-date">${news.createTime?string("yyyy-MM-dd")}</span>
                     </p>
                     <p class="news-i-info">
                        <#if news.summary??>

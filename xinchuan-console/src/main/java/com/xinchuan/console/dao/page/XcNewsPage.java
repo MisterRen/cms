@@ -6,6 +6,8 @@ import com.xinchuan.console.model.XcNews;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -24,6 +26,7 @@ public class XcNewsPage extends BaseSqlDaoImpl  {
     public PageModel<XcNews> queryXcNewsPage(XcNews news){
         Map<String,Object> map = new HashMap<String,Object>();
         StringBuilder hql = new StringBuilder();
+        SimpleDateFormat sf=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         hql.append("select t from XcNews t where 1=1 ");
         if(news != null){
             if(news.getIsShow()!=null){
@@ -37,12 +40,20 @@ public class XcNewsPage extends BaseSqlDaoImpl  {
 
             if(StringUtils.isNotBlank(news.getStartTime())){
                 hql.append("and t.createTime >= :startTime ");
-                map.put("startTime", news.getStartTime());
+                try {
+                    map.put("startTime", sf.parse(news.getStartTime()));
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
             }
 
             if(StringUtils.isNotBlank(news.getEndTime())){
                 hql.append(" and t.createTime <= :endTime ");
-                map.put("endTime", news.getEndTime());
+                try {
+                    map.put("endTime", sf.parse(news.getEndTime()));
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
             }
         }
         hql.append(" order by t.id desc ");
